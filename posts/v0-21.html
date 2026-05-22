@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>v0.21 — Orthographie-Suche und Inline-Search-Rewrite</title>
+  <meta name="description" content="Release v0.21: Die Suche normalisiert historische Schreibweisen und funktioniert jetzt korrekt mit Lazy Rendering.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://digitalehegeledition.vercel.app" class="site-title">
+    <span class="site-title-eyebrow">Digitale Edition</span>
+    <span class="site-title-main">Hegel · Werke</span>
+  </a>
+  <nav class="sitenav">
+    <ul>
+      <li><a href="https://digitalehegeledition.vercel.app">Edition</a></li>
+      <li><a href="../index.html" class="current">Blog</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" title="Darstellung wechseln">&#9682;</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="blog-main">
+  <div class="post-header">
+    <h1>Orthographie-Suche und Inline-Search-Rewrite</h1>
+    <div class="post-meta">18. Mai 2026 · v0.21</div>
+  </div>
+
+  <div class="post-body">
+
+    <h2>Orthographie-Normalisierung</h2>
+    <p>
+      Die größte Hürde bei der Textsuche in historischen Ausgaben: Hegel schrieb
+      &bdquo;Seyn&ldquo;, nicht &bdquo;Sein&ldquo;. Wer die moderne Schreibweise
+      eingibt, findet nichts. Ab v0.21 werden beide Varianten automatisch gefunden.
+    </p>
+    <p>Die Normalisierung umfasst:</p>
+    <ul>
+      <li><strong>ey &rarr; ei</strong> — Seyn &harr; Sein, Zwey &harr; Zwei</li>
+      <li><strong>&szlig; &rarr; ss</strong> — da&szlig; &harr; dass, Verh&auml;ltni&szlig; &harr; Verh&auml;ltnis</li>
+      <li><strong>th &rarr; t</strong> (vor Vokalen) — Theil &harr; Teil, Nothwendigkeit &harr; Notwendigkeit</li>
+      <li><strong>ct &rarr; kt</strong> — Subject &harr; Subjekt</li>
+      <li><strong>ph &rarr; f</strong> — Philosophie bleibt Philosophie (kein Unterschied), aber seltene Varianten werden gefunden</li>
+      <li><strong>-iren &rarr; -ieren</strong> — existiren &harr; existieren</li>
+    </ul>
+    <p>
+      Die Normalisierung gilt für beide Suchfunktionen — Inline-Suche im Reader
+      und die Volltext-Recherche.
+    </p>
+
+    <h2>Inline-Suche: Rewrite für Lazy Rendering</h2>
+    <p>
+      Die alte Inline-Suche durchsuchte das DOM direkt — mit Lazy Rendering funktionierte
+      das nicht mehr, weil die meisten Seiten noch gar nicht gerendert waren. Die neue
+      Version sucht im Textindex (den Rohdaten) und rendert erst die Treffer-Seiten.
+    </p>
+    <ul>
+      <li>Ergebnisse als Seitenanzahl (&bdquo;12 Seiten&ldquo;) mit Pfeil-Navigation</li>
+      <li>Treffer-Hervorhebung wird pro Seitenkarte angewendet, nicht auf das gesamte DOM</li>
+      <li>Enter führt die Suche aus (erster Druck) oder navigiert zum nächsten Treffer (weitere Drücke)</li>
+    </ul>
+
+    <hr>
+    <a href="../index.html" class="back-link">&larr; Alle Einträge</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div>Digitale Hegel-Edition · Blog</div>
+  <nav>
+    <a href="https://digitalehegeledition.vercel.app">Zur Edition</a>
+    <a href="https://digitalehegeledition.vercel.app/feedback.html">Feedback</a>
+  </nav>
+</footer>
+
+<script>
+function toggleTheme() {
+  var t = document.documentElement.dataset.theme === 'light' ? '' : 'light';
+  document.documentElement.dataset.theme = t;
+  localStorage.setItem('hegel-theme', t);
+}
+</script>
+</body>
+</html>

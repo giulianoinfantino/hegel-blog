@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>v0.23 — Vercel, PWA, Accessibility und Passwortschutz</title>
+  <meta name="description" content="Release v0.23: Migration auf Vercel, Progressive Web App, Accessibility-Verbesserungen, SEO, Passwortschutz, 404-Seite.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://digitalehegeledition.vercel.app" class="site-title">
+    <span class="site-title-eyebrow">Digitale Edition</span>
+    <span class="site-title-main">Hegel · Werke</span>
+  </a>
+  <nav class="sitenav">
+    <ul>
+      <li><a href="https://digitalehegeledition.vercel.app">Edition</a></li>
+      <li><a href="../index.html" class="current">Blog</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" title="Darstellung wechseln">&#9682;</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="blog-main">
+  <div class="post-header">
+    <h1>Vercel, PWA, Accessibility und Passwortschutz</h1>
+    <div class="post-meta">20. Mai 2026 · v0.23</div>
+  </div>
+
+  <div class="post-body">
+
+    <p>
+      Infrastruktur-Release: die Edition zieht von GitHub Pages auf Vercel um,
+      wird zur installierbaren App und bekommt Passwortschutz für die Closed Alpha.
+    </p>
+
+    <h2>Migration auf Vercel</h2>
+    <p>
+      Das Deployment läuft jetzt über Vercel statt GitHub Pages. Vorteile: Edge-Middleware
+      für Passwortschutz, saubere URLs ohne <code>.html</code>, schnelleres CDN, und
+      Preview-Deployments bei jedem Push.
+    </p>
+
+    <h2>Passwortschutz (Closed Alpha)</h2>
+    <p>
+      Die Edition ist jetzt durch HTTP Basic Auth geschützt. Eine Vercel Edge Middleware
+      prüft Benutzername und Passwort, bevor irgendein Inhalt ausgeliefert wird.
+      So bleibt die Alpha kontrolliert, bis die Textqualität stimmt.
+    </p>
+
+    <h2>Progressive Web App</h2>
+    <ul>
+      <li>Service Worker cached die Grundstruktur (HTML, CSS, JS) für schnellere Ladezeiten</li>
+      <li>Stale-while-revalidate für Assets, Network-first für Seiteninhalte</li>
+      <li>Web-Manifest — die Edition kann auf Mobilgeräten und Desktop als App installiert werden</li>
+      <li>Offline-Fallback: bei Netzwerkausfall wird die 404-Seite angezeigt</li>
+      <li>SVG-Favicon</li>
+    </ul>
+
+    <h2>404-Seite</h2>
+    <p>
+      Eigene Fehlerseite im Design der Edition mit Navigation zurück zur Sammlung
+      oder Volltextsuche. Wird auch vom Service Worker als Offline-Fallback verwendet.
+    </p>
+
+    <h2>Accessibility</h2>
+    <ul>
+      <li><code>aria-label</code>, <code>aria-live</code>, <code>aria-expanded</code>, <code>aria-current</code> durchgehend ergänzt</li>
+      <li>Toolbar-Eingaben verwenden jetzt <code>&lt;label&gt;</code> statt <code>&lt;span&gt;</code></li>
+      <li>Skip-Links (&bdquo;Zum Text springen&ldquo;, &bdquo;Zur Suche springen&ldquo;)</li>
+      <li>Mobile Sidebar: Backdrop-Overlay sperrt den Body-Scroll</li>
+      <li><code>focus-visible</code>-Outline mit Gold-Akzent</li>
+    </ul>
+
+    <h2>SEO</h2>
+    <ul>
+      <li>OpenGraph- und Twitter-Meta-Tags auf jeder Seite</li>
+      <li>Kanonische URLs (<code>&lt;link rel="canonical"&gt;</code>)</li>
+      <li>JSON-LD (schema.org WebSite) auf der Startseite</li>
+      <li><code>&lt;meta name="description"&gt;</code> auf jeder Seite</li>
+    </ul>
+
+    <hr>
+    <a href="../index.html" class="back-link">&larr; Alle Einträge</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div>Digitale Hegel-Edition · Blog</div>
+  <nav>
+    <a href="https://digitalehegeledition.vercel.app">Zur Edition</a>
+    <a href="https://digitalehegeledition.vercel.app/feedback.html">Feedback</a>
+  </nav>
+</footer>
+
+<script>
+function toggleTheme() {
+  var t = document.documentElement.dataset.theme === 'light' ? '' : 'light';
+  document.documentElement.dataset.theme = t;
+  localStorage.setItem('hegel-theme', t);
+}
+</script>
+</body>
+</html>

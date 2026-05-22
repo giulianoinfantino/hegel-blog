@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>v0.19 — Drei Lesemodi, Leseposition und ScrollSpy</title>
+  <meta name="description" content="Release v0.19: Druckbild/Normal/Breit-Ansicht, Leseposition wird gespeichert, ScrollSpy im Inhaltsverzeichnis, Seitenpositionsanzeige.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://digitalehegeledition.vercel.app" class="site-title">
+    <span class="site-title-eyebrow">Digitale Edition</span>
+    <span class="site-title-main">Hegel · Werke</span>
+  </a>
+  <nav class="sitenav">
+    <ul>
+      <li><a href="https://digitalehegeledition.vercel.app">Edition</a></li>
+      <li><a href="../index.html" class="current">Blog</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" title="Darstellung wechseln">&#9682;</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="blog-main">
+  <div class="post-header">
+    <h1>Drei Lesemodi, Leseposition und ScrollSpy</h1>
+    <div class="post-meta">15. Mai 2026 · v0.19</div>
+  </div>
+
+  <div class="post-body">
+
+    <p>
+      Der Reader wird zum richtigen Lesewerkzeug: drei Ansichtsmodi, gespeicherte
+      Leseposition und ein Inhaltsverzeichnis, das mitliest.
+    </p>
+
+    <h2>Drei Ansichtsmodi</h2>
+    <p>
+      Der alte Umschalter (Druckbild / Lesefassung) ist durch drei Optionen ersetzt:
+    </p>
+    <ul>
+      <li><strong>Druckbild</strong> — zeilengetreue Darstellung mit GW-Zeilennummern</li>
+      <li><strong>Normal</strong> — Fließtext in komfortabler Lesebreite (Standard)</li>
+      <li><strong>Breit</strong> — volle Breite, für Bildschirme mit mehr Platz</li>
+    </ul>
+    <p>Die Wahl wird per localStorage gespeichert und beim nächsten Besuch wiederhergestellt.</p>
+
+    <h2>Leseposition merken</h2>
+    <p>
+      Beim Scrollen wird die aktuelle Seitenposition gespeichert. Beim nächsten Besuch
+      springt der Reader automatisch dorthin zurück — pro Band, verfällt nach 7 Tagen.
+      Bei Deep-Links oder Suchanfragen wird die Position nicht überschrieben.
+    </p>
+
+    <h2>ScrollSpy im Inhaltsverzeichnis</h2>
+    <p>
+      Der aktive ToC-Eintrag wird beim Scrollen hervorgehoben. Die Sidebar scrollt
+      automatisch mit, damit der aktive Eintrag sichtbar bleibt. So weiß man immer,
+      in welchem Abschnitt man gerade liest.
+    </p>
+
+    <h2>Seitenpositionsanzeige</h2>
+    <p>
+      Beim Scrollen erscheint kurz ein Zähler (&bdquo;42 / 366 &middot; S. 178&ldquo;),
+      der die aktuelle Position im Band anzeigt — Seitennummer im digitalen Dokument
+      und Originalseite im GW-Band. Verschwindet nach 2 Sekunden.
+    </p>
+
+    <h2>Ctrl+F / Cmd+F</h2>
+    <p>
+      Die Browser-Suche wird abgefangen und stattdessen die Inline-Suche der Edition
+      fokussiert. So bleibt man im Lesefluss und nutzt die orthographie-bewusste Suche.
+    </p>
+
+    <hr>
+    <a href="../index.html" class="back-link">&larr; Alle Einträge</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div>Digitale Hegel-Edition · Blog</div>
+  <nav>
+    <a href="https://digitalehegeledition.vercel.app">Zur Edition</a>
+    <a href="https://digitalehegeledition.vercel.app/feedback.html">Feedback</a>
+  </nav>
+</footer>
+
+<script>
+function toggleTheme() {
+  var t = document.documentElement.dataset.theme === 'light' ? '' : 'light';
+  document.documentElement.dataset.theme = t;
+  localStorage.setItem('hegel-theme', t);
+}
+</script>
+</body>
+</html>

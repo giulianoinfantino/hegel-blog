@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>v0.16 — ToC-Feinschliff, Heading-Anker und Feedback-Seite</title>
+  <meta name="description" content="Release v0.16: Inhaltsverzeichnis vollständig überarbeitet, Überschriften-Anker, Gold-Akzente, Feedback-Seite.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://digitalehegeledition.vercel.app" class="site-title">
+    <span class="site-title-eyebrow">Digitale Edition</span>
+    <span class="site-title-main">Hegel · Werke</span>
+  </a>
+  <nav class="sitenav">
+    <ul>
+      <li><a href="https://digitalehegeledition.vercel.app">Edition</a></li>
+      <li><a href="../index.html" class="current">Blog</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" title="Darstellung wechseln">&#9682;</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="blog-main">
+  <div class="post-header">
+    <h1>ToC-Feinschliff, Heading-Anker und Feedback-Seite</h1>
+    <div class="post-meta">9. Mai 2026 · v0.16</div>
+  </div>
+
+  <div class="post-body">
+
+    <p>
+      Das Inhaltsverzeichnis war in v0.15 funktional, aber visuell noch nicht stimmig.
+      Diese Version bringt es in die endgültige Form.
+    </p>
+
+    <h2>Inhaltsverzeichnis</h2>
+    <ul>
+      <li>Alle Einträge sind jetzt klickbar — auch strukturelle Trennebenen (ERSTES BUCH, Abschnitt, Kapitel)</li>
+      <li>Buch/Abschnitt/Kapitel + Abschnittsname in einer Zeile zusammengeführt (z.B. &bdquo;ERSTER ABSCHNITT: BESTIMMTHEIT&ldquo;)</li>
+      <li>Gold-Akzentfarbe für strukturelle Trennebenen — volle Deckkraft, kein ausgegrautes Erscheinungsbild mehr</li>
+      <li>Groß-/Kleinschreibung normalisiert</li>
+      <li>Band-Titel (WISSENSCHAFT DER LOGIK etc.) aus dem ToC entfernt — nur noch inhaltliche Gliederung</li>
+    </ul>
+
+    <h2>Heading-Anker</h2>
+    <p>
+      Klick auf einen ToC-Eintrag scrollt jetzt direkt zur Überschrift im Fließtext, nicht nur
+      zur Seitenkarte. Die Scroll-Position berücksichtigt die Höhe von Header und Sticky-Toolbar,
+      damit die Überschrift sauber unterhalb der Toolbar erscheint.
+    </p>
+
+    <h2>Überschriften im Fließtext</h2>
+    <ul>
+      <li>Zentriert und typographisch gestylt, passend zum Inhaltsverzeichnis</li>
+      <li>Geteilte Überschriften (Buchstabe + Titel auf separaten Zeilen) in eine Zeile zusammengeführt</li>
+      <li>Im Druckbild-Modus: linksbündig, passend zum Fließtext</li>
+    </ul>
+
+    <h2>Feedback-Seite</h2>
+    <p>
+      Neue Seite mit Formspree-Integration. Rückmeldungen zu Textqualität, Fehlern und
+      Feature-Wünschen gehen direkt ins Postfach.
+    </p>
+
+    <hr>
+    <a href="../index.html" class="back-link">&larr; Alle Einträge</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div>Digitale Hegel-Edition · Blog</div>
+  <nav>
+    <a href="https://digitalehegeledition.vercel.app">Zur Edition</a>
+    <a href="https://digitalehegeledition.vercel.app/feedback.html">Feedback</a>
+  </nav>
+</footer>
+
+<script>
+function toggleTheme() {
+  var t = document.documentElement.dataset.theme === 'light' ? '' : 'light';
+  document.documentElement.dataset.theme = t;
+  localStorage.setItem('hegel-theme', t);
+}
+</script>
+</body>
+</html>

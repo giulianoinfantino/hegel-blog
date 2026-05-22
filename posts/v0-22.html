@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>v0.22 — Recherche-Redesign und Zitat-Verbesserungen</title>
+  <meta name="description" content="Release v0.22: Recherche-Seite komplett neu gestaltet, Suchergebnisse verlinken in den Reader, verbessertes Zitat-Format.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://digitalehegeledition.vercel.app" class="site-title">
+    <span class="site-title-eyebrow">Digitale Edition</span>
+    <span class="site-title-main">Hegel · Werke</span>
+  </a>
+  <nav class="sitenav">
+    <ul>
+      <li><a href="https://digitalehegeledition.vercel.app">Edition</a></li>
+      <li><a href="../index.html" class="current">Blog</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" title="Darstellung wechseln">&#9682;</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="blog-main">
+  <div class="post-header">
+    <h1>Recherche-Redesign und Zitat-Verbesserungen</h1>
+    <div class="post-meta">19. Mai 2026 · v0.22</div>
+  </div>
+
+  <div class="post-body">
+
+    <h2>Recherche-Seite neu gestaltet</h2>
+    <p>
+      Die alte Recherche-Seite hatte eine auffällige Hero-Animation, die beim wiederholten
+      Nutzen mehr im Weg stand als half. Sie ist ersetzt durch ein kompaktes Layout: Suchfeld,
+      Filter und Syntax-Hilfe in einem Bereich direkt am Seitenanfang.
+    </p>
+    <ul>
+      <li><strong>Neuer Abschnittsfilter</strong> — Vorrede, §-Paragraphen, Anmerkungen, Zusätze, Fließtext</li>
+      <li><strong>Sortierung &bdquo;Nach Abschnitt&ldquo;</strong> — gruppiert Treffer nach Werkstruktur</li>
+      <li><strong>Syntax-Hilfe</strong> — hinter einem &bdquo;Syntax-Hilfe&ldquo;-Link eingeklappt statt dauerhaft sichtbar</li>
+    </ul>
+
+    <h2>Suchergebnisse verlinken in den Reader</h2>
+    <p>
+      Klick auf ein Suchergebnis öffnet die Lektüre-Seite mit dem Suchbegriff und springt
+      direkt zur Trefferseite. Der Suchbegriff wird im Reader hervorgehoben — man sieht
+      sofort, wo im Text der Treffer liegt.
+    </p>
+
+    <h2>Verbessertes Zitat-Format</h2>
+    <p>
+      Beim Kopieren von Text wird das Zitat jetzt im akademischen Format angehängt:
+    </p>
+    <ul>
+      <li>Vorher: <code>(GW 12, 45, Z. 3–12 | GW 12, 46, Z. 1–8)</code></li>
+      <li>Nachher: <code>(GW 12, 45.3–46.8)</code></li>
+    </ul>
+    <p>
+      Seitenübergreifende Auswahl erzeugt einen zusammenhängenden Bereich statt
+      separater Einträge pro Seite. Im Rich-Text-Format werden die Zeilennummern
+      hochgestellt: GW 12, 45<sup>3</sup>&ndash;46<sup>8</sup>.
+    </p>
+
+    <hr>
+    <a href="../index.html" class="back-link">&larr; Alle Einträge</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div>Digitale Hegel-Edition · Blog</div>
+  <nav>
+    <a href="https://digitalehegeledition.vercel.app">Zur Edition</a>
+    <a href="https://digitalehegeledition.vercel.app/feedback.html">Feedback</a>
+  </nav>
+</footer>
+
+<script>
+function toggleTheme() {
+  var t = document.documentElement.dataset.theme === 'light' ? '' : 'light';
+  document.documentElement.dataset.theme = t;
+  localStorage.setItem('hegel-theme', t);
+}
+</script>
+</body>
+</html>

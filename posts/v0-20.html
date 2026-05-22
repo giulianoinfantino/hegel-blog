@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>v0.20 — Neuer Band: GW 20 Enzyklopädie (1830)</title>
+  <meta name="description" content="Release v0.20: Die Enzyklopädie der Philosophischen Wissenschaften (1830) ist vollständig digitalisiert.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://digitalehegeledition.vercel.app" class="site-title">
+    <span class="site-title-eyebrow">Digitale Edition</span>
+    <span class="site-title-main">Hegel · Werke</span>
+  </a>
+  <nav class="sitenav">
+    <ul>
+      <li><a href="https://digitalehegeledition.vercel.app">Edition</a></li>
+      <li><a href="../index.html" class="current">Blog</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" title="Darstellung wechseln">&#9682;</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="blog-main">
+  <div class="post-header">
+    <h1>Neuer Band: GW 20 — Enzyklopädie (1830)</h1>
+    <div class="post-meta">17. Mai 2026 · v0.20</div>
+  </div>
+
+  <div class="post-body">
+
+    <p>
+      Der dritte Band der Edition: Hegels <em>Enzyklopädie der Philosophischen Wissenschaften</em>
+      in der dritten Auflage von 1830 — vollständig digitalisiert und durchsuchbar.
+    </p>
+
+    <h2>Enzyklopädie-spezifische Struktur</h2>
+    <p>
+      Die Enzyklopädie ist anders aufgebaut als die <em>Wissenschaft der Logik</em>. Das
+      Inhaltsverzeichnis und die Überschriften-Erkennung wurden entsprechend erweitert:
+    </p>
+    <ul>
+      <li><strong>Theile</strong> — ERSTER THEIL, ZWEITER THEIL, DRITTER THEIL als oberste Gliederungsebene</li>
+      <li><strong>Abtheilungen</strong> — als eigenständige Hierarchieebene erkannt</li>
+      <li><strong>§-Paragraphen</strong> — visuell als Struktureinheiten dargestellt</li>
+      <li><strong>Anmerkungen</strong> — eingerückt und typographisch vom Haupttext unterschieden</li>
+      <li><strong>Vorrede / Vorbegriff / Einleitung</strong> — als Gliederungsebene 2 erkannt</li>
+      <li><strong>Griechische Buchstaben</strong> — α, β, γ als Untergliederung</li>
+      <li><strong>Römische Ziffern</strong> — I., II., III. als Untergliederung</li>
+    </ul>
+
+    <h2>OCR-Workflow</h2>
+    <p>
+      GW 20 wurde mit dem bisher besten Extraktionsworkflow digitalisiert. Die Erfahrungen
+      aus GW 12 (frühe Pipeline, viele Artefakte) und GW 21 (verbessertes OCR, weniger Fehler)
+      sind in einen dritten, nochmals verfeinerten Prozess eingeflossen. Trotzdem bleiben
+      Fehler möglich — besonders bei der Enzyklopädie mit ihrem dichten Satz und den
+      vielen Kurzparagraphen.
+    </p>
+
+    <h2>Edition-Statistik</h2>
+    <p>
+      Die Edition umfasst jetzt 3 Bände, 1.282 Seiten, 4.470 Sucheinträge und 1.083
+      erkannte Überschriften.
+    </p>
+
+    <hr>
+    <a href="../index.html" class="back-link">&larr; Alle Einträge</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div>Digitale Hegel-Edition · Blog</div>
+  <nav>
+    <a href="https://digitalehegeledition.vercel.app">Zur Edition</a>
+    <a href="https://digitalehegeledition.vercel.app/feedback.html">Feedback</a>
+  </nav>
+</footer>
+
+<script>
+function toggleTheme() {
+  var t = document.documentElement.dataset.theme === 'light' ? '' : 'light';
+  document.documentElement.dataset.theme = t;
+  localStorage.setItem('hegel-theme', t);
+}
+</script>
+</body>
+</html>
