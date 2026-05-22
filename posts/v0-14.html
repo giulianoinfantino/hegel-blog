@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>v0.14 — Launch: Inline-Suche, Auto-Zitat, Begriffskarte</title>
+  <meta name="description" content="Release v0.14: Erste öffentliche Alpha mit GW 12, Inline-Suche, automatischer Zitaterzeugung und Begriffskarte.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://digitalehegeledition.vercel.app" class="site-title">
+    <span class="site-title-eyebrow">Digitale Edition</span>
+    <span class="site-title-main">Hegel · Werke</span>
+  </a>
+  <nav class="sitenav">
+    <ul>
+      <li><a href="https://digitalehegeledition.vercel.app">Edition</a></li>
+      <li><a href="../index.html" class="current">Blog</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" title="Darstellung wechseln">&#9682;</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="blog-main">
+  <div class="post-header">
+    <h1>Launch: Inline-Suche, Auto-Zitat, Begriffskarte</h1>
+    <div class="post-meta">7. Mai 2026 · v0.14</div>
+  </div>
+
+  <div class="post-body">
+
+    <h2>Erster Band: GW 12 — Wissenschaft der Logik, Zweiter Band (1816)</h2>
+    <p>
+      Die <em>Subjektive Logik oder die Lehre vom Begriff</em> ist der erste Band der
+      Digitalen Hegel-Edition. Vollständig digitalisiert aus den Gesammelten Werken,
+      mit Originalrechtschreibung und typographischer Hervorhebung (Sperrsatz als Kursiv).
+    </p>
+
+    <h2>Inline-Suche</h2>
+    <p>
+      Direkt in der Leseansicht suchen — mit Unterstützung für logische Operatoren
+      (AND, OR, NOT), Phrasensuche (&bdquo;Begriff an sich&ldquo;), Präfix-Suche (Begriff*)
+      und Nähe-Operatoren (Geist NEAR/10 Natur).
+    </p>
+
+    <h2>Automatische Zitaterzeugung</h2>
+    <p>
+      Beim Kopieren von Text wird automatisch die GW-Seitenreferenz angehängt. Im
+      Druckbild-Modus inklusive Zeilennummern. Klick auf eine Zeilennummer kopiert
+      die Zitatreferenz in die Zwischenablage.
+    </p>
+
+    <h2>Begriffskarte</h2>
+    <p>
+      Visuelle Darstellung der Begriffslandschaft des Werks — häufige Begriffe und ihre
+      Verteilung über die Textstruktur.
+    </p>
+
+    <h2>Reader-Interface</h2>
+    <ul>
+      <li>Druckbild-Ansicht mit Zeilennummerierung (GW-Zeilen)</li>
+      <li>Lesefassung als Fließtext</li>
+      <li>GW-Seitensprung über Eingabefeld</li>
+      <li>Schriftgrößen-Anpassung</li>
+      <li>Navigierbares Inhaltsverzeichnis</li>
+      <li>Dunkelmodus / Hellmodus</li>
+    </ul>
+
+    <h2>Volltext-Recherche</h2>
+    <p>
+      Separate Suchseite mit erweiterten Filtern (nach Texttyp, nach Relevanz/Seitenfolge sortieren),
+      Trefferhervorhebung und direkten Verweisen in den Reader.
+    </p>
+
+    <hr>
+
+    <a href="../index.html" class="back-link">&larr; Alle Einträge</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div>Digitale Hegel-Edition · Blog</div>
+  <nav>
+    <a href="https://digitalehegeledition.vercel.app">Zur Edition</a>
+    <a href="https://digitalehegeledition.vercel.app/feedback.html">Feedback</a>
+  </nav>
+</footer>
+
+<script>
+function toggleTheme() {
+  var t = document.documentElement.dataset.theme === 'light' ? '' : 'light';
+  document.documentElement.dataset.theme = t;
+  localStorage.setItem('hegel-theme', t);
+}
+</script>
+</body>
+</html>

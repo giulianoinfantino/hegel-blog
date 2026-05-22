@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog — Digitale Hegel-Edition</title>
+  <meta name="description" content="Entwicklungsblog der Digitalen Hegel-Edition — neue Features, Versionen und Projektfortschritt.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="assets/style.css">
+  <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://digitalehegeledition.vercel.app" class="site-title">
+    <span class="site-title-eyebrow">Digitale Edition</span>
+    <span class="site-title-main">Hegel · Werke</span>
+  </a>
+  <nav class="sitenav">
+    <ul>
+      <li><a href="https://digitalehegeledition.vercel.app">Edition</a></li>
+      <li><a href="index.html" class="current">Blog</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" title="Darstellung wechseln">&#9682;</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="blog-main">
+  <div class="blog-hero">
+    <h1>Entwicklungsblog</h1>
+    <p>Neue Versionen, Features und Fortschritt der Digitalen Hegel-Edition.</p>
+  </div>
+
+  <ul class="post-list">
+
+    <li class="post-item">
+      <div class="post-date">22. Mai 2026 <span class="post-version">v0.24</span></div>
+      <h2 class="post-title"><a href="posts/v0-24.html">GW 20, Orthographie-Suche und drei Lesemodi</a></h2>
+      <p class="post-excerpt">
+        Die Enzyklopädie (1830) ist vollständig digitalisiert. Die Suche versteht jetzt historische Schreibweisen,
+        der Reader bietet drei Ansichtsmodi und merkt sich die Leseposition.
+      </p>
+    </li>
+
+    <li class="post-item">
+      <div class="post-date">8. Mai 2026 <span class="post-version">v0.15</span></div>
+      <h2 class="post-title"><a href="posts/v0-15.html">GW 21, Inline-Suche und überarbeitetes Inhaltsverzeichnis</a></h2>
+      <p class="post-excerpt">
+        Erster Band der Wissenschaft der Logik (1832) hinzugefügt. Neues Inhaltsverzeichnis mit
+        strukturierten Überschriften, Inline-Suche und automatische Zitatgenerierung beim Kopieren.
+      </p>
+    </li>
+
+    <li class="post-item">
+      <div class="post-date">7. Mai 2026 <span class="post-version">v0.14</span></div>
+      <h2 class="post-title"><a href="posts/v0-14.html">Launch: Inline-Suche, Auto-Zitat, Begriffskarte</a></h2>
+      <p class="post-excerpt">
+        Erste öffentliche Alpha-Version mit GW 12, Inline-Suche, automatischer
+        Zitaterzeugung, Begriffskarte und überarbeitetem Reader-Interface.
+      </p>
+    </li>
+
+  </ul>
+</main>
+
+<footer class="site-footer">
+  <div>Digitale Hegel-Edition · Blog</div>
+  <nav>
+    <a href="https://digitalehegeledition.vercel.app">Zur Edition</a>
+    <a href="https://digitalehegeledition.vercel.app/feedback.html">Feedback</a>
+  </nav>
+</footer>
+
+<script>
+function toggleTheme() {
+  var t = document.documentElement.dataset.theme === 'light' ? '' : 'light';
+  document.documentElement.dataset.theme = t;
+  localStorage.setItem('hegel-theme', t);
+}
+</script>
+</body>
+</html>

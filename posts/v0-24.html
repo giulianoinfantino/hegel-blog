@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>v0.24 — GW 20, Orthographie-Suche und drei Lesemodi</title>
+  <meta name="description" content="Release v0.24: Enzyklopädie (GW 20), orthographie-normalisierte Suche, Lazy Rendering, drei Lesemodi und mehr.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://digitalehegeledition.vercel.app" class="site-title">
+    <span class="site-title-eyebrow">Digitale Edition</span>
+    <span class="site-title-main">Hegel · Werke</span>
+  </a>
+  <nav class="sitenav">
+    <ul>
+      <li><a href="https://digitalehegeledition.vercel.app">Edition</a></li>
+      <li><a href="../index.html" class="current">Blog</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" title="Darstellung wechseln">&#9682;</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="blog-main">
+  <div class="post-header">
+    <h1>GW 20, Orthographie-Suche und drei Lesemodi</h1>
+    <div class="post-meta">22. Mai 2026 · v0.24</div>
+  </div>
+
+  <div class="post-body">
+
+    <h2>Neuer Band: GW 20 — Enzyklopädie (1830)</h2>
+    <p>
+      Die <em>Enzyklopädie der Philosophischen Wissenschaften</em> in der dritten Auflage von 1830 ist
+      vollständig digitalisiert und durchsuchbar. Das Inhaltsverzeichnis unterstützt die spezifische
+      Struktur des Werks: Theile, Abtheilungen, §-Paragraphen und Anmerkungen sind visuell
+      voneinander unterschieden.
+    </p>
+
+    <h2>Orthographie-normalisierte Suche</h2>
+    <p>
+      Die Suche versteht jetzt historische Schreibweisen. Wer nach &bdquo;Sein&ldquo; sucht, findet
+      auch &bdquo;Seyn&ldquo;; wer &bdquo;Notwendigkeit&ldquo; eingibt, findet &bdquo;Nothwendigkeit&ldquo;.
+      Die Normalisierung umfasst: ey&rarr;ei, &szlig;&rarr;ss, th&rarr;t (vor Vokalen), ct&rarr;kt, ph&rarr;f, -iren&rarr;-ieren.
+    </p>
+
+    <h2>Drei Lesemodi</h2>
+    <p>
+      Statt eines einfachen Umschalters gibt es jetzt drei Ansichten: <strong>Druckbild</strong> (zeilengetreu),
+      <strong>Normal</strong> (Fließtext) und <strong>Breit</strong> (volle Breite). Die Wahl wird gespeichert.
+    </p>
+
+    <h2>Leseposition wird gespeichert</h2>
+    <p>
+      Der Reader merkt sich, wo man aufgehört hat. Beim nächsten Besuch springt die Seite
+      automatisch zur letzten Position zurück — pro Band, verfällt nach 7 Tagen.
+    </p>
+
+    <h2>Lazy Rendering</h2>
+    <p>
+      Seiten werden erst gerendert, wenn sie in den sichtbaren Bereich scrollen. Das macht den
+      initialen Seitenaufbau bei 400+ Seiten drastisch schneller.
+    </p>
+
+    <h2>Verbessertes Inhaltsverzeichnis</h2>
+    <ul>
+      <li>ScrollSpy: der aktive Eintrag wird hervorgehoben und die Sidebar folgt mit</li>
+      <li>ToC-Einträge verlinken direkt auf die nächste Überschrift im Text (Fuzzy-Matching, &plusmn;2 Seiten)</li>
+      <li>Strukturelle Trennebenen ohne Seitenangabe verlinken auf den nächsten erreichbaren Anker</li>
+    </ul>
+
+    <h2>Verbesserte Auto-Zitation</h2>
+    <ul>
+      <li>Neues Format: <code>(GW 12, 45.3&ndash;46.8)</code> statt pipe-getrennte Einzeleinträge</li>
+      <li>Seitenübergreifende Auswahl erzeugt einen zusammenhängenden Bereich</li>
+      <li>Hochgestellte Zeilennummern im Rich-Text-Format</li>
+    </ul>
+
+    <h2>Recherche-Seite</h2>
+    <ul>
+      <li>Kompakteres Layout ohne Hero-Animation</li>
+      <li>Neuer Abschnittsfilter: Vorrede, §-Paragraphen, Anmerkungen, Zusätze, Fließtext</li>
+      <li>Sortierung &bdquo;Nach Abschnitt&ldquo;</li>
+      <li>Suchergebnisse verlinken direkt in den Reader mit hervorgehobenen Treffern</li>
+    </ul>
+
+    <h2>Inline-Suche</h2>
+    <ul>
+      <li>Funktioniert jetzt korrekt mit Lazy Rendering (sucht im Textindex, nicht im DOM)</li>
+      <li>Ergebnisse als Seitenanzahl mit Pfeil-Navigation zwischen Treffern</li>
+      <li>Ctrl+F / Cmd+F öffnet die Inline-Suche statt des Browser-Dialogs</li>
+    </ul>
+
+    <h2>Seitenpositionsanzeige</h2>
+    <p>
+      Beim Scrollen erscheint kurz ein Zähler wie &bdquo;42 / 366 &middot; S. 178&ldquo;, der nach
+      2 Sekunden wieder verschwindet.
+    </p>
+
+    <h2>Progressive Web App</h2>
+    <p>
+      Die Edition ist jetzt als App installierbar (Mobil und Desktop). Ein Service Worker
+      cached Ressourcen für schnellere Ladezeiten und eingeschränkte Offline-Nutzung.
+    </p>
+
+    <h2>Passwortschutz</h2>
+    <p>
+      Die Closed Alpha ist durch HTTP Basic Auth via Vercel Edge Middleware geschützt.
+    </p>
+
+    <h2>Weitere Verbesserungen</h2>
+    <ul>
+      <li>Deployment von GitHub Pages auf Vercel migriert</li>
+      <li>CSS vollständig minifiziert</li>
+      <li>Google Fonts nicht-blockierend geladen</li>
+      <li>Eigene 404-Seite mit Navigation</li>
+      <li>Vollständige Accessibility-Attribute (aria-label, skip-links, etc.)</li>
+      <li>SEO: OpenGraph, JSON-LD, kanonische URLs</li>
+      <li>Landing-Page mit neuem Abschnitt &bdquo;Warum dieses Projekt&ldquo;</li>
+      <li>Enter-Taste im GW-Seitenfeld löst Sprung aus</li>
+    </ul>
+
+    <hr>
+
+    <p>
+      <strong>Nächster Schritt:</strong> GW 11 — <em>Wissenschaft der Logik</em>, Erster Band (1812/13).
+    </p>
+
+    <a href="../index.html" class="back-link">&larr; Alle Einträge</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div>Digitale Hegel-Edition · Blog</div>
+  <nav>
+    <a href="https://digitalehegeledition.vercel.app">Zur Edition</a>
+    <a href="https://digitalehegeledition.vercel.app/feedback.html">Feedback</a>
+  </nav>
+</footer>
+
+<script>
+function toggleTheme() {
+  var t = document.documentElement.dataset.theme === 'light' ? '' : 'light';
+  document.documentElement.dataset.theme = t;
+  localStorage.setItem('hegel-theme', t);
+}
+</script>
+</body>
+</html>

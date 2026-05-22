@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>v0.15 — GW 21, Inline-Suche und überarbeitetes Inhaltsverzeichnis</title>
+  <meta name="description" content="Release v0.15: GW 21 (Wissenschaft der Logik, 1832), Inhaltsverzeichnis-Redesign, Sperrsatz-Korrekturen.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://digitalehegeledition.vercel.app" class="site-title">
+    <span class="site-title-eyebrow">Digitale Edition</span>
+    <span class="site-title-main">Hegel · Werke</span>
+  </a>
+  <nav class="sitenav">
+    <ul>
+      <li><a href="https://digitalehegeledition.vercel.app">Edition</a></li>
+      <li><a href="../index.html" class="current">Blog</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" title="Darstellung wechseln">&#9682;</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="blog-main">
+  <div class="post-header">
+    <h1>GW 21, Inline-Suche und überarbeitetes Inhaltsverzeichnis</h1>
+    <div class="post-meta">8. Mai 2026 · v0.15</div>
+  </div>
+
+  <div class="post-body">
+
+    <h2>Neuer Band: GW 21 — Wissenschaft der Logik, Erster Band (1832)</h2>
+    <p>
+      Der erste Band der <em>Wissenschaft der Logik</em> in der zweiten Auflage von 1832 ist
+      vollständig digitalisiert — alle 458 Seiten. GW 21 wurde mit einem verbesserten
+      OCR-Workflow extrahiert, der deutlich weniger Artefakte produziert als die frühere
+      Pipeline für GW 12.
+    </p>
+
+    <h2>Überarbeitetes Inhaltsverzeichnis</h2>
+    <ul>
+      <li>Strukturelle Gliederungsebenen (ERSTES BUCH, Abschnitt, Kapitel) visuell hervorgehoben</li>
+      <li>Buch/Abschnitt/Kapitel und Abschnittsname in einer Zeile zusammengeführt</li>
+      <li>Alle Einträge klickbar — Klick scrollt zur Überschrift im Text</li>
+      <li>Gold-Akzentfarbe für strukturelle Trennebenen</li>
+      <li>Einheitliche Groß-/Kleinschreibung normalisiert</li>
+    </ul>
+
+    <h2>Reader-Verbesserungen</h2>
+    <ul>
+      <li>Sticky Toolbar — bleibt beim Scrollen sichtbar</li>
+      <li>Lesefassung als Standard statt Druckbild</li>
+      <li>Direkte Links auf Textstellen</li>
+      <li>Überschriften im Fließtext zentriert und zusammengeführt</li>
+      <li>Druckbild-Modus: Überschriften linksbündig passend zum Fließtext</li>
+      <li>Sofortiges Scrollen statt smooth scroll bei ToC- und Seitensprüngen</li>
+    </ul>
+
+    <h2>OCR-Qualität</h2>
+    <ul>
+      <li>Sperrsatz korrekt als Kursiv dargestellt (statt Leerzeichen zwischen Buchstaben)</li>
+      <li>LaTeX-Brüche in Klartext konvertiert</li>
+      <li>Pipe-Zeilenumbrüche und GW-Zeilennummern aus dem Text entfernt</li>
+    </ul>
+
+    <h2>Editorische Bereinigung</h2>
+    <p>
+      Beilagen, Anhang und editorischer Apparat aus GW 12 und GW 21 entfernt.
+      Nur Hegels eigener Text bleibt.
+    </p>
+
+    <h2>Feedback-Seite</h2>
+    <p>
+      Neue Feedback-Seite mit Formspree-Integration — Rückmeldungen gehen direkt ins Postfach.
+    </p>
+
+    <hr>
+
+    <a href="../index.html" class="back-link">&larr; Alle Einträge</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div>Digitale Hegel-Edition · Blog</div>
+  <nav>
+    <a href="https://digitalehegeledition.vercel.app">Zur Edition</a>
+    <a href="https://digitalehegeledition.vercel.app/feedback.html">Feedback</a>
+  </nav>
+</footer>
+
+<script>
+function toggleTheme() {
+  var t = document.documentElement.dataset.theme === 'light' ? '' : 'light';
+  document.documentElement.dataset.theme = t;
+  localStorage.setItem('hegel-theme', t);
+}
+</script>
+</body>
+</html>
