@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>v0.1 — Erster Prototyp</title>
+  <meta name="description" content="Release v0.1: Erste Website der Digitalen Hegel-Edition mit drei Bänden, Reader und Volltextsuche.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://digitalehegeledition.vercel.app" class="site-title">
+    <span class="site-title-eyebrow">Digitale Edition</span>
+    <span class="site-title-main">Hegel · Werke</span>
+  </a>
+  <nav class="sitenav">
+    <ul>
+      <li><a href="https://digitalehegeledition.vercel.app">Edition</a></li>
+      <li><a href="../index.html" class="current">Blog</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" title="Darstellung wechseln">&#9682;</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="blog-main">
+  <div class="post-header">
+    <h1>Erster Prototyp</h1>
+    <div class="post-meta">1. Mai 2026 · v0.1</div>
+  </div>
+
+  <div class="post-body">
+
+    <p>
+      Die allererste Version der Digitalen Hegel-Edition geht intern online — ein
+      funktionsfähiger Prototyp mit drei Bänden, Reader und Volltextsuche.
+    </p>
+
+    <h2>Drei Bände zum Start</h2>
+    <p>
+      Der Prototyp enthält drei Bände aus zwei unterschiedlichen Werkausgaben:
+    </p>
+    <ul>
+      <li><strong>GW 12</strong> — <em>Wissenschaft der Logik</em>, Zweiter Band (1816), aus den historisch-kritischen <em>Gesammelten Werken</em> (Felix Meiner Verlag)</li>
+      <li><strong>TWA 5</strong> und <strong>TWA 6</strong> — aus der <em>Theorie Werkausgabe</em> (Suhrkamp)</li>
+    </ul>
+
+    <h2>Reader</h2>
+    <p>
+      Zwei Ansichtsmodi von Anfang an: <strong>Druckbild</strong> (zeilengetreue Wiedergabe
+      mit Zeilennummern) und <strong>Lesefassung</strong> (Fließtext). Seitenweise Darstellung
+      mit GW-Seitenkorrespondenzen.
+    </p>
+
+    <h2>Volltextsuche</h2>
+    <p>
+      Eigene Recherche-Seite mit Volltextsuche über alle Bände. Suchergebnisse zeigen
+      Band, Seite und Textausschnitt.
+    </p>
+
+    <h2>Design</h2>
+    <p>
+      Warmes, helles Farbschema mit wissenschaftlicher Typografie — <em>Cormorant Garamond</em>
+      für Überschriften, <em>EB Garamond</em> für den Fließtext.
+    </p>
+
+    <hr>
+    <a href="../index.html" class="back-link">&larr; Alle Einträge</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div>Digitale Hegel-Edition · Blog</div>
+  <nav>
+    <a href="https://digitalehegeledition.vercel.app">Zur Edition</a>
+    <a href="https://digitalehegeledition.vercel.app/feedback.html">Feedback</a>
+  </nav>
+</footer>
+
+<script>
+function toggleTheme() {
+  var t = document.documentElement.dataset.theme === 'light' ? '' : 'light';
+  document.documentElement.dataset.theme = t;
+  localStorage.setItem('hegel-theme', t);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>v0.3 — Textqualität und Apparat-Bereinigung</title>
+  <meta name="description" content="Release v0.3: Vollständige Entfernung des Herausgeber-Apparats, Sperrsatz-Korrekturen, Recherche-Seite überarbeitet.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://digitalehegeledition.vercel.app" class="site-title">
+    <span class="site-title-eyebrow">Digitale Edition</span>
+    <span class="site-title-main">Hegel · Werke</span>
+  </a>
+  <nav class="sitenav">
+    <ul>
+      <li><a href="https://digitalehegeledition.vercel.app">Edition</a></li>
+      <li><a href="../index.html" class="current">Blog</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" title="Darstellung wechseln">&#9682;</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="blog-main">
+  <div class="post-header">
+    <h1>Textqualität und Apparat-Bereinigung</h1>
+    <div class="post-meta">3. Mai 2026 · v0.3</div>
+  </div>
+
+  <div class="post-body">
+
+    <p>
+      Zweiter Durchgang der Textbereinigung: alle verbliebenen Apparat-Leaks entfernt
+      und erste Sperrsatz-Probleme behoben.
+    </p>
+
+    <h2>Apparat vollständig entfernt</h2>
+    <p>
+      Der historisch-kritische Apparat der GW-Herausgeber ist urheberrechtlich geschützt
+      (§ 70 UrhG). In v0.2 waren noch vereinzelte Fußnoten und Beilagen im Text verblieben —
+      jetzt ist der gesamte Apparat entfernt. Nur Hegels Primärtext bleibt.
+    </p>
+
+    <h2>Sperrsatz-Korrekturen</h2>
+    <p>
+      Sperrsatz (gesperrte Lettern) ist Hegels typografische Hervorhebung in Fraktur.
+      Die OCR-Pipeline hatte damit Probleme:
+    </p>
+    <ul>
+      <li>Wort-interne Trennungen behoben (<code>*Be* *griff*</code> → <code>*Begriff*</code>)</li>
+      <li>Verwaiste Sternchen entfernt (einzelne <code>*</code> ohne Gegenstück)</li>
+      <li>Spacing-Fehler zwischen Sperrsatz-Wörtern korrigiert</li>
+    </ul>
+
+    <h2>Recherche-Seite</h2>
+    <p>
+      Die Suchergebnisseite ist überarbeitet: zentriertes Layout mit einzelner Werkkarte
+      statt der früheren Mehrfachansicht.
+    </p>
+
+    <hr>
+    <a href="../index.html" class="back-link">&larr; Alle Einträge</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div>Digitale Hegel-Edition · Blog</div>
+  <nav>
+    <a href="https://digitalehegeledition.vercel.app">Zur Edition</a>
+    <a href="https://digitalehegeledition.vercel.app/feedback.html">Feedback</a>
+  </nav>
+</footer>
+
+<script>
+function toggleTheme() {
+  var t = document.documentElement.dataset.theme === 'light' ? '' : 'light';
+  document.documentElement.dataset.theme = t;
+  localStorage.setItem('hegel-theme', t);
+}
+</script>
+</body>
+</html>

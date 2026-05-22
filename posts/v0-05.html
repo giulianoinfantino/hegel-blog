@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>v0.5 — Reader-Layout und Zeilennummern</title>
+  <meta name="description" content="Release v0.5: Zentrierter Reader, Zeilennummern außerhalb des Textblocks, Baseline-Alignment.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://digitalehegeledition.vercel.app" class="site-title">
+    <span class="site-title-eyebrow">Digitale Edition</span>
+    <span class="site-title-main">Hegel · Werke</span>
+  </a>
+  <nav class="sitenav">
+    <ul>
+      <li><a href="https://digitalehegeledition.vercel.app">Edition</a></li>
+      <li><a href="../index.html" class="current">Blog</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" title="Darstellung wechseln">&#9682;</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="blog-main">
+  <div class="post-header">
+    <h1>Reader-Layout und Zeilennummern</h1>
+    <div class="post-meta">5. Mai 2026 · v0.5</div>
+  </div>
+
+  <div class="post-body">
+
+    <p>
+      Das Reader-Layout bekommt eine grundlegende Überarbeitung — der Text rückt
+      in die Mitte, und die Zeilennummern werden sauber positioniert.
+    </p>
+
+    <h2>Zentrierter Text</h2>
+    <p>
+      Der Textbereich ist jetzt horizontal zentriert, mit einer maximalen Breite, die
+      sich an akademischen Druckformaten orientiert. Auf breiten Bildschirmen entsteht
+      links und rechts ein ruhiger Rand.
+    </p>
+
+    <h2>Zeilennummern</h2>
+    <p>
+      Die Zeilennummern im Druckbild (5, 10, 15, 20, 25, …) sind jetzt per
+      <code>position: absolute</code> außerhalb des Textblocks positioniert.
+      Vorher standen sie im Textfluss und verschoben den Text.
+    </p>
+    <ul>
+      <li>Baseline-Alignment: Zeilennummern stehen auf derselben Grundlinie wie die Textzeile</li>
+      <li>Kein Einfluss auf die Textbreite — der Fließtext nutzt die volle Spaltenbreite</li>
+      <li>In der Lesefassung sind die Zeilennummern ausgeblendet</li>
+    </ul>
+
+    <hr>
+    <a href="../index.html" class="back-link">&larr; Alle Einträge</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div>Digitale Hegel-Edition · Blog</div>
+  <nav>
+    <a href="https://digitalehegeledition.vercel.app">Zur Edition</a>
+    <a href="https://digitalehegeledition.vercel.app/feedback.html">Feedback</a>
+  </nav>
+</footer>
+
+<script>
+function toggleTheme() {
+  var t = document.documentElement.dataset.theme === 'light' ? '' : 'light';
+  document.documentElement.dataset.theme = t;
+  localStorage.setItem('hegel-theme', t);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>v0.6 — Dunkelmodus</title>
+  <meta name="description" content="Release v0.6: Dunkelmodus als Voreinstellung, helles Theme optional. Sperrsatz-Rendering finalisiert.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://digitalehegeledition.vercel.app" class="site-title">
+    <span class="site-title-eyebrow">Digitale Edition</span>
+    <span class="site-title-main">Hegel · Werke</span>
+  </a>
+  <nav class="sitenav">
+    <ul>
+      <li><a href="https://digitalehegeledition.vercel.app">Edition</a></li>
+      <li><a href="../index.html" class="current">Blog</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" title="Darstellung wechseln">&#9682;</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="blog-main">
+  <div class="post-header">
+    <h1>Dunkelmodus</h1>
+    <div class="post-meta">6. Mai 2026 · v0.6</div>
+  </div>
+
+  <div class="post-body">
+
+    <p>
+      Die Edition wechselt vom hellen Standarddesign auf einen dunklen Hintergrund
+      mit warmem, augenschonendem Farbschema — optimiert für lange Lektüresitzungen.
+    </p>
+
+    <h2>Dark-by-Default</h2>
+    <p>
+      Dunkelgrauer Hintergrund (<code>#1c1b20</code>) mit cremefarbenem Text (<code>#ece8e0</code>).
+      Die Farbpalette ist bewusst warm gehalten — kein kaltes Blau-Schwarz, sondern ein
+      leicht bräunlicher Ton, der an altes Papier erinnert.
+    </p>
+    <p>
+      Ein Toggle-Button in der Kopfzeile wechselt zum hellen Theme (warmes Pergament mit
+      dunkler Schrift).
+    </p>
+
+    <h2>Sperrsatz finalisiert</h2>
+    <ul>
+      <li>Die bisherige 80-Zeichen-Beschränkung für Sperrsatz-Erkennung ist entfernt — auch lange kursive Passagen werden korrekt dargestellt</li>
+      <li>Sperrsatz-Rendering im Druckbild-Modus noch einmal korrigiert</li>
+      <li>Druckbild-Daten (<code>gw_lines</code>) mit den Lesefassungsdaten synchronisiert</li>
+    </ul>
+
+    <hr>
+    <a href="../index.html" class="back-link">&larr; Alle Einträge</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div>Digitale Hegel-Edition · Blog</div>
+  <nav>
+    <a href="https://digitalehegeledition.vercel.app">Zur Edition</a>
+    <a href="https://digitalehegeledition.vercel.app/feedback.html">Feedback</a>
+  </nav>
+</footer>
+
+<script>
+function toggleTheme() {
+  var t = document.documentElement.dataset.theme === 'light' ? '' : 'light';
+  document.documentElement.dataset.theme = t;
+  localStorage.setItem('hegel-theme', t);
+}
+</script>
+</body>
+</html>

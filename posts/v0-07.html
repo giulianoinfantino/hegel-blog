@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>v0.7 — Textkorrektur und Feinschliff</title>
+  <meta name="description" content="Release v0.7: Pipe-Markierungen und fehlerhafte Zeilennummern aus dem Textkorpus entfernt. Letzter Schliff vor dem Launch.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://digitalehegeledition.vercel.app" class="site-title">
+    <span class="site-title-eyebrow">Digitale Edition</span>
+    <span class="site-title-main">Hegel · Werke</span>
+  </a>
+  <nav class="sitenav">
+    <ul>
+      <li><a href="https://digitalehegeledition.vercel.app">Edition</a></li>
+      <li><a href="../index.html" class="current">Blog</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" title="Darstellung wechseln">&#9682;</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="blog-main">
+  <div class="post-header">
+    <h1>Textkorrektur und Feinschliff</h1>
+    <div class="post-meta">7. Mai 2026 · v0.7</div>
+  </div>
+
+  <div class="post-body">
+
+    <p>
+      Letzte Korrekturrunde vor dem öffentlichen Launch: Artefakte aus der OCR-Pipeline
+      werden systematisch entfernt.
+    </p>
+
+    <h2>Pipe-Markierungen entfernt</h2>
+    <p>
+      Die OCR-Pipeline hatte Seitenumbrüche mit <code>|</code>-Zeichen markiert.
+      Diese Pipe-Zeichen tauchten als sichtbare Artefakte im Fließtext auf und sind
+      jetzt vollständig entfernt.
+    </p>
+
+    <h2>Fehlerhafte Zeilennummern</h2>
+    <p>
+      Vereinzelt hatte die OCR marginale Zeilennummern (5, 10, 15, …) in den Fließtext
+      übernommen statt sie zu filtern. Diese sind jetzt aus dem Textkorpus bereinigt.
+    </p>
+
+    <h2>Stand vor dem Launch</h2>
+    <p>
+      Nach sieben Versionen interner Entwicklung ist GW 12 in einem lesbaren Zustand:
+    </p>
+    <ul>
+      <li>Vollständiger Text der <em>Wissenschaft der Logik</em>, Zweiter Band (1816)</li>
+      <li>Druckbild und Lesefassung mit korrektem Sperrsatz</li>
+      <li>Sauberes Inhaltsverzeichnis ohne Apparat-Einträge</li>
+      <li>Dunkelmodus mit Toggle</li>
+      <li>Volltextsuche</li>
+    </ul>
+    <p>
+      Der nächste Schritt ist der Launch mit neuen Features: Inline-Suche,
+      automatische Zitaterzeugung und Begriffskarte.
+    </p>
+
+    <hr>
+    <a href="../index.html" class="back-link">&larr; Alle Einträge</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div>Digitale Hegel-Edition · Blog</div>
+  <nav>
+    <a href="https://digitalehegeledition.vercel.app">Zur Edition</a>
+    <a href="https://digitalehegeledition.vercel.app/feedback.html">Feedback</a>
+  </nav>
+</footer>
+
+<script>
+function toggleTheme() {
+  var t = document.documentElement.dataset.theme === 'light' ? '' : 'light';
+  document.documentElement.dataset.theme = t;
+  localStorage.setItem('hegel-theme', t);
+}
+</script>
+</body>
+</html>
