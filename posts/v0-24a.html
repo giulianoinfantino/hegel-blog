@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>v0.24a — Orthographie-Highlighting-Fix</title>
+  <meta name="description" content="Hotfix v0.24a: Suchtreffer mit historischer Schreibweise werden jetzt korrekt im Text hervorgehoben.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://digitalehegeledition.vercel.app" class="site-title">
+    <span class="site-title-eyebrow">Digitale Edition</span>
+    <span class="site-title-main">Hegel &middot; Werke</span>
+  </a>
+  <nav class="sitenav">
+    <ul>
+      <li><a href="https://digitalehegeledition.vercel.app">Edition</a></li>
+      <li><a href="../index.html" class="current">Blog</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" title="Darstellung wechseln">&#9682;</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="blog-main">
+  <div class="post-header">
+    <h1>Orthographie-Highlighting-Fix</h1>
+    <div class="post-meta">22. Mai 2026 &middot; v0.24a &middot; Hotfix</div>
+  </div>
+
+  <div class="post-body">
+
+    <p>
+      Dieser Hotfix behebt einen Bug, der dank des ersten externen Nutzer-Feedbacks
+      entdeckt wurde &mdash; vielen Dank an den aufmerksamen Hinweis!
+    </p>
+
+    <h2>Das Problem</h2>
+    <p>
+      Seit v0.21 normalisiert die Suchmaschine historische Schreibweisen:
+      &bdquo;dass&ldquo; findet &bdquo;da&szlig;&ldquo;, &bdquo;Teil&ldquo;
+      findet &bdquo;Theil&ldquo;. Die Suche z&auml;hlte und identifizierte
+      die Treffer korrekt &mdash; aber die Hervorhebung im Textk&ouml;rper
+      funktionierte nur f&uuml;r exakte Zeichenfolgen. Wer z.&nbsp;B.
+      &bdquo;Prozess&ldquo; suchte, sah &bdquo;3 Seiten&ldquo; als Ergebnis,
+      aber auf den betroffenen Seiten wurde &bdquo;Proze&szlig;&ldquo;
+      nicht gelb markiert.
+    </p>
+
+    <h2>Die Ursache</h2>
+    <p>
+      Die Such-Engine (<code>evaluateQuery</code>) verwendete die
+      Orthographie-Normalisierung (<code>normalizeOrtho</code>), um
+      Treffer zu finden. Die Highlighting-Funktionen
+      (<code>highlightTermsInCard</code> im Reader,
+      <code>highlightText</code> und <code>extractSnippet</code>
+      auf der Recherche-Seite) arbeiteten jedoch mit einfachem
+      String-Matching &mdash; ohne Normalisierung.
+    </p>
+
+    <h2>Die L&ouml;sung</h2>
+    <p>
+      Alle drei Highlighting-Funktionen nutzen jetzt eine neue Hilfsfunktion
+      <code>orthoMapOrigToNorm</code>, die f&uuml;r jeden Originaltext eine
+      Zeichenposition-Zuordnung zur normalisierten Form berechnet. Treffer
+      im normalisierten Text werden auf die korrekten Positionen im
+      Originaltext zur&uuml;ckgemappt &mdash; so wird z.&nbsp;B.
+      &bdquo;da&szlig;&ldquo; korrekt hervorgehoben, auch wenn der Suchbegriff
+      &bdquo;dass&ldquo; lautet.
+    </p>
+
+    <h2>Betroffene Dateien</h2>
+    <ul>
+      <li><code>text.html</code> &mdash; <code>highlightTermsInCard</code>: Orthographie-bewusstes Highlighting im Reader</li>
+      <li><code>search.html</code> &mdash; <code>highlightText</code>: Snippet-Hervorhebung in Suchergebnissen</li>
+      <li><code>search.html</code> &mdash; <code>extractSnippet</code>: Snippet-Fenster zentriert jetzt auch auf Ortho-Treffer</li>
+    </ul>
+
+    <p class="post-note">
+      <em>Dieser Fix basiert auf dem ersten externen Nutzer-Feedback &uuml;ber das
+      Feedback-Formular. Danke f&uuml;r den Hinweis!</em>
+    </p>
+
+    <hr>
+
+    <a href="../index.html" class="back-link">&larr; Alle Eintr&auml;ge</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div>Digitale Hegel-Edition &middot; Blog</div>
+  <nav>
+    <a href="https://digitalehegeledition.vercel.app">Zur Edition</a>
+    <a href="https://digitalehegeledition.vercel.app/feedback.html">Feedback</a>
+  </nav>
+</footer>
+
+<script>
+function toggleTheme() {
+  var t = document.documentElement.dataset.theme === 'light' ? '' : 'light';
+  document.documentElement.dataset.theme = t;
+  localStorage.setItem('hegel-theme', t);
+}
+</script>
+</body>
+</html>
