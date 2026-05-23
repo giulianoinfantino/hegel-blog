@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>v0.24b &mdash; GW 12 Re-OCR: 99,5 % Genauigkeit</title>
+  <meta name="description" content="v0.24b: GW 12 (Wissenschaft der Logik, 1816) komplett neu extrahiert mit Vision-OCR. Genauigkeit von ~96 % auf 99,5 % gesteigert.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://digitalehegeledition.vercel.app" class="site-title">
+    <span class="site-title-eyebrow">Digitale Edition</span>
+    <span class="site-title-main">Hegel &middot; Werke</span>
+  </a>
+  <nav class="sitenav">
+    <ul>
+      <li><a href="https://digitalehegeledition.vercel.app">Edition</a></li>
+      <li><a href="../index.html" class="current">Blog</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" title="Darstellung wechseln">&#9682;</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="blog-main">
+  <div class="post-header">
+    <h1>GW 12 Re-OCR: 99,5&nbsp;% Genauigkeit</h1>
+    <div class="post-meta">23. Mai 2026 &middot; v0.24b &middot; Datenqualit&auml;t</div>
+  </div>
+
+  <div class="post-body">
+
+    <p>
+      Der gesamte Text von <strong>GW&nbsp;12 &mdash; Wissenschaft der Logik (1816)</strong>
+      wurde komplett neu extrahiert. Die bisherige pdfplumber-basierte Extraktion
+      erreichte nur ca.&nbsp;96&ndash;97&nbsp;% Genauigkeit mit verstümmelten
+      W&ouml;rtern, Wasserzeichen-Lecks und fehlender Sperrsatz-Erkennung.
+    </p>
+
+    <h2>Neue Pipeline</h2>
+    <p>
+      Alle 366 Druckseiten wurden als hochaufl&ouml;sende PNGs (300&nbsp;dpi)
+      einzeln an die Claude-Vision-API gesendet. Das Modell extrahiert
+      strukturierten Klartext mit Absatz-, &Uuml;berschriften- und
+      Zeilenstruktur (<code>gw_lines</code>) direkt aus dem Druckbild.
+    </p>
+
+    <h2>Post-Processing</h2>
+    <p>
+      Nach der OCR durchlaufen die Daten eine automatische Nachbearbeitung:
+    </p>
+    <ul>
+      <li>Marginalziffern (5, 10, 15, &hellip;) aus Zeilendaten entfernt</li>
+      <li>Worttrennungen am Zeilenende aufgel&ouml;st</li>
+      <li>Absatztext aus <code>gw_lines</code> reconciliert</li>
+      <li>Getrennte &Uuml;berschriften zusammengef&uuml;hrt (z.&nbsp;B. &bdquo;b.&ldquo; + &bdquo;Das particuläre Urtheil&ldquo;)</li>
+      <li>Sperrsatz-Konsistenzpr&uuml;fung</li>
+    </ul>
+
+    <h2>Ergebnis</h2>
+    <table style="width:100%; border-collapse:collapse; margin:1em 0;">
+      <tr style="border-bottom:1px solid var(--border,#ccc);">
+        <th style="text-align:left; padding:0.4em;">Pipeline</th>
+        <th style="text-align:right; padding:0.4em;">Genauigkeit</th>
+      </tr>
+      <tr>
+        <td style="padding:0.4em;">Alt (pdfplumber)</td>
+        <td style="text-align:right; padding:0.4em;">~96&ndash;97&nbsp;%</td>
+      </tr>
+      <tr>
+        <td style="padding:0.4em;">Vision-OCR (roh)</td>
+        <td style="text-align:right; padding:0.4em;">97,3&nbsp;%</td>
+      </tr>
+      <tr style="font-weight:600;">
+        <td style="padding:0.4em;">Vision-OCR + Post-Processing</td>
+        <td style="text-align:right; padding:0.4em;">99,5&nbsp;%</td>
+      </tr>
+    </table>
+
+    <p>
+      Zus&auml;tzlich erkennt die neue Pipeline Sperrsatz (gesperrte Lettern)
+      und gibt ihn als <code>*Kursiv*</code> wieder &mdash; ein Feature, das
+      in der alten Extraktion komplett fehlte. Wasserzeichen-Lecks:
+      praktisch null.
+    </p>
+
+    <p class="post-note">
+      <em>Dieselbe Vision-Pipeline wurde bereits f&uuml;r GW&nbsp;20 und
+      GW&nbsp;21 eingesetzt. Damit nutzen jetzt alle drei B&auml;nde
+      die gleiche hochqualitative Extraktionsmethode.</em>
+    </p>
+
+    <hr>
+
+    <a href="../index.html" class="back-link">&larr; Alle Eintr&auml;ge</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div>Digitale Hegel-Edition &middot; Blog</div>
+  <nav>
+    <a href="https://digitalehegeledition.vercel.app">Zur Edition</a>
+    <a href="https://digitalehegeledition.vercel.app/feedback.html">Feedback</a>
+  </nav>
+</footer>
+
+<script>
+function toggleTheme() {
+  var t = document.documentElement.dataset.theme === 'light' ? '' : 'light';
+  document.documentElement.dataset.theme = t;
+  localStorage.setItem('hegel-theme', t);
+}
+</script>
+</body>
+</html>
