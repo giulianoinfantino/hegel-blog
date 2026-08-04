@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>v0.24b &mdash; GW 12 Re-OCR: 99,5 % Genauigkeit</title>
-  <meta name="description" content="v0.24b: GW 12 (Wissenschaft der Logik, 1816) komplett neu extrahiert mit Vision-OCR. Genauigkeit von ~96 % auf 99,5 % gesteigert.">
+  <meta name="description" content="v0.24b: GW 12 (Wissenschaft der Logik, 1816) komplett neu extrahiert. Genauigkeit von ~96 % auf 99,5 % gesteigert.">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,50 +38,17 @@
 
     <p>
       Der gesamte Text von <strong>GW&nbsp;12 &mdash; Wissenschaft der Logik (1816)</strong>
-      wurde komplett neu extrahiert. Die bisherige pdfplumber-basierte Extraktion
-      erreichte nur ca.&nbsp;96&ndash;97&nbsp;% Genauigkeit mit verstümmelten
-      W&ouml;rtern, Wasserzeichen-Lecks und fehlender Sperrsatz-Erkennung.
+      wurde komplett neu extrahiert. Die bisherige Extraktion erreichte nur
+      ca.&nbsp;96&ndash;97&nbsp;% Genauigkeit, mit verst&uuml;mmelten W&ouml;rtern
+      und Artefakten im Flie&szlig;text.
     </p>
-
-    <h2>Neue Pipeline</h2>
-    <p>
-      Alle 366 Druckseiten wurden als hochaufl&ouml;sende PNGs (300&nbsp;dpi)
-      einzeln an die Claude-Vision-API gesendet. Das Modell extrahiert
-      strukturierten Klartext mit Absatz-, &Uuml;berschriften- und
-      Zeilenstruktur (<code>gw_lines</code>) direkt aus dem Druckbild.
-    </p>
-
-    <h2>Post-Processing</h2>
-    <p>
-      Nach der OCR durchlaufen die Daten eine automatische Nachbearbeitung:
-    </p>
-    <ul>
-      <li>Marginalziffern (5, 10, 15, &hellip;) aus Zeilendaten entfernt</li>
-      <li>Worttrennungen am Zeilenende aufgel&ouml;st</li>
-      <li>Absatztext aus <code>gw_lines</code> reconciliert</li>
-      <li>Getrennte &Uuml;berschriften zusammengef&uuml;hrt (z.&nbsp;B. &bdquo;b.&ldquo; + &bdquo;Das particuläre Urtheil&ldquo;)</li>
-      <li>Sperrsatz-Konsistenzpr&uuml;fung</li>
-    </ul>
 
     <h2>Ergebnis</h2>
-    <table style="width:100%; border-collapse:collapse; margin:1em 0;">
-      <tr style="border-bottom:1px solid var(--border,#ccc);">
-        <th style="text-align:left; padding:0.4em;">Pipeline</th>
-        <th style="text-align:right; padding:0.4em;">Genauigkeit</th>
-      </tr>
-      <tr>
-        <td style="padding:0.4em;">Alt (pdfplumber)</td>
-        <td style="text-align:right; padding:0.4em;">~96&ndash;97&nbsp;%</td>
-      </tr>
-      <tr>
-        <td style="padding:0.4em;">Vision-OCR (roh)</td>
-        <td style="text-align:right; padding:0.4em;">97,3&nbsp;%</td>
-      </tr>
-      <tr style="font-weight:600;">
-        <td style="padding:0.4em;">Vision-OCR + Post-Processing</td>
-        <td style="text-align:right; padding:0.4em;">99,5&nbsp;%</td>
-      </tr>
-    </table>
+    <p>
+      Das neue Verfahren erfasst den Text seitenweise samt Absatz-, &Uuml;berschriften-
+      und Zeilenstruktur und pr&uuml;ft ihn anschlie&szlig;end automatisch nach.
+      Die Genauigkeit stieg damit auf 99,5&nbsp;%.
+    </p>
 
     <p class="post-note">
       <em>Nachtrag (v0.30): Der hier angek&uuml;ndigte Sperrsatz wurde tats&auml;chlich
@@ -102,6 +69,8 @@
   <nav>
     <a href="https://digitalehegeledition.vercel.app">Zur Edition</a>
     <a href="https://digitalehegeledition.vercel.app/feedback.html">Feedback</a>
+    <a href="https://digitalehegeledition.vercel.app/impressum.html">Impressum</a>
+    <a href="https://digitalehegeledition.vercel.app/datenschutz.html">Datenschutz</a>
   </nav>
 </footer>
 
@@ -112,5 +81,6 @@ function toggleTheme() {
   localStorage.setItem('hegel-theme', t);
 }
 </script>
+<script src="../assets/cookie-notice.js" defer></script>
 </body>
 </html>

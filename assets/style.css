@@ -221,3 +221,11 @@ a:hover { text-decoration: underline; }
   .sitenav ul { gap: 0.8rem; }
   .sitenav a { font-size: 0.72rem; }
 }
+
+.cookie-notice{position:fixed;left:1rem;right:1rem;bottom:1rem;z-index:900;max-width:44rem;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:1rem;padding:1rem 1.2rem;background:var(--bg-paper);border:1px solid var(--rule);border-radius:var(--radius,2px);box-shadow:0 6px 24px rgba(0,0,0,0.25);opacity:0;transform:translateY(0.6rem);transition:opacity 0.25s,transform 0.25s}
+.cookie-notice.is-shown{opacity:1;transform:none}
+.cookie-notice-text{flex:1 1 20rem;margin:0;font-size:0.8rem;line-height:1.55;color:var(--text-muted)}
+.cookie-notice-text a{color:var(--accent)}
+.cookie-notice-ok{flex:0 0 auto;font-family:var(--font-body);font-size:0.78rem;letter-spacing:0.06em;padding:0.4rem 1.1rem;border:1px solid var(--accent-gold);border-radius:3px;background:transparent;color:var(--text-ink);cursor:pointer;transition:background 0.2s}
+.cookie-notice-ok:hover{background:var(--bg-subtle)}
+@media (max-width:32rem){.cookie-notice{flex-direction:column;align-items:stretch}.cookie-notice-ok{width:100%}}
