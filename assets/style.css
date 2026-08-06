@@ -1,15 +1,15 @@
 :root {
-  --bg-desktop: #1e1b17;
-  --bg-paper: #26221c;
-  --bg-subtle: #2f2a22;
-  --text-ink: #f1ece1;
-  --text-body: #e9e4d8;
-  --text-muted: #ac9f8c;
-  --accent: #ca4f42;
-  --accent-gold: #c9a45a;
-  --rule: #464036;
-  --header-bg: rgba(32,29,24,0.85);
-  --header-bg-solid: rgba(32,29,24,0.95);
+  --bg-desktop: #1c1b20;
+  --bg-paper: #232229;
+  --bg-subtle: #2b2a33;
+  --text-ink: #f0ede4;
+  --text-body: #e8e3da;
+  --text-muted: #b0a89b;
+  --accent: #cd4b44;
+  --accent-gold: #cbaa5c;
+  --rule: #44424a;
+  --header-bg: rgba(30,30,36,0.85);
+  --header-bg-solid: rgba(30,30,36,0.95);
   --radius: 2px;
   --font-display: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
   --font-body: 'EB Garamond', Georgia, serif;
@@ -17,17 +17,17 @@
   --header-h: 56px;
 }
 [data-theme="light"] {
-  --bg-desktop: #e2dbcb;
-  --bg-paper: #ebe4d4;
-  --bg-subtle: #dbd3c1;
-  --text-ink: #201910;
-  --text-body: #33291c;
-  --text-muted: #6b6151;
-  --accent: #8c2420;
-  --accent-gold: #8a6a28;
-  --rule: #cbc0a8;
-  --header-bg: rgba(226,219,203,0.9);
-  --header-bg-solid: rgba(226,219,203,0.95);
+  --bg-desktop: #ddd8ce;
+  --bg-paper: #e4dfd5;
+  --bg-subtle: #d6d0c6;
+  --text-ink: #1e1812;
+  --text-body: #2f2820;
+  --text-muted: #675e50;
+  --accent: #8e2020;
+  --accent-gold: #816428;
+  --rule: #c4bba8;
+  --header-bg: rgba(221,216,206,0.9);
+  --header-bg-solid: rgba(221,216,206,0.95);
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { font-size: 110%; scroll-behavior: smooth; }
