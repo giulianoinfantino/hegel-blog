@@ -5,6 +5,13 @@
 <description>Entwicklungsblog der Digitalen Hegel-Edition — Versionen, Werkstattberichte, Projektfortschritt.</description>
 <language>de</language>
 <item>
+<title>Sperrsatz als Sperrsatz: Feinschliff an Schrift, Suche und Oberfläche</title>
+<link>https://hegel-blog.vercel.app/posts/v0-32.html</link>
+<guid isPermaLink="true">https://hegel-blog.vercel.app/posts/v0-32.html</guid>
+<pubDate>Thu, 06 Aug 2026 12:00:00 +0000</pubDate>
+<description>Hervorhebungen erscheinen im Leser jetzt gesperrt wie im Druck statt kursiv, die Leseschrift ist größer, die Suche lässt beliebige Werkmengen wählen, alle Klappmenüs tragen die Gestalt der Seite — und die Schriften liegen auf dem eigenen Server: keine Abrufe bei Dritten mehr.</description>
+</item>
+<item>
 <title>Wie genau ist genau? Vom Messen der Fehlerrate</title>
 <link>https://hegel-blog.vercel.app/posts/werkstatt-fehlerrate.html</link>
 <guid isPermaLink="true">https://hegel-blog.vercel.app/posts/werkstatt-fehlerrate.html</guid>

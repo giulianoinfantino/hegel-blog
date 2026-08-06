@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>v0.32 &mdash; Sperrsatz als Sperrsatz: Feinschliff an Schrift, Suche und Oberfl&auml;che</title>
+  <meta name="description" content="v0.32: Hervorhebungen erscheinen im Leser jetzt gesperrt wie im Druck, gr&ouml;&szlig;ere Leseschrift, Mehrfachauswahl der Werke in der Suche, Men&uuml;s in Seitengestalt, selbst gehostete Schriften ohne Google-Abruf, RSS-Feed.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/fonts.css">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://digitalehegeledition.vercel.app" class="site-title">
+    <span class="site-title-eyebrow">Digitale Edition</span>
+    <span class="site-title-main">Hegel &middot; Werke</span>
+  </a>
+  <nav class="sitenav">
+    <ul>
+      <li><a href="https://digitalehegeledition.vercel.app">Edition</a></li>
+      <li><a href="../index.html" class="current">Blog</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" title="Darstellung wechseln">&#9682;</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="blog-main">
+  <div class="post-header">
+    <h1>Sperrsatz als Sperrsatz: Feinschliff an Schrift, Suche und Oberfl&auml;che</h1>
+    <div class="post-meta">6. August 2026 &middot; v0.32 &middot; Gestaltung &amp; Oberfl&auml;che</div>
+  </div>
+
+  <div class="post-body">
+
+    <p>
+      Diese Version &auml;ndert kein Wort am Text &mdash; sie &auml;ndert, wie er
+      erscheint. Eine Reihe von Verbesserungen an Typographie, Suche und
+      Oberfl&auml;che, dazu ein Schritt, der &uuml;berf&auml;llig war: Die Website
+      ruft keine Ressourcen von Dritten mehr ab.
+    </p>
+
+    <h2>Hervorhebungen erscheinen jetzt gesperrt</h2>
+    <p>
+      Der GW-Druck hebt hervor, indem er sperrt: <span class="sperrsatz">Begriff</span>
+      statt <em>Begriff</em>. Der Leser hatte Hegels Hervorhebungen bisher kursiv
+      wiedergegeben &mdash; eine digitale Konvention, aber eine doppelt schlechte:
+      Der Kursivschnitt wirkt kleiner und heller als die Grundschrift, die
+      hervorgehobenen W&ouml;rter fielen also optisch <em>ab</em>, statt
+      hervorzutreten; und die Kursive ist schlicht nicht die Auszeichnung des
+      Drucks. Beides ist behoben: Gesperrte W&ouml;rter stehen jetzt aufrecht in
+      der Grundschrift, mit Buchstabenzwischenraum, wie im Original &mdash; und von
+      der automatischen Silbentrennung ausgenommen. Das Zeilenbild ist ruhiger,
+      die Hervorhebung wieder eine.
+    </p>
+
+    <h2>Schrift und Farben</h2>
+    <ul>
+      <li>Die Leseschrift ist um rund zehn Prozent gewachsen; die gesamte
+          Oberfl&auml;che skaliert mit.</li>
+      <li>Beide Farbschemata behalten ihren Grundton, wurden aber im Kontrast
+          nachgestimmt: hellere Tinte im Dunklen, etwas dunklerer Text und
+          kr&auml;ftigere Akzente im Hellen.</li>
+      <li>Die B&auml;nde der Startseite stehen jetzt als kompaktes Kachelraster
+          statt als Zeilenstapel.</li>
+      <li>Redaktionelle Kursiven (Werktitel u.&nbsp;&auml;.) sind optisch an die
+          Grundschrift angeglichen &mdash; der Kursivschnitt wirkte zu klein.
+          Auch die Treffer der Suche zeigen Sperrsatz jetzt gesperrt.</li>
+    </ul>
+
+    <h2>Suche: Werke frei w&auml;hlbar, Syntax erkl&auml;rt</h2>
+    <p>
+      Die Recherche konnte bisher nur die ganze Edition oder ein einzelnes Werk
+      durchsuchen. Jetzt l&auml;sst sich jede Teilmenge w&auml;hlen &mdash; etwa
+      beide B&auml;nde der <em>Logik</em> gemeinsam, unter Ausschluss weiterer
+      B&auml;nde, die k&uuml;nftig hinzukommen. Die Syntax-Hilfe ist von einer
+      Zeile Kleingedrucktem zu einer dreispaltigen &Uuml;bersicht geworden:
+      Verkn&uuml;pfen (<code>AND</code>, <code>OR</code>, <code>NOT</code>,
+      Klammern), Wortformen (Phrase, Pr&auml;fix-Stern, automatische
+      Orthographie-Angleichung) und N&auml;he (<code>NEAR/n</code>), jede Form
+      mit einem konkreten Beispiel.
+    </p>
+
+    <h2>Men&uuml;s in der Gestalt der Seite</h2>
+    <p>
+      Aufklappbare Auswahlfelder zeichnete bisher das Betriebssystem &mdash; ein
+      Fremdk&ouml;rper in der Seite. Jetzt erscheinen alle Klappmen&uuml;s
+      (Suchfilter, Feedback-Formular, Werkauswahl) im Stil der Edition, mit
+      Goldakzent f&uuml;r den gew&auml;hlten Eintrag. Technisch bleibt das native
+      Feld als unsichtbarer Zustandstr&auml;ger erhalten; Formulare und
+      Pflichtfelder arbeiten unver&auml;ndert.
+    </p>
+
+    <h2>Keine Abrufe bei Dritten mehr</h2>
+    <p>
+      Die Schriften der Edition (Cormorant Garamond, EB Garamond, JetBrains
+      Mono) wurden bisher von Google Fonts geladen &mdash; mit jedem Seitenaufruf
+      ging damit eine IP-Adresse an Google. Sie liegen jetzt als
+      WOFF2-Dateien auf dem eigenen Server; die Website kommt ohne
+      Verbindungen zu Dritten aus. Nebeneffekt: ein Netzwerk-Umweg weniger
+      beim ersten Laden.
+    </p>
+
+    <h2>Weiteres</h2>
+    <ul>
+      <li>Der Zitat-Schalter des Lesers sagt jetzt, was er tut: eingeschaltet
+          wird mit Quellenangabe <em>und</em> Hervorhebungen kopiert,
+          ausgeschaltet als blanker Text.</li>
+      <li>Geteilte Links zeigen jetzt eine Vorschaukarte im Stil der Edition
+          (OG-Bild).</li>
+      <li>Die Farbe der Browserleiste folgt dem gew&auml;hlten Farbschema, statt
+          im hellen Thema dunkel zu bleiben.</li>
+      <li>Dieser Blog hat einen RSS-Feed:
+          <a href="../feed.xml">feed.xml</a>.</li>
+      <li>Zur Leistungsmessung wird Vercel Speed Insights eingesetzt &mdash;
+          cookielos, ohne dauerhafte Kennungen; die Datenschutzhinweise sind
+          entsprechend erg&auml;nzt.</li>
+      <li>Die Projektbeschreibung der Startseite ist pr&auml;ziser gefasst:
+          Digitale Hegel-Texte gibt es &mdash; was fehlte, ist eine freie Ausgabe
+          nach dem GW-Text mit Originalschreibung, Sperrsatz und zeilengenauer
+          Zitierbarkeit.</li>
+    </ul>
+
+    <p class="post-note">
+      <em>Am Textbestand &auml;ndert diese Version nichts; die Edition gibt
+      weiterhin ausschlie&szlig;lich Hegels gemeinfreien Text wieder.</em>
+    </p>
+
+    <hr>
+
+    <a href="../index.html" class="back-link">&larr; Alle Eintr&auml;ge</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div>Digitale Hegel-Edition &middot; Blog</div>
+  <nav>
+    <a href="https://digitalehegeledition.vercel.app">Zur Edition</a>
+    <a href="https://digitalehegeledition.vercel.app/feedback.html">Feedback</a>
+    <a href="https://digitalehegeledition.vercel.app/impressum.html">Impressum</a>
+    <a href="https://digitalehegeledition.vercel.app/datenschutz.html">Datenschutz</a>
+  </nav>
+</footer>
+
+<script>
+function toggleTheme() {
+  var t = document.documentElement.dataset.theme === 'light' ? '' : 'light';
+  document.documentElement.dataset.theme = t;
+  localStorage.setItem('hegel-theme', t);
+}
+</script>
+<script src="../assets/cookie-notice.js" defer></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+<script src="../assets/themefarbe.js" defer></script>
+</body>
+</html>

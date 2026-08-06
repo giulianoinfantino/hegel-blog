@@ -229,3 +229,7 @@ a:hover { text-decoration: underline; }
 .cookie-notice-ok{flex:0 0 auto;font-family:var(--font-body);font-size:0.78rem;letter-spacing:0.06em;padding:0.4rem 1.1rem;border:1px solid var(--accent-gold);border-radius:3px;background:transparent;color:var(--text-ink);cursor:pointer;transition:background 0.2s}
 .cookie-notice-ok:hover{background:var(--bg-subtle)}
 @media (max-width:32rem){.cookie-notice{flex-direction:column;align-items:stretch}.cookie-notice-ok{width:100%}}
+
+/* Kursive optisch an die Grundschrift angeglichen; Sperrsatz wie im Leser. */
+em:not(.sperrsatz), i { font-size: 1.06em; line-height: 1; }
+.sperrsatz { font-style: normal; letter-spacing: 0.09em; }
