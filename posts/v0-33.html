@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>v0.33 &mdash; Neue Brotschrift, klare Abgrenzung, schlankere Ladezeiten</title>
+  <meta name="description" content="v0.33: Die Leseschrift wechselt zu Source Serif 4, der Suchindex laedt erst bei Bedarf, die Website grenzt sich klar von der gedruckten GW-Ausgabe ab, dazu Feinschliff an Navigation, Barrierefreiheit und technischer Grundausstattung.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preload" href="../assets/fonts/SourceSerif4-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/SourceSerif4-400i-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/fonts.css">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BlogPosting","headline":"v0.33 — Neue Brotschrift, klare Abgrenzung, schlankere Ladezeiten","datePublished":"2026-08-06","inLanguage":"de","url":"https://hegel-blog.vercel.app/posts/v0-33.html","description":"Die Leseschrift wechselt zu Source Serif 4, der Suchindex laedt erst bei Bedarf, die Website grenzt sich klar von der gedruckten GW-Ausgabe ab.","isPartOf":{"@type":"Blog","name":"Digitale Hegel-Edition — Blog","url":"https://hegel-blog.vercel.app/"}}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://digitalehegeledition.vercel.app" class="site-title">
+    <span class="site-title-eyebrow">Digitale Edition</span>
+    <span class="site-title-main">Hegel &middot; Werke</span>
+  </a>
+  <nav class="sitenav">
+    <ul>
+      <li><a href="https://digitalehegeledition.vercel.app">Edition</a></li>
+      <li><a href="../index.html" class="current">Blog</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" title="Darstellung wechseln">&#9682;</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="blog-main">
+  <div class="post-header">
+    <h1>Neue Brotschrift, klare Abgrenzung, schlankere Ladezeiten</h1>
+    <div class="post-meta">6. August 2026 &middot; v0.33 &middot; Gestaltung &amp; Technik</div>
+  </div>
+
+  <div class="post-body">
+
+    <p>
+      Die zweite Runde des Tages &mdash; wieder ohne Eingriff in den Text, aber
+      mit einem spürbaren Unterschied beim Lesen: einer kräftigeren Schrift,
+      einer schnelleren Suche und einer Website, die sagt, was sie ist und was
+      sie nicht ist.
+    </p>
+
+    <h2>Neue Brotschrift: Source Serif 4</h2>
+    <p>
+      Der Fließtext stand seit heute Morgen in EB Garamond &mdash; schön, aber
+      mit kleiner x-Höhe und feinen Strichen, die am Bildschirm blass und klein
+      wirkten. Er steht jetzt in <strong>Source Serif 4</strong>: größere
+      x-Höhe, kräftigere Striche, für Bildschirmlektüre entworfen und derselben
+      ruhigen, wissenschaftlichen Anmutung verpflichtet. Die Titel bleiben in
+      Cormorant Garamond, der Charakter der Seite ist unverändert. Zusätzlich
+      werden die zwei wichtigsten Schnitte jetzt vorab geladen
+      (<code>rel="preload"</code>), damit beim ersten Besuch keine Ersatzschrift
+      aufblitzt.
+    </p>
+
+    <h2>Klare Abgrenzung von der gedruckten GW-Ausgabe</h2>
+    <p>
+      „Gesammelte Werke" ist der Titel der Akademie-Ausgabe bei Felix Meiner
+      Verlag. Die Website nannte diese Zeile bisher wie einen eigenen
+      Untertitel &mdash; das konnte wie ein offizielles Angebot wirken, obwohl
+      hier ausschließlich Hegels gemeinfreier Text ohne den geschützten
+      Apparat wiedergegeben wird. Die Badges lauten jetzt <em>„Nach dem Text
+      der Gesammelten Werke (GW)"</em> statt einer Selbstzuschreibung als
+      historisch-kritische Ausgabe, alle Meta-Beschreibungen sind entsprechend
+      umformuliert, und die Urheberrechtsseite hat einen neuen Abschnitt
+      „Abgrenzung": kein Angebot des Felix Meiner Verlags oder der
+      Nordrhein-Westfälischen Akademie der Wissenschaften und der Künste.
+    </p>
+
+    <h2>Suchindex lädt erst bei Bedarf</h2>
+    <p>
+      Die Recherche-Seite zog bisher bei jedem Aufruf 1,7&nbsp;MB Suchindex,
+      bevor überhaupt getippt wurde. Jetzt erscheint die Seite sofort; der
+      Index lädt im Hintergrund beim ersten Fokus auf das Suchfeld oder im
+      Leerlauf des Browsers. Eine Suche vor Abschluss des Ladens wartet sauber
+      mit einer Statuszeile, statt ins Leere zu laufen.
+    </p>
+
+    <h2>Navigation und Tastaturbedienung</h2>
+    <ul>
+      <li>„Blog" und, auf dem Handy, „Feedback" stehen jetzt in der Fußzeile
+          statt die knappe Kopfleiste zu belasten.</li>
+      <li>Auf Smartphones stehen Sammlung, Lektüre und Recherche jetzt mittig
+          zwischen Logo und Farbschema-Schalter, statt gequetscht am rechten
+          Rand.</li>
+      <li>Die selbst gebauten Klappmenüs (Suchfilter, Werkauswahl,
+          Feedback-Formular) lassen sich jetzt mit den Pfeiltasten bedienen,
+          nicht nur mit Maus und Tab.</li>
+    </ul>
+
+    <h2>Weiteres</h2>
+    <ul>
+      <li>Der Blog hat jetzt <code>robots.txt</code>, eine
+          <code>sitemap.xml</code> und strukturierte Daten
+          (<code>BlogPosting</code>) je Beitrag &mdash; wie die Edition
+          selbst.</li>
+      <li>Das Favicon folgt dem Systemfarbschema, statt im hellen Modus
+          dunkel zu bleiben.</li>
+      <li>Eine irreführende Formulierung ist aus der Startseite entfernt:
+          Standard-OCR erzeugt an diesen Vorlagen verstümmelten Text, aber
+          keine Wasserzeichen im Fließtext &mdash; die Wasserzeichen sitzen am
+          Rand und wurden beim Zuschnitt der Quellbilder entfernt.</li>
+    </ul>
+
+    <p class="post-note">
+      <em>Am Textbestand ändert diese Version nichts; die Edition gibt
+      weiterhin ausschließlich Hegels gemeinfreien Text wieder.</em>
+    </p>
+
+    <hr>
+
+    <a href="../index.html" class="back-link">&larr; Alle Eintr&auml;ge</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div>Digitale Hegel-Edition &middot; Blog</div>
+  <nav>
+    <a href="https://digitalehegeledition.vercel.app">Zur Edition</a>
+    <a href="https://digitalehegeledition.vercel.app/feedback.html">Feedback</a>
+    <a href="https://digitalehegeledition.vercel.app/impressum.html">Impressum</a>
+    <a href="https://digitalehegeledition.vercel.app/datenschutz.html">Datenschutz</a>
+  </nav>
+</footer>
+
+<script>
+function toggleTheme() {
+  var t = document.documentElement.dataset.theme === 'light' ? '' : 'light';
+  document.documentElement.dataset.theme = t;
+  localStorage.setItem('hegel-theme', t);
+}
+</script>
+<script src="../assets/cookie-notice.js" defer></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+<script src="../assets/themefarbe.js" defer></script>
+</body>
+</html>

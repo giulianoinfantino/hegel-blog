@@ -5,6 +5,13 @@
 <description>Entwicklungsblog der Digitalen Hegel-Edition — Versionen, Werkstattberichte, Projektfortschritt.</description>
 <language>de</language>
 <item>
+<title>Neue Brotschrift, klare Abgrenzung, schlankere Ladezeiten</title>
+<link>https://hegel-blog.vercel.app/posts/v0-33.html</link>
+<guid isPermaLink="true">https://hegel-blog.vercel.app/posts/v0-33.html</guid>
+<pubDate>Thu, 06 Aug 2026 12:00:00 +0000</pubDate>
+<description>Die Leseschrift wechselt zu Source Serif 4, der Suchindex lädt erst bei Bedarf, die Website grenzt sich klar vom Felix Meiner Verlag und der GW-Akademieausgabe ab, dazu Feinschliff an Navigation, Tastaturbedienung und technischer Grundausstattung.</description>
+</item>
+<item>
 <title>Sperrsatz als Sperrsatz: Feinschliff an Schrift, Suche und Oberfläche</title>
 <link>https://hegel-blog.vercel.app/posts/v0-32.html</link>
 <guid isPermaLink="true">https://hegel-blog.vercel.app/posts/v0-32.html</guid>
