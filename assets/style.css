@@ -11,8 +11,8 @@
   --header-bg: rgba(30,30,36,0.85);
   --header-bg-solid: rgba(30,30,36,0.95);
   --radius: 2px;
-  --font-display: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
-  --font-body: 'EB Garamond', Georgia, serif;
+  --font-display: 'Cormorant Garamond', 'Source Serif 4', Georgia, serif;
+  --font-body: 'Source Serif 4', Georgia, serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
   --header-h: 56px;
 }

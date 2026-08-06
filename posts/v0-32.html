@@ -6,8 +6,8 @@
   <title>v0.32 &mdash; Sperrsatz als Sperrsatz: Feinschliff an Schrift, Suche und Oberfl&auml;che</title>
   <meta name="description" content="v0.32: Hervorhebungen erscheinen im Leser jetzt gesperrt wie im Druck, gr&ouml;&szlig;ere Leseschrift, Mehrfachauswahl der Werke in der Suche, Men&uuml;s in Seitengestalt, selbst gehostete Schriften ohne Google-Abruf, RSS-Feed.">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <link rel="preload" href="../assets/fonts/EBGaramond-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="../assets/fonts/EBGaramond-400i-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/SourceSerif4-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/SourceSerif4-400i-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../assets/fonts.css">
   <link rel="stylesheet" href="../assets/style.css">
   <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
@@ -60,10 +60,22 @@
       die Hervorhebung wieder eine.
     </p>
 
+    <h2>Neue Brotschrift</h2>
+    <p>
+      Der Flie&szlig;text stand bisher in EB Garamond &mdash; sch&ouml;n, aber mit
+      kleiner x-H&ouml;he und feinen Strichen, was am Bildschirm und in hellen
+      Umgebungen zu blass und zu klein wirkte. Er steht jetzt in
+      <strong>Source Serif 4</strong>: gr&ouml;&szlig;ere x-H&ouml;he, kr&auml;ftigere
+      Striche, f&uuml;r Bildschirmlekt&uuml;re entworfen und in der Anmutung
+      derselben ruhigen, wissenschaftlichen Linie verpflichtet. Die Titel stehen
+      weiterhin in Cormorant Garamond, so dass der Charakter der Seite erhalten
+      bleibt.
+    </p>
+
     <h2>Schrift und Farben</h2>
     <ul>
-      <li>Die Leseschrift ist um rund zehn Prozent gewachsen; die gesamte
-          Oberfl&auml;che skaliert mit.</li>
+      <li>Die Leseschrift ist zus&auml;tzlich um rund zehn Prozent gewachsen; die
+          gesamte Oberfl&auml;che skaliert mit.</li>
       <li>Beide Farbschemata behalten ihren Grundton, wurden aber im Kontrast
           nachgestimmt: hellere Tinte im Dunklen, etwas dunklerer Text und
           kr&auml;ftigere Akzente im Hellen.</li>
@@ -99,8 +111,7 @@
 
     <h2>Keine Abrufe bei Dritten mehr</h2>
     <p>
-      Die Schriften der Edition (Cormorant Garamond, EB Garamond, JetBrains
-      Mono) wurden bisher von Google Fonts geladen &mdash; mit jedem Seitenaufruf
+      Die Schriften der Edition wurden bisher von Google Fonts geladen &mdash; mit jedem Seitenaufruf
       ging damit eine IP-Adresse an Google. Sie liegen jetzt als
       WOFF2-Dateien auf dem eigenen Server; die Website kommt ohne
       Verbindungen zu Dritten aus. Nebeneffekt: ein Netzwerk-Umweg weniger
