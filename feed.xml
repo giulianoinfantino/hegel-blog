@@ -5,6 +5,13 @@
 <description>Entwicklungsblog der Digitalen Hegel-Edition — Versionen, Werkstattberichte, Projektfortschritt.</description>
 <language>de</language>
 <item>
+<title>Echter Blocksatz, aufgeräumte Werkzeugleiste, seitenübergreifende Suche</title>
+<link>https://hegel-blog.vercel.app/posts/v0-34.html</link>
+<guid isPermaLink="true">https://hegel-blog.vercel.app/posts/v0-34.html</guid>
+<pubDate>Fri, 07 Aug 2026 12:00:00 +0000</pubDate>
+<description>Das Druckbild setzt jetzt echten Blocksatz wie die Vorlage, die Volltextsuche findet Treffer auch über Seitengrenzen hinweg, die Werkzeugleiste ist neu geordnet (Zahnradmenü, auf dem Handy einzeilig), dazu mehrere kleine Korrekturen an Suche und Kopierfunktion.</description>
+</item>
+<item>
 <title>Neue Brotschrift, klare Abgrenzung, schlankere Ladezeiten</title>
 <link>https://hegel-blog.vercel.app/posts/v0-33.html</link>
 <guid isPermaLink="true">https://hegel-blog.vercel.app/posts/v0-33.html</guid>

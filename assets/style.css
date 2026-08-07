@@ -202,6 +202,12 @@ a:hover { text-decoration: underline; }
   border-top: 0.5px solid var(--rule);
   margin: 2rem 0;
 }
+.post-ai-note {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-top: -0.6rem;
+}
 
 .back-link {
   display: inline-block;

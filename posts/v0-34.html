@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>v0.34 &mdash; Echter Blocksatz, aufgeräumte Werkzeugleiste, seitenübergreifende Suche</title>
+  <meta name="description" content="v0.34: Das Druckbild setzt jetzt echten Blocksatz wie die Vorlage, die Volltextsuche findet Treffer auch über Seitengrenzen hinweg, die Werkzeugleiste ist neu geordnet (Zahnradmenü, einzeilig auf dem Handy), dazu mehrere kleine Korrekturen an Suche und Kopierfunktion.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preload" href="../assets/fonts/SourceSerif4-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/SourceSerif4-400i-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/fonts.css">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BlogPosting","headline":"v0.34 — Echter Blocksatz, aufgeräumte Werkzeugleiste, seitenübergreifende Suche","datePublished":"2026-08-07","inLanguage":"de","url":"https://hegel-blog.vercel.app/posts/v0-34.html","description":"Das Druckbild setzt jetzt echten Blocksatz wie die Vorlage, die Volltextsuche findet Treffer auch über Seitengrenzen hinweg, die Werkzeugleiste ist neu geordnet.","isPartOf":{"@type":"Blog","name":"Digitale Hegel-Edition — Blog","url":"https://hegel-blog.vercel.app/"}}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://digitalehegeledition.vercel.app" class="site-title">
+    <span class="site-title-eyebrow">Digitale Edition</span>
+    <span class="site-title-main">Hegel &middot; Werke</span>
+  </a>
+  <nav class="sitenav">
+    <ul>
+      <li><a href="https://digitalehegeledition.vercel.app">Edition</a></li>
+      <li><a href="../index.html" class="current">Blog</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" title="Darstellung wechseln">&#9682;</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="blog-main">
+  <div class="post-header">
+    <h1>Echter Blocksatz, aufgeräumte Werkzeugleiste, seitenübergreifende Suche</h1>
+    <div class="post-meta">7. August 2026 &middot; v0.34 &middot; Lektüre &amp; Suche</div>
+  </div>
+
+  <div class="post-body">
+
+    <p>
+      Diese Version betrifft ausschließlich die Lesewerkzeuge selbst, nicht
+      den Text: das Druckbild setzt jetzt tatsächlich Blocksatz wie die
+      Vorlage, die Suche findet Treffer auch dort, wo ein Satz über eine
+      Seitengrenze läuft, und die Werkzeugleiste über dem Text ist neu
+      geordnet.
+    </p>
+
+    <h2>Druckbild: echter Blocksatz statt bloßer Zeilenumbrüche</h2>
+    <p>
+      Das Druckbild übernimmt die Zeilenumbrüche der Vorlage, hat sie bisher
+      aber nur linksbündig gesetzt. Jede Zeile außer der letzten eines
+      Absatzes wird jetzt auf die volle Spaltenbreite gestreckt &mdash; wie im
+      Original. Die Spalte selbst ist dabei nicht mehr die volle
+      Bildschirmbreite, sondern richtet sich nach der längsten tatsächlich
+      vorkommenden Zeile der Seite, sodass die Zeilenlänge der Vorlage
+      erkennbar bleibt statt beliebig auseinandergezogen zu werden.
+      Überschriften stehen jetzt zentriert über dem Text, und eine kurze,
+      absichtlich freistehende Zeile &mdash; etwa eine einzeln gesetzte
+      Beispiel-Schlussfigur wie „Die Erde hat Bewohner” &mdash; wird erkannt und
+      bleibt unangetastet, statt ebenfalls auf volle Breite gezerrt zu
+      werden. Die Normalansicht (heutige Rechtschreibung, fortlaufender
+      Text) setzt seither ebenfalls Blocksatz, ist aber weiterhin die
+      breitere der beiden Ansichten und bleibt auf breiten Bildschirmen
+      deutlich geräumiger als das an die Originalzeilenlänge gebundene
+      Druckbild.
+    </p>
+
+    <h2>Suche über Seitengrenzen hinweg</h2>
+    <p>
+      Die Volltextsuche prüft <code>NAHE/n</code> (zwei Suchwörter innerhalb
+      von n Wörtern Abstand) je Absatz &mdash; ein Absatz, der auf der
+      Vorlage über eine Seite hinausläuft, wird für die Zählung aber in zwei
+      Einheiten zerlegt. Bisher konnte <code>NAHE/n</code> deshalb nichts
+      finden, wenn die beiden gesuchten Wörter zufällig genau auf
+      verschiedenen Seiten standen. Der Suchindex enthält jetzt zusätzliche
+      „Brücken”-Einträge an jedem Seitenübergang, die genau diesen Fall
+      abdecken, ohne die bestehende Seitenzuordnung oder Zitierlinks zu
+      verändern.
+    </p>
+
+    <h2>Werkzeugleiste neu geordnet</h2>
+    <p>
+      Schriftgröße, Kopieroptionen und die Wahl zwischen Kursiv und Sperrsatz
+      lagen bisher einzeln in der Leiste über dem Text und blähten sie auf.
+      Sie liegen jetzt gesammelt hinter dem Zahnrad-Symbol rechts außen.
+      Direkt in der Leiste bleiben nur noch Bandwahl, Seitensprung, Suche und
+      der Umschalter Druckbild/Normal &mdash; als ein einzelnes Feld, das
+      zwischen beiden Zuständen wechselt, statt als getrennte Schalter.
+    </p>
+    <p>
+      Innerhalb des Zahnradmenüs gilt jetzt <strong>Kursiv als Standard</strong>
+      für Hervorhebungen, Sperrsatz (wie im historischen Druck) ist die
+      Option &mdash; das war zuvor umgekehrt. Für das Kopieren markierter
+      Textstellen gibt es zwei unabhängige Einstellungen: ob die
+      Quellenangabe automatisch angehängt wird, und ob Hervorhebungen dabei
+      als <code>*Kursivierung*</code> mitgenommen werden.
+    </p>
+
+    <h2>Handy: eine Zeile statt zwei</h2>
+    <p>
+      Die Werkzeugleiste war auf dem Smartphone zweizeilig, weil das
+      Suchfeld eine eigene Zeile unter der übrigen Leiste bekam. Es liegt
+      jetzt in derselben, horizontal scrollenden Zeile wie Bandwahl und
+      Seitensprung &mdash; die Leiste ist auf dem Handy durchgehend
+      einzeilig. Tippt man ins Suchfeld, füllt es wie am Desktop kurz die
+      gesamte Zeile. Das Druckbild bleibt auf dem Handy unerreichbar (es
+      passt nicht sinnvoll auf einen schmalen Bildschirm) und wird beim
+      Öffnen immer auf Normal zurückgesetzt, auch wenn zuvor auf einem
+      größeren Bildschirm Druckbild eingestellt war.
+    </p>
+
+    <h2>Kleinere Korrekturen</h2>
+    <ul>
+      <li>Endet ein gesuchter Treffer mitten in einem hervorgehobenen Wort
+          (z.&nbsp;B. „Verst” innerhalb von „Verstande”), wirkte die
+          Markierung durch ihr eigenes Innenpolster wie durch eine Lücke vom
+          Rest des Worts getrennt. Das Polster ist entfernt, die
+          Hervorhebung bleibt über die Hintergrundfarbe klar sichtbar.</li>
+      <li>Trennt die Vorlage ein Wort durch einen Zeilenumbruch mit
+          Bindestrich (etwa „Beson-” am Zeilenende, „deres” zu Beginn der
+          nächsten Zeile), wurde der Bindestrich beim Kopieren bisher
+          wörtlich mitkopiert. Er wird jetzt erkannt und entfernt, die
+          Zeilen schließen beim Kopieren ohne Leerzeichen zu einem Wort
+          zusammen.</li>
+      <li>Der goldene Fokusrahmen des Suchfelds wurde links abgeschnitten,
+          sobald es bei aktiver Suche die ganze Zeile ausfüllte. Behoben.</li>
+      <li>Die Anzeige „Keine Treffer” konnte bei langen Suchanfragen mit dem
+          eingegebenen Text überlappen. Behoben.</li>
+    </ul>
+
+    <p class="post-note">
+      <em>Am Textbestand ändert diese Version nichts; die Edition gibt
+      weiterhin ausschließlich Hegels gemeinfreien Text wieder.</em>
+    </p>
+
+    <p class="post-ai-note">Hinweis: Dieser Beitrag wurde mithilfe eines KI-Sprachmodells (Claude) erstellt und redigiert.</p>
+
+    <hr>
+
+    <a href="../index.html" class="back-link">&larr; Alle Eintr&auml;ge</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div>Digitale Hegel-Edition &middot; Blog</div>
+  <nav>
+    <a href="https://digitalehegeledition.vercel.app">Zur Edition</a>
+    <a href="https://digitalehegeledition.vercel.app/feedback.html">Feedback</a>
+    <a href="https://digitalehegeledition.vercel.app/datenschutz.html">Datenschutz</a>
+    <a href="https://digitalehegeledition.vercel.app/impressum.html">Impressum</a>
+  </nav>
+</footer>
+
+<script>
+function toggleTheme() {
+  var t = document.documentElement.dataset.theme === 'light' ? '' : 'light';
+  document.documentElement.dataset.theme = t;
+  localStorage.setItem('hegel-theme', t);
+}
+</script>
+<script src="../assets/cookie-notice.js" defer></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+<script src="../assets/themefarbe.js" defer></script>
+</body>
+</html>
