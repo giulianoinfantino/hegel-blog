@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>v0.37 &mdash; „Sehen ist kein Messen“: die Mathematik der automatischen Sperrsatz-Pr&uuml;fung</title>
-  <meta name="description" content="v0.37: Wie ein Skript im Seitenbild erkennt, welches Wort gesperrt gesetzt ist &mdash; die Wortgrenzen-Heuristik, ihre an 10.933 W&ouml;rtern geeichte Schwelle, und warum Ketten aus mehreren gesperrten W&ouml;rtern hintereinander die Rechnung nachweislich aus dem Tritt bringen.">
+  <meta name="description" content="v0.37: Wie ein Skript im Seitenbild erkennt, welches Wort gesperrt gesetzt ist, und warum das Messen selbst zur Statistik wird &mdash; Wortgrenzen-Heuristik, Schwellenkalibrierung, korrelierte Fehler zweier KI-Lesungen, Clopper-Pearson-Intervalle und die Dreierregel.">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="preload" href="../assets/fonts/SourceSerif4-400-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/SourceSerif4-400i-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -12,19 +12,19 @@
   <link rel="stylesheet" href="../assets/style.css">
   <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"BlogPosting","headline":"v0.37 — „Sehen ist kein Messen“: die Mathematik der automatischen Sperrsatz-Prüfung","datePublished":"2026-08-07","inLanguage":"de","url":"https://hegel-blog.vercel.app/posts/v0-37.html","description":"Wie ein Skript Sperrsatz im Druckbild misst: die Wortgrenzen-Heuristik, ihre Kalibrierung an 10.933 Wörtern, und der blinde Fleck bei mehreren gesperrten Wörtern hintereinander.","isPartOf":{"@type":"Blog","name":"Digitale Hegel-Edition — Blog","url":"https://hegel-blog.vercel.app/"}}
+  {"@context":"https://schema.org","@type":"BlogPosting","headline":"v0.37 — „Sehen ist kein Messen“: die Mathematik der automatischen Sperrsatz-Prüfung","datePublished":"2026-08-07","inLanguage":"de","url":"https://hegel-blog.vercel.app/posts/v0-37.html","description":"Wie ein Skript Sperrsatz im Druckbild misst und warum das Messen selbst zur Statistik wird: Wortgrenzen-Heuristik, Schwellenkalibrierung, korrelierte Fehler, Clopper-Pearson-Intervalle, Dreierregel.","isPartOf":{"@type":"Blog","name":"Digitale Hegel-Edition — Blog","url":"https://hegel-blog.vercel.app/"}}
   </script>
 </head>
 <body>
 
 <header class="site-header">
-  <a href="https://digitalehegeledition.vercel.app" class="site-title">
+  <a href="https://www.hegeledition.com" class="site-title">
     <span class="site-title-eyebrow">Digitale Edition</span>
     <span class="site-title-main">Hegel &middot; Werke</span>
   </a>
   <nav class="sitenav">
     <ul>
-      <li><a href="https://digitalehegeledition.vercel.app">Edition</a></li>
+      <li><a href="https://www.hegeledition.com">Edition</a></li>
       <li><a href="../index.html" class="current">Blog</a></li>
       <li><button class="theme-toggle" onclick="toggleTheme()" title="Darstellung wechseln">&#9682;</button></li>
     </ul>
@@ -176,10 +176,151 @@
       naheliegende n&auml;chste Schritt.
     </p>
     <p>
-      Was diese Zahlen bedeuten &mdash; und was nicht, insbesondere zur
-      Frage, wie sicher „92“ und „2“ eigentlich sind &mdash; steht
-      ausf&uuml;hrlich im Werkstattbericht
-      <a href="werkstatt-fehlerrate.html">„Wie genau ist genau?“</a>.
+      Was diese Zahlen &mdash; 92, 59, 2 &mdash; eigentlich bedeuten und was
+      nicht, ist selbst keine Frage der Geometrie mehr, sondern der
+      Statistik. Der Rest dieses Beitrags geht ihr nach.
+    </p>
+
+    <h2>Kein Orakel, nur zwei fehlbare Lesungen</h2>
+    <p>
+      Bevor irgendeine der bisherigen Zahlen etwas bedeutet, braucht sie eine
+      Antwort auf eine unscheinbare Frage: Fehlerrate &mdash; gemessen
+      wogegen? Um Fehler zu z&auml;hlen, braucht es einen Referenztext, von
+      dem feststeht, dass er stimmt. F&uuml;r eine Ersttranskription gibt es
+      diesen Referenztext nicht; sonst br&auml;uchte es die Transkription
+      nicht. Die einzige Instanz ist das Druckbild selbst, und das Druckbild
+      vergleicht sich nicht von allein mit dem Bestand &mdash; jemand muss es
+      lesen, Mensch oder Maschine, und dieses Lesen kann selbst irren. Was am
+      Ende als „Fehlerrate“ dasteht, ist darum streng genommen keine Rate von
+      Fehlern, sondern eine Rate von <em>Abweichungen zwischen zwei fehlbaren
+      Lesungen</em>. Das gilt f&uuml;r die geometrische Messung genauso wie
+      f&uuml;r jede andere Pr&uuml;fung dieser Werkstatt.
+    </p>
+
+    <h2>Warum zwei Lesungen sich nicht einfach vertrauen lassen</h2>
+    <p>
+      Der Vergleich zweier unabh&auml;ngiger Lesungen &mdash; dieselbe Seite,
+      zweimal transkribiert, ohne Kenntnis der ersten Fassung &mdash; findet
+      zuverl&auml;ssig alles, worin sich beide uneinig sind. Was er
+      prinzipiell nicht finden kann, ist der Fehler, den beide
+      &uuml;bereinstimmend machen. Bei zwei maschinellen Lesungen ist
+      &Uuml;bereinstimmung im Irrtum keine Ausnahme, sondern der Normalfall,
+      mit dem zu rechnen ist: gleiche Modellfamilie, &auml;hnliche
+      Anweisungen, &auml;hnliche systematische Schw&auml;chen.
+    </p>
+    <p>
+      Ein Test aus dieser Werkstatt macht das konkret. Ein zweites,
+      unabh&auml;ngiges Modell transkribierte drei bereits erfasste Seiten
+      blind neu &mdash; 1.292 W&ouml;rter, zwei Abweichungen. Beide
+      Abweichungen waren derselbe Fehlertyp, und zwar genau der
+      charakteristische Fehlertyp des ersten Modells: ein kurzes, normal
+      gesetztes Bindewort inmitten einer gesperrten Wendung wurde
+      f&auml;lschlich mitausgezeichnet &mdash; „ist die <em>Logik</em> oder
+      <em>speculative</em> <em>Philosophie</em>“ wurde bei „oder“
+      zus&auml;tzlich gesternt, ebenso „des“ in einer Nachbarzeile. Nicht die
+      zweite Lesung deckte beide F&auml;lle auf, sondern erst die
+      geometrische Messung: Sie meldete f&uuml;r beide Zeilen genau die
+      W&ouml;rter als gesperrt, die richtig gesternt waren &mdash; und weder
+      „oder“ noch „des“. Verschiedene Modelle dekorrelieren die Fehlerklassen
+      also nicht automatisch; die geteilte Schw&auml;che liegt nicht im
+      einzelnen Modell, sondern in der Aufgabe selbst. Die Konsequenz f&uuml;r
+      die Statistik ist n&uuml;chtern: Zahlen aus Doppelerfassungen sind
+      <em>Obergrenzen der G&uuml;te</em>, keine neutralen Sch&auml;tzer.
+    </p>
+
+    <h2>Pr&auml;zision und Vollst&auml;ndigkeit sind zwei Zahlen, nicht eine</h2>
+    <p>
+      Eine einzige „Genauigkeit“ verdeckt eine Asymmetrie, die f&uuml;r eine
+      Edition entscheidend ist. Als GW&nbsp;12 nach Abschluss der Erfassung
+      an 498 Auszeichnungen stichprobenartig nachgemessen wurde, standen 10
+      f&auml;lschlich gesetzten Hervorhebungen genau eine &uuml;bersehene
+      gegen&uuml;ber &mdash; ein Verh&auml;ltnis von zehn zu eins. Eine
+      falsche Hervorhebung behauptet eine Betonung, die Hegel nicht gesetzt
+      hat; eine &uuml;bersehene schweigt nur. Pr&auml;zision (wie viele der
+      gemeldeten Treffer stimmen) und Vollst&auml;ndigkeit (wie viele der
+      echten F&auml;lle gefunden wurden) sind zwei verschiedene Zahlen, die
+      gegenl&auml;ufig reagieren &mdash; dieselbe Schwelle, die mehr falsche
+      Treffer zul&auml;sst, findet auch mehr echte, und umgekehrt (siehe
+      oben, die 93-%-zu-0,6-%-Abw&auml;gung bei 5,5 Bildpunkten). Aus dem
+      gemessenen Zehn-zu-eins-Verh&auml;ltnis folgt die inzwischen geltende
+      Arbeitsregel: im Zweifel keine Auszeichnung. Welche der beiden Zahlen
+      man optimiert, ist damit keine statistische, sondern eine editorische
+      Entscheidung.
+    </p>
+
+    <h2>Wie eng eine einzelne Zahl wirklich ist</h2>
+    <p>
+      Eine weitere Verzerrung entsteht, sobald aus wenigen Beobachtungen eine
+      Prozentzahl mit mehreren Nachkommastellen wird. In einer
+      20-Seiten-Stichprobe zu GW&nbsp;12 stand ein einziger Wortfehler auf
+      6.941 gepr&uuml;fte W&ouml;rter &mdash; daraus wird rechnerisch
+      99,986&nbsp;%. Diese Zahl sieht pr&auml;ziser aus, als sie ist. Ein
+      Ereignis in 6.941 Beobachtungen ergibt nach der
+      Clopper-Pearson-Methode ein 95-%-Vertrauensintervall f&uuml;r die
+      Fehlerrate von etwa 0,0004&nbsp;% bis 0,08&nbsp;% &mdash; die
+      Wortgenauigkeit liegt also irgendwo zwischen 99,92&nbsp;% und
+      99,9996&nbsp;%. Die dritte Nachkommastelle des Punktwerts tr&auml;gt
+      darin keine Aussage.
+    </p>
+    <p>
+      Noch h&auml;rter trifft das seltene Klassen wie Sperrsatz, wo eine
+      Stichprobe nur wenige hundert F&auml;lle enth&auml;lt. Selbst ein
+      makelloses Ergebnis &mdash; „0 von 224 falsch gesetzt“, wie in einer
+      fr&uuml;heren GW-21-Stichprobe &mdash; bedeutet nach der Dreierregel
+      (kein Fehler in <em>n</em> F&auml;llen &rarr; wahre Rate mit
+      95&nbsp;% Vertrauen unter 3/<em>n</em>) nur: Die Fehlerrate liegt
+      vermutlich unter einem knappen Prozent, nicht bei exakt null.
+      „100&nbsp;%“ und „mindestens etwa 99&nbsp;%“ sind zwei sehr
+      verschiedene S&auml;tze; die Stichprobe deckt nur den zweiten.
+    </p>
+
+    <h2>Was das f&uuml;r eine Stichprobe hei&szlig;t</h2>
+    <p>
+      Eine letzte Verzerrung betrifft nicht die Rechnung, sondern die
+      Ziehung. Zufallsstichproben aus einem Band ziehen &uuml;berwiegend das,
+      woraus der Band &uuml;berwiegend besteht: laufende Prosa. Schwierige
+      Seitentypen &mdash; Verzeichnisse, Tabellen, Titeleien, formelnahe
+      Passagen &mdash; sind selten und darum in der Stichprobe unterbesetzt
+      oder gar nicht vertreten; die gesch&auml;tzte Rate gilt also streng
+      genommen nur f&uuml;r die leichte Schicht des Bandes. Dazu kommt ein
+      &Uuml;berlebenseffekt: Seiten, deren Fehler laut ausfallen, werden
+      gefunden und korrigiert; Seiten, deren Fehler leise bleiben, bleiben
+      unentdeckt. Der Bestand wird mit jeder Pr&uuml;fung besser &mdash; aber
+      die Verbesserung konzentriert sich dort, wo die Instrumente
+      &uuml;berhaupt hinsehen k&ouml;nnen. Genau das gilt auch f&uuml;r die
+      geometrische Sperrsatz-Messung: Ihr eigener blinder Fleck bei kurzen
+      W&ouml;rtern und, wie oben gezeigt, bei Wortketten ist ausgerechnet die
+      Region, in der laut den Doppelerfassungs-Stichproben die meisten
+      Fehler wohnen.
+    </p>
+
+    <h2>F&uuml;nf Regeln</h2>
+    <p>
+      Aus alldem folgt kein Verzicht auf Zahlen, sondern ein festes Muster,
+      nach dem diese Edition sie berichtet:
+    </p>
+    <ul>
+      <li>Keine Zahl ohne genanntes Verfahren und ohne genannte Referenz.</li>
+      <li>Intervalle beziehungsweise gerundete Sch&auml;tzwerte statt
+          Nachkommastellen, wo die Fallzahl klein ist.</li>
+      <li>Obergrenzen als Obergrenzen &mdash; Doppelerfassungen unter
+          korrelierten Fehlern beziffern die Uneinigkeit, nicht den
+          Irrtum.</li>
+      <li>Pr&auml;zision und Vollst&auml;ndigkeit getrennt gez&auml;hlt, mit
+          einer Arbeitsregel f&uuml;r die Asymmetrie zwischen ihnen.</li>
+      <li>Zensus, wo das Instrument reicht; Stichprobe mit Doppelerfassung,
+          wo nicht; Augenschein am Druckbild als letzte, selbst unvermessene
+          Instanz.</li>
+    </ul>
+    <p>
+      Die ehrliche Formel ist darum nicht „der Text ist zu 99,99&nbsp;%
+      richtig“. Sie lautet: Zwischen zwei unabh&auml;ngigen Lesungen liegt
+      eine Abweichung auf mehrere tausend W&ouml;rter, jede bekannte
+      Abweichung ist am Druckbild entschieden, und jede
+      Sperrsatz-Auszeichnung ist gegen den gemessenen Buchstabenabstand ihrer
+      eigenen Druckzeile gepr&uuml;ft. Was dar&uuml;ber hinausgeht, ist
+      kontrolliertes Nichtwissen &mdash; und es scheint uns ehrlicher, seine
+      Grenzen zu nennen, als sie mit Nachkommastellen zu verdecken.
     </p>
 
     <p class="post-note">
@@ -198,10 +339,10 @@
 <footer class="site-footer">
   <div>Digitale Hegel-Edition &middot; Blog</div>
   <nav>
-    <a href="https://digitalehegeledition.vercel.app">Zur Edition</a>
-    <a href="https://digitalehegeledition.vercel.app/feedback.html">Feedback</a>
-    <a href="https://digitalehegeledition.vercel.app/datenschutz.html">Datenschutz</a>
-    <a href="https://digitalehegeledition.vercel.app/impressum.html">Impressum</a>
+    <a href="https://www.hegeledition.com">Zur Edition</a>
+    <a href="https://www.hegeledition.com/feedback.html">Feedback</a>
+    <a href="https://www.hegeledition.com/datenschutz.html">Datenschutz</a>
+    <a href="https://www.hegeledition.com/impressum.html">Impressum</a>
   </nav>
 </footer>
 

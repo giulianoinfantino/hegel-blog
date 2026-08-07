@@ -47,13 +47,6 @@
 <description>Hervorhebungen erscheinen im Leser jetzt gesperrt wie im Druck statt kursiv, die Leseschrift ist größer, die Suche lässt beliebige Werkmengen wählen, alle Klappmenüs tragen die Gestalt der Seite — und die Schriften liegen auf dem eigenen Server: keine Abrufe bei Dritten mehr.</description>
 </item>
 <item>
-<title>Wie genau ist genau? Vom Messen der Fehlerrate</title>
-<link>https://hegel-blog.vercel.app/posts/werkstatt-fehlerrate.html</link>
-<guid isPermaLink="true">https://hegel-blog.vercel.app/posts/werkstatt-fehlerrate.html</guid>
-<pubDate>Thu, 06 Aug 2026 12:00:00 +0000</pubDate>
-<description>Warum sich die Genauigkeit einer maschinellen Transkription nicht einfach messen lässt: kein Orakel als Referenz, korrelierte Fehler der Doppelerfassung, Nachkommastellen ohne Aussage, blinde Flecken des Messwerkzeugs — und die fünf Regeln, nach denen diese Edition ihre Zahlen berichtet.</description>
-</item>
-<item>
 <title>GW 21 aufgenommen: die Logik von 1832</title>
 <link>https://hegel-blog.vercel.app/posts/v0-31.html</link>
 <guid isPermaLink="true">https://hegel-blog.vercel.app/posts/v0-31.html</guid>

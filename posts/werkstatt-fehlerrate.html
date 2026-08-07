@@ -4,27 +4,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Werkstatt &mdash; Wie genau ist genau? Vom Messen der Fehlerrate</title>
-  <meta name="description" content="Warum sich die Genauigkeit einer maschinellen Transkription nicht einfach messen l&auml;sst: Referenzproblem, korrelierte Fehler, kleine Z&auml;hler, blinde Flecken des Messwerkzeugs &mdash; und was daraus f&uuml;r die Edition folgt.">
+  <meta name="description" content="Dieser Beitrag ist in „Sehen ist kein Messen“ (v0.37) aufgegangen, dort ausführlicher und mit den geometrischen Messungen zusammengeführt.">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <link rel="preload" href="../assets/fonts/SourceSerif4-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="../assets/fonts/SourceSerif4-400i-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../assets/fonts.css">
   <link rel="stylesheet" href="../assets/style.css">
   <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
-  <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Wie genau ist genau? Vom Messen der Fehlerrate", "datePublished": "2026-08-06", "inLanguage": "de", "url": "https://hegel-blog.vercel.app/posts/werkstatt-fehlerrate.html", "description": "Warum sich die Genauigkeit einer maschinellen Transkription nicht einfach messen lässt: kein Orakel als Referenz, korrelierte Fehler der Doppelerfassung, Nachkommastellen ohne Aussage, blinde Flecken des Messwerkzeugs — und die fünf Regeln, nach denen diese Edition ihre Zahlen berichtet.", "isPartOf": {"@type": "Blog", "name": "Digitale Hegel-Edition — Blog", "url": "https://hegel-blog.vercel.app/"}}
-  </script>
 </head>
 <body>
 
 <header class="site-header">
-  <a href="https://digitalehegeledition.vercel.app" class="site-title">
+  <a href="https://www.hegeledition.com" class="site-title">
     <span class="site-title-eyebrow">Digitale Edition</span>
     <span class="site-title-main">Hegel &middot; Werke</span>
   </a>
   <nav class="sitenav">
     <ul>
-      <li><a href="https://digitalehegeledition.vercel.app">Edition</a></li>
+      <li><a href="https://www.hegeledition.com">Edition</a></li>
       <li><a href="../index.html" class="current">Blog</a></li>
       <li><button class="theme-toggle" onclick="toggleTheme()" title="Darstellung wechseln">&#9682;</button></li>
     </ul>
@@ -38,209 +33,17 @@
   </div>
 
   <div class="post-body">
-
     <p>
-      Eine Edition, die ihre Genauigkeit beziffert, verspricht mehr, als sie
-      halten kann &mdash; wenn sie nicht zugleich sagt, <em>wie</em> die Zahl
-      zustande kommt und was sie nicht sagt. Dieser Beitrag legt die Probleme
-      offen, auf die dieses Projekt beim Versuch gesto&szlig;en ist, die
-      Fehlerrate seiner maschinellen Transkriptionen zu bestimmen. Es sind
-      keine Sonderf&auml;lle dieser Werkstatt; es sind die Probleme jeder
-      automatisierten G&uuml;temessung, hier nur an einem konkreten Bestand
-      durchgerechnet.
-    </p>
-
-    <h2>1. Es gibt kein Orakel</h2>
-    <p>
-      Um Fehler zu z&auml;hlen, braucht man einen Referenztext, von dem man
-      wei&szlig;, dass er stimmt. F&uuml;r eine Ersttranskription existiert er
-      nicht &mdash; sonst br&auml;uchte man nicht zu transkribieren. Die einzige
-      Instanz ist das Druckbild selbst. Aber das Druckbild vergleicht sich
-      nicht von allein mit dem Transkript: Jemand muss es lesen, Mensch oder
-      Maschine, und dieses Lesen kann selbst irren. Was immer am Ende als
-      &bdquo;gemessene Fehlerrate&ldquo; dasteht, ist darum genau genommen
-      keine Rate von Fehlern, sondern eine Rate von <em>Abweichungen zwischen
-      zwei fehlbaren Lesungen</em>. Das ist keine Spitzfindigkeit; es ist der
-      Grund f&uuml;r alles Folgende.
-    </p>
-
-    <h2>2. Doppelerfassung misst Uneinigkeit, nicht Wahrheit</h2>
-    <p>
-      Das Pr&uuml;fverfahren dieser Edition ist die unabh&auml;ngige
-      Doppelerfassung: Eine Zufallsstichprobe von Seiten wird ein zweites Mal
-      transkribiert, ohne Kenntnis der ersten Fassung; beide Fassungen werden
-      maschinell verglichen, und jede Abweichung wird am vergr&ouml;&szlig;erten
-      Druckbild entschieden. Das Verfahren findet zuverl&auml;ssig alles, worin
-      sich die beiden Lesungen <em>uneinig</em> sind. Was es prinzipiell nicht
-      finden kann, ist der Fehler, den beide &uuml;bereinstimmend machen.
+      Dieser Beitrag ist in einem sp&auml;teren, ausf&uuml;hrlicheren
+      aufgegangen: <a href="v0-37.html">„Sehen ist kein Messen“: die
+      Mathematik der automatischen Sperrsatz-Pr&uuml;fung</a>. Dort stehen
+      dieselben Fragen &mdash; das fehlende Orakel, korrelierte Fehler
+      zweier Lesungen, Clopper-Pearson-Intervalle, die Dreierregel, die
+      f&uuml;nf Regeln der Zahlenberichterstattung &mdash; jetzt zusammen
+      mit der geometrischen Sperrsatz-Messung, die sie ausgel&ouml;st hat.
     </p>
     <p>
-      Bei zwei maschinellen Lesungen ist solche &Uuml;bereinstimmung im Irrtum
-      nicht die Ausnahme, mit der man leben muss, sondern der Normalfall, mit
-      dem man rechnen muss: gleiche Modellfamilie, gleiche Anweisungen, gleiche
-      systematische Schw&auml;chen. Ein Befund aus dieser Werkstatt macht das
-      anschaulich. Als gepr&uuml;ft wurde, ob ein zweites, anderes Sprachmodell
-      die Erfassung &uuml;bernehmen kann, transkribierte es drei bereits
-      erfasste Seiten blind neu &mdash; 1292 W&ouml;rter, zwei Abweichungen. Beide
-      Abweichungen waren derselbe Fehlertyp, und zwar genau der
-      charakteristische Fehlertyp des ersten Modells: ein kurzes, normal
-      gesetztes Bindewort inmitten einer gesperrten Wendung wurde
-      fälschlich mitausgezeichnet. Verschiedene Modelle dekorrelieren die
-      Fehlerklassen also nicht einfach; die geteilte Schw&auml;che liegt nicht
-      im einzelnen Modell, sondern in der Aufgabe selbst &mdash; der
-      Buchstabenabstand kurzer W&ouml;rter ist im Druck objektiv mehrdeutig.
-      Die Konsequenz f&uuml;r die Statistik ist ern&uuml;chternd: Alle Zahlen
-      aus Doppelerfassungen sind <em>Obergrenzen der G&uuml;te</em>, keine
-      neutralen Sch&auml;tzer.
-    </p>
-
-    <h2>3. Kleine Z&auml;hler tragen keine Nachkommastellen</h2>
-    <p>
-      In den Stichproben zu GW&nbsp;12 und GW&nbsp;21 stand je <em>ein</em>
-      Wortfehler auf rund 7000 gepr&uuml;fte W&ouml;rter. Daraus wurden
-      99,982&nbsp;% und 99,986&nbsp;% &mdash; Zahlen, die pr&auml;ziser aussehen,
-      als sie sind. Ein Ereignis in 6941 Beobachtungen ergibt nach
-      Clopper-Pearson ein 95-%-Vertrauensintervall f&uuml;r die Fehlerrate von
-      etwa 0,0004&nbsp;% bis 0,08&nbsp;% &mdash; die Wortgenauigkeit liegt also
-      irgendwo zwischen 99,92&nbsp;% und 99,9996&nbsp;%. Die dritte
-      Nachkommastelle der Punktwerte tr&auml;gt keine Aussage, und ein
-      Unterschied zwischen den B&auml;nden ist damit nicht belegt.
-    </p>
-    <table style="width:100%; border-collapse:collapse; margin:1em 0;">
-      <tr style="border-bottom:1px solid var(--rule,#ccc);">
-        <th style="text-align:left; padding:0.4em;">Aussageform</th>
-        <th style="text-align:left; padding:0.4em;">Beispiel (1 Fehler / 6941 W&ouml;rter)</th>
-      </tr>
-      <tr>
-        <td style="padding:0.4em;">Punktwert</td>
-        <td style="padding:0.4em;">&bdquo;99,986&nbsp;%&ldquo; &mdash; suggeriert f&uuml;nf sichere Stellen</td>
-      </tr>
-      <tr>
-        <td style="padding:0.4em;">Intervall</td>
-        <td style="padding:0.4em;">&bdquo;zwischen 99,92&nbsp;% und 99,9996&nbsp;%&ldquo; &mdash; das ist der Wissensstand</td>
-      </tr>
-      <tr>
-        <td style="padding:0.4em;">Nicht gesagt</td>
-        <td style="padding:0.4em;">gemeinsame Fehler beider Lesungen; schwere Seitentypen; Sonderklassen</td>
-      </tr>
-    </table>
-    <p>
-      Noch h&auml;rter trifft es seltene Klassen. Gesperrte Hervorhebungen
-      machen nur wenige Prozent aller W&ouml;rter aus; eine
-      20-Seiten-Stichprobe enth&auml;lt davon nur einige hundert. Selbst ein
-      makelloses Ergebnis &mdash; &bdquo;100&nbsp;% richtig gesetzt&ldquo; in
-      GW&nbsp;21 &mdash; bedeutet nach der Dreierregel (kein Fehler in
-      <em>n</em> F&auml;llen&nbsp;&rarr; wahre Rate mit 95&nbsp;%
-      Vertrauen unter 3/<em>n</em>) nur: Die Fehlerrate der Klasse liegt
-      vermutlich unter einem knappen Prozent. &bdquo;100&nbsp;%&ldquo; und
-      &bdquo;mindestens etwa 99&nbsp;%&ldquo; sind zwei sehr verschiedene
-      S&auml;tze; die Stichprobe deckt nur den zweiten.
-    </p>
-
-    <h2>4. Fehler sind nicht gleich Fehler</h2>
-    <p>
-      Als GW&nbsp;12 nach Abschluss an 498 Auszeichnungen nachgemessen wurde,
-      standen 10 f&auml;lschlich gesetzten Hervorhebungen genau eine
-      &uuml;bersehene gegen&uuml;ber &mdash; ein Verh&auml;ltnis von zehn zu
-      eins. Eine einzige &bdquo;Genauigkeit&ldquo; verdeckt diese Asymmetrie:
-      Pr&auml;zision und Vollst&auml;ndigkeit gehen auseinander, und f&uuml;r
-      eine Edition wiegen sie verschieden. Eine falsche Hervorhebung behauptet
-      eine Betonung, die Hegel nicht gesetzt hat; eine &uuml;bersehene
-      schweigt nur. Welche Kennzahl man w&auml;hlt, ist darum keine
-      statistische, sondern eine editorische Entscheidung &mdash; und sie
-      ver&auml;ndert die Zahl. Aus dem gemessenen Verh&auml;ltnis folgt hier
-      eine Arbeitsregel, die inzwischen in der Erfassungsanweisung steht: Im
-      Zweifel <em>keine</em> Auszeichnung.
-    </p>
-
-    <h2>5. Das Messwerkzeug misst sich nicht selbst</h2>
-    <p>
-      Der naheliegende Ausweg ist, das Pr&uuml;fen zu automatisieren. F&uuml;r
-      den Sperrsatz tut die Werkstatt das: Ein Skript vermisst den
-      Buchstabenabstand jedes Wortes im Seitenbild, verankert die
-      Zeilenzuordnung an den gedruckten Randziffern und meldet, wo die
-      Transkription von der Messung abweicht. Das ersetzt Urteil durch
-      Geometrie &mdash; aber die Geometrie hat ihre eigenen, dokumentierten
-      Schw&auml;chen: W&ouml;rter unter vier Buchstaben sind nicht sicher
-      messbar; anh&auml;ngende Satzzeichen verbreitern das Ma&szlig;;
-      stark gesperrte W&ouml;rter zerfallen dem Werkzeug in zwei Gruppen und
-      verschieben die Wortz&auml;hlung; Abk&uuml;rzungen wie
-      &bdquo;d.&nbsp;h.&ldquo; registrieren als gesperrt, weil zwischen ihren
-      Gliedern echter Zwischenraum steht.
-    </p>
-    <p>
-      Damit hat der Pr&uuml;fer selbst eine Fehlerrate &mdash; und wer sie
-      bestimmen will, braucht eine gepr&uuml;fte Referenz, die wiederum einen
-      Pr&uuml;fer braucht. Dieser Regress endet nicht von selbst; man kann ihn
-      nur pragmatisch abschneiden. Die Werkstatt tut es so: Das Werkzeug ist
-      <em>Vorfilter</em>, der Augenschein am vergr&ouml;&szlig;erten Druckbild
-      ist <em>letzte Instanz</em>. Das ist vern&uuml;nftig &mdash; und
-      hei&szlig;t zugleich, dass die letztlich berichtete Rate auf der einen
-      Komponente ruht, die nie selbst vermessen wurde.
-    </p>
-
-    <h2>6. Zensus schl&auml;gt Stichprobe &mdash; aber nur, wo er sieht</h2>
-    <p>
-      Nachdem die Stichprobe f&uuml;r GW&nbsp;12 rund 2&nbsp;% falsch gesetzte
-      Hervorhebungen nahegelegt hatte, wurde der ganze Band nachgemessen:
-      jedes ausgezeichnete Wort gegen den Buchstabenabstand seiner eigenen
-      Druckzeile, alle rund 8250 F&auml;lle. 92 Auszeichnungen behaupteten eine
-      Sperrung, die im Druck nicht steht; sie wurden entfernt. Ein Zensus ist
-      der Stichprobe &uuml;berlegen &mdash; aber nur in dem Bereich, den das
-      Instrument sieht. Seine blinden Flecken, die kurzen W&ouml;rter, sind
-      ausgerechnet die Region, in der die meisten Fehler wohnen. Der Band ist
-      seit dem Zensus besser als vorher; <em>wie viel</em> besser, ist nicht
-      gemessen, und die ehrliche Auskunft lautet genau so.
-    </p>
-
-    <h2>7. Die Stichprobe zieht, was leicht ist</h2>
-    <p>
-      Zufallsstichproben aus einem Band ziehen &uuml;berwiegend das, woraus
-      der Band &uuml;berwiegend besteht: laufende Prosa. Die schweren
-      Seitentypen &mdash; Verzeichnisse, Tabellen, Titeleien, formelnahe
-      Passagen &mdash; sind selten und darum in der Stichprobe unterbesetzt
-      oder gar nicht vertreten. Die gesch&auml;tzte Rate gilt streng genommen
-      nur f&uuml;r die leichte Schicht. Dazu kommt ein &Uuml;berlebenseffekt:
-      Seiten, deren Fehler laut ausfallen, werden gefunden und korrigiert;
-      Seiten, deren Fehler leise sind, bleiben. Der Bestand wird mit jeder
-      Pr&uuml;fung besser &mdash; aber die Verbesserung konzentriert sich
-      dort, wo die Instrumente hinsehen k&ouml;nnen.
-    </p>
-
-    <h2>Was daraus folgt</h2>
-    <p>F&uuml;nf Regeln, nach denen diese Edition ihre Zahlen berichtet:</p>
-    <ul>
-      <li>Keine Zahl ohne Verfahren. Wer 99,98&nbsp;% sagt, muss sagen, wie
-          gez&auml;hlt wurde &mdash; und gegen welche Referenz.</li>
-      <li>Intervalle statt Nachkommastellen. Ein Fehler in 7000 W&ouml;rtern
-          ist ein Intervall, kein Punkt.</li>
-      <li>Obergrenzen als Obergrenzen. Doppelerfassungen unter korrelierten
-          Fehlern beziffern die Uneinigkeit, nicht den Irrtum.</li>
-      <li>Fehlerarten trennen und die Asymmetrie in die Arbeitsregeln
-          einbauen &mdash; hier: im Zweifel kein Stern.</li>
-      <li>Zensus, wo das Instrument tr&auml;gt; Stichprobe mit
-          Doppelerfassung, wo nicht; Augenschein als letzte Instanz &mdash;
-          im Wissen, dass genau diese Instanz unvermessen bleibt.</li>
-    </ul>
-    <p>
-      Die ehrliche Formel ist darum nicht: &bdquo;Der Text ist zu
-      99,99&nbsp;% richtig.&ldquo; Sie lautet: Zwischen zwei unabh&auml;ngigen
-      maschinellen Lesungen desselben Drucks liegt eine Abweichung auf
-      mehrere tausend W&ouml;rter, jede bekannte Abweichung ist am Druckbild
-      entschieden, und jede ausgezeichnete Hervorhebung ist gegen den
-      gemessenen Buchstabenabstand ihrer Zeile gepr&uuml;ft. Was dar&uuml;ber
-      hinausgeht, ist nicht Gewissheit, sondern kontrolliertes Nichtwissen
-      &mdash; und es scheint uns besser, seine Grenzen zu nennen, als sie mit
-      Nachkommastellen zu verdecken.
-    </p>
-
-    <p class="post-note">
-      <em>Die genannten Messungen: GW&nbsp;12/21-Stichproben je 20 Seiten
-      (&asymp;&nbsp;7000 W&ouml;rter, unabh&auml;ngige Zweiterfassung);
-      GW&nbsp;12-Nachmessung an 498 Auszeichnungen (10 falsch, 1 &uuml;bersehen);
-      GW&nbsp;12-Zensus &uuml;ber &asymp;&nbsp;8250 Auszeichnungen (92 entfernt);
-      Modellvergleich an 3 Seiten (1292 W&ouml;rter, 2 Abweichungen desselben
-      Typs). Details in den Beitr&auml;gen v0.30 und v0.31.</em>
+      <a href="v0-37.html" class="hero-btn-primary" style="display:inline-block">Zum aktuellen Beitrag &rarr;</a>
     </p>
 
     <p class="post-ai-note">Hinweis: Dieser Beitrag wurde mithilfe eines KI-Sprachmodells (Claude) erstellt und redigiert.</p>
@@ -254,10 +57,10 @@
 <footer class="site-footer">
   <div>Digitale Hegel-Edition &middot; Blog</div>
   <nav>
-    <a href="https://digitalehegeledition.vercel.app">Zur Edition</a>
-    <a href="https://digitalehegeledition.vercel.app/feedback.html">Feedback</a>
-    <a href="https://digitalehegeledition.vercel.app/datenschutz.html">Datenschutz</a>
-    <a href="https://digitalehegeledition.vercel.app/impressum.html">Impressum</a>
+    <a href="https://www.hegeledition.com">Zur Edition</a>
+    <a href="https://www.hegeledition.com/feedback.html">Feedback</a>
+    <a href="https://www.hegeledition.com/datenschutz.html">Datenschutz</a>
+    <a href="https://www.hegeledition.com/impressum.html">Impressum</a>
   </nav>
 </footer>
 
