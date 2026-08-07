@@ -5,11 +5,11 @@
 <description>Entwicklungsblog der Digitalen Hegel-Edition — Versionen, Werkstattberichte, Projektfortschritt.</description>
 <language>de</language>
 <item>
-<title>„≈ 1 %“ statt „99,99 % genau“: wie diese Edition Genauigkeit angibt</title>
+<title>„Sehen ist kein Messen“: die Mathematik der automatischen Sperrsatz-Prüfung</title>
 <link>https://hegel-blog.vercel.app/posts/v0-37.html</link>
 <guid isPermaLink="true">https://hegel-blog.vercel.app/posts/v0-37.html</guid>
 <pubDate>Fri, 07 Aug 2026 22:00:00 +0000</pubDate>
-<description>Warum die Startseite eine bewusst approximative Zahl zu Hervorhebungsfehlern nennt (≈1 % in GW 12), was das doppeltmaschinelle Verfahren dahinter leistet und wo seine Grenzen liegen — plus kleinere Bedienungskorrekturen an Reader und Recherche-Seite.</description>
+<description>Wie ein Skript Sperrsatz im Druckbild misst: die Wortgrenzen-Heuristik, ihre Kalibrierung an 10.933 Wörtern, und der blinde Fleck bei mehreren gesperrten Wörtern hintereinander.</description>
 </item>
 <item>
 <title>Veröffentlichungsroadmap vollständig, Recherche-Seite feinjustiert</title>

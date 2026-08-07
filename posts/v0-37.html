@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>v0.37 &mdash; „≈ 1 %“ statt „99,99 % genau“: wie diese Edition Genauigkeit angibt</title>
-  <meta name="description" content="v0.37: Warum die Startseite jetzt eine konkrete, aber bewusst approximative Zahl zu Hervorhebungsfehlern nennt (≈1 % in GW 12), was das doppeltmaschinelle Verfahren dahinter leistet und wo seine Grenzen liegen — plus kleinere Bedienungskorrekturen an Reader und Recherche-Seite.">
+  <title>v0.37 &mdash; „Sehen ist kein Messen“: die Mathematik der automatischen Sperrsatz-Pr&uuml;fung</title>
+  <meta name="description" content="v0.37: Wie ein Skript im Seitenbild erkennt, welches Wort gesperrt gesetzt ist &mdash; die Wortgrenzen-Heuristik, ihre an 10.933 W&ouml;rtern geeichte Schwelle, und warum Ketten aus mehreren gesperrten W&ouml;rtern hintereinander die Rechnung nachweislich aus dem Tritt bringen.">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="preload" href="../assets/fonts/SourceSerif4-400-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/SourceSerif4-400i-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/style.css">
   <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"BlogPosting","headline":"v0.37 — „≈ 1 %“ statt „99,99 % genau“: wie diese Edition Genauigkeit angibt","datePublished":"2026-08-07","inLanguage":"de","url":"https://hegel-blog.vercel.app/posts/v0-37.html","description":"Warum die Startseite eine bewusst approximative Zahl zu Hervorhebungsfehlern nennt, was das doppeltmaschinelle Verfahren leistet und wo seine Grenzen liegen.","isPartOf":{"@type":"Blog","name":"Digitale Hegel-Edition — Blog","url":"https://hegel-blog.vercel.app/"}}
+  {"@context":"https://schema.org","@type":"BlogPosting","headline":"v0.37 — „Sehen ist kein Messen“: die Mathematik der automatischen Sperrsatz-Prüfung","datePublished":"2026-08-07","inLanguage":"de","url":"https://hegel-blog.vercel.app/posts/v0-37.html","description":"Wie ein Skript Sperrsatz im Druckbild misst: die Wortgrenzen-Heuristik, ihre Kalibrierung an 10.933 Wörtern, und der blinde Fleck bei mehreren gesperrten Wörtern hintereinander.","isPartOf":{"@type":"Blog","name":"Digitale Hegel-Edition — Blog","url":"https://hegel-blog.vercel.app/"}}
   </script>
 </head>
 <body>
@@ -33,132 +33,158 @@
 
 <main class="blog-main">
   <div class="post-header">
-    <h1>„≈ 1 %“ statt „99,99 % genau“: wie diese Edition Genauigkeit angibt</h1>
-    <div class="post-meta">7. August 2026 &middot; v0.37 &middot; Werkstatt &amp; Feinschliff</div>
+    <h1>„Sehen ist kein Messen“: die Mathematik der automatischen Sperrsatz-Pr&uuml;fung</h1>
+    <div class="post-meta">7. August 2026 &middot; v0.37 &middot; Werkstatt &amp; Mathematik</div>
   </div>
 
   <div class="post-body">
 
     <p>
-      Die Startseite beschreibt seit dieser Version nicht mehr nur, <em>dass</em>
-      der Text gepr&uuml;ft wird, sondern nennt eine konkrete Zahl: Eine
-      Nachmessung an rund 8250 Hervorhebungen in GW&nbsp;12 ergab etwa 1&nbsp;%
-      f&auml;lschlich gesetzte Auszeichnungen (92 F&auml;lle), die entfernt
-      wurden. Diese Zahl ist bewusst ungenau formuliert &mdash; und das hat
-      einen Grund, der es wert ist, ausgef&uuml;hrt zu werden.
+      Ob ein Wort im Druck gesperrt gesetzt ist &mdash; <span style="letter-spacing:0.2em">Begriff</span>
+      statt Begriff &mdash;, sieht ein Auge in Sekundenbruchteilen und ohne
+      nachzudenken. Diese Ausgabe muss dieselbe Entscheidung an mehreren
+      Zehntausend Stellen treffen, in zwei B&auml;nden mit weiteren im
+      Werden, und kein Mensch liest jede einzelne am Original nach. Also
+      &uuml;bernimmt ein Skript das Sehen &mdash; und genau dabei h&ouml;rt
+      das Sehen auf, eines zu sein, und wird zu einer Rechnung mit eigenen
+      Fehlerquellen. Dieser Beitrag beschreibt diese Rechnung: wie sie
+      funktioniert, woran sie geeicht ist, und an welcher Stelle sie
+      neuerdings nachweislich danebenliegt.
     </p>
 
-    <h2>Warum nicht „99,99&nbsp;% genau“?</h2>
+    <h2>Vom Hinsehen zum Z&auml;hlen</h2>
     <p>
-      Weil eine Nachkommastelle Sicherheit behauptet, die eine Stichprobe
-      nicht liefert. Wird an <em>n</em> gepr&uuml;ften F&auml;llen kein
-      einziger Fehler gefunden, folgt daraus <em>nicht</em> „0&nbsp;%
-      Fehlerrate“, sondern nur: die wahre Rate liegt mit 95&nbsp;% Vertrauen
-      vermutlich unter 3/<em>n</em> (Dreierregel). Ein makelloses Ergebnis in
-      einer kleinen Stichprobe &mdash; etwa „100&nbsp;% richtig gesetzt“ in
-      einer fr&uuml;heren Pr&uuml;fung von GW&nbsp;21 &mdash; bedeutet also nur:
-      die Fehlerrate liegt vermutlich unter einem knappen Prozent, nicht bei
-      exakt null. „100&nbsp;%“ und „mindestens etwa 99&nbsp;%“ sind zwei sehr
-      verschiedene S&auml;tze; die Stichprobe deckt nur den zweiten.
+      Ein Bild kennt keine W&ouml;rter, nur schwarze Bildpunkte. Was das
+      Pr&uuml;fskript in einer Druckzeile „sieht“, ist eine Folge getrennter
+      Tintenflecken &mdash; Buchstabengruppen, durch unterschiedlich breite
+      L&uuml;cken auseinandergehalten. Um davon zu einem Urteil zu kommen,
+      muss es drei Dinge tun, die ein Auge nebenbei erledigt und die eine
+      Maschine einzeln, explizit und fehleranf&auml;llig ausrechnen muss:
+      erstens, welche Zeile im Bild zu welcher Zeile der Transkription
+      geh&ouml;rt &mdash; gel&ouml;st &uuml;ber die gedruckten Randziffern als
+      Anker, die 5 steht neben der f&uuml;nften Textzeile, die 10 neben der
+      zehnten. Zweitens, wo in dieser Zeile ein Wort endet und das
+      n&auml;chste beginnt. Drittens, ob der Buchstabenabstand
+      <em>innerhalb</em> eines so gefundenen Wortes ungew&ouml;hnlich gro&szlig;
+      ist. Der zweite Schritt ist der heikelste &mdash; und ausgerechnet der,
+      an dem Sperrsatz dem Verfahren seine Grundannahme unterl&auml;uft.
     </p>
 
-    <h2>Das doppeltmaschinelle Verfahren</h2>
+    <h2>Die Wortgrenze ist eine Vermutung</h2>
     <p>
-      Um Fehlerraten &uuml;berhaupt sch&auml;tzen zu k&ouml;nnen, ohne jede
-      Seite von Hand nachzuziehen, arbeitet die Werkstatt mit einer
-      unabh&auml;ngigen Zweiterfassung: Dieselben Druckseiten werden ein
-      zweites Mal, getrennt vom ersten Durchgang, maschinell gelesen.
-      Weichen beide Lesungen an einer Stelle voneinander ab, ist das ein
-      Kandidat f&uuml;r einen Fehler &mdash; entschieden wird am Ende aber
-      immer am vergr&ouml;&szlig;erten Druckbild, nicht durch Mehrheitsbeschluss
-      der beiden Maschinenlesungen. F&uuml;r Sperrsatz kommt eine zweite,
-      geometrische Pr&uuml;fung hinzu: ein Skript vermisst den
-      Buchstabenabstand jedes Wortes im Seitenbild und meldet, wo die
-      Transkription davon abweicht. Auch dieses Werkzeug hat dokumentierte
-      blinde Flecken &mdash; W&ouml;rter unter vier Buchstaben sind geometrisch
-      nicht sicher messbar, anh&auml;ngende Satzzeichen verf&auml;lschen das
-      Ma&szlig;, Abk&uuml;rzungen wie „d.&nbsp;h.“ registrieren f&auml;lschlich
-      als gesperrt. Ein weiterer, erst k&uuml;rzlich vermessener: Stehen
-      mehrere gesperrte W&ouml;rter unmittelbar hintereinander, w&auml;hlt das
-      Verfahren mitunter eine Binnenl&uuml;cke statt der echten Wortgrenze
-      zwischen ihnen; in einer Nachpr&uuml;fung an GW&nbsp;21 lag die
-      Fehlalarmquote solcher Kettenw&ouml;rter bei 7,2&nbsp;% gegen&uuml;ber
-      2,9&nbsp;% bei einzeln stehenden gesperrten W&ouml;rtern. Das Werkzeug
-      dient darum als Vorfilter, nicht als letzte Instanz.
+      Die Zahl der W&ouml;rter einer Zeile kennt das Skript aus der
+      Transkription. Stehen in einer Zeile beispielsweise acht W&ouml;rter,
+      muss die Zeile durch genau sieben L&uuml;cken in acht Gruppen zerfallen.
+      Das Verfahren sortiert dazu alle L&uuml;cken der Zeile nach Breite und
+      erkl&auml;rt die sieben gr&ouml;&szlig;ten zu Wortgrenzen, den Rest zu
+      Buchstabenabst&auml;nden innerhalb eines Wortes. Das funktioniert, weil
+      im normalen Schriftbild eine verl&auml;ssliche Regel gilt: der Raum
+      zwischen zwei W&ouml;rtern ist gr&ouml;&szlig;er als der Raum zwischen
+      zwei Buchstaben desselben Wortes. Diese Regel ist aber eine empirische
+      Beobachtung &uuml;ber den Normalfall, keine Garantie &mdash; und
+      Sperrsatz ist genau der Fall, der sie verletzt: er vergr&ouml;&szlig;ert
+      den Buchstabenabstand <em>innerhalb</em> eines Wortes so weit, dass er
+      in die Gr&ouml;&szlig;enordnung eines Wortzwischenraums vorr&uuml;ckt.
+      Ein einzelnes gesperrtes Wort inmitten normal gesetzter Nachbarn
+      st&ouml;rt die Sortierung kaum, weil seine L&uuml;cken zwar breiter sind
+      als in normalen W&ouml;rtern, aber immer noch schmaler als der Raum zu
+      den Nachbarw&ouml;rtern. Stehen jedoch mehrere gesperrte W&ouml;rter
+      nebeneinander, kippt genau diese Ordnung &mdash; dazu unten mehr.
     </p>
 
-    <h2>Was das konkret ergeben hat</h2>
+    <h2>Eine Schwelle, geeicht an 10.933 W&ouml;rtern</h2>
     <p>
-      F&uuml;r GW&nbsp;12 wurde nach Abschluss der Erfassung an 498
-      Auszeichnungen stichprobenartig nachgemessen: 10 f&auml;lschlich
-      gesetzten Hervorhebungen stand genau eine &uuml;bersehene
-      gegen&uuml;ber &mdash; ein Verh&auml;ltnis von zehn zu eins. Eine falsche
-      Hervorhebung behauptet eine Betonung, die Hegel nicht gesetzt hat;
-      eine &uuml;bersehene schweigt nur &mdash; f&uuml;r eine Edition wiegen
-      beide Fehlerarten unterschiedlich schwer. Aus diesem Ungleichgewicht
-      folgt die inzwischen geltende Arbeitsregel: im Zweifel keine
-      Auszeichnung. Weil die Stichprobe eine erh&ouml;hte Fehlerdichte
-      nahelegte, wurde daraufhin der <em>ganze</em> Band gepr&uuml;ft, nicht
-      nur eine weitere Stichprobe: alle rund 8250 gesetzten Hervorhebungen
-      gegen den gemessenen Buchstabenabstand ihrer eigenen Druckzeile. 92
-      davon behaupteten eine Sperrung, die im Druckbild nicht steht; sie
-      wurden entfernt. Das ist die Zahl, die jetzt auf der Startseite steht
-      &mdash; ein Zensus, kein Hochrechnungswert, aber begrenzt auf das, was
-      das Messwerkzeug &uuml;berhaupt sehen kann. Seine blinden Flecken, die
-      kurzen W&ouml;rter, sind ausgerechnet die Region, in der die meisten
-      Fehler wohnen; wie viel besser der Band seit dem Zensus wirklich ist,
-      ist darum nicht gemessen.
+      Steht die Wortgrenze einmal fest, bleibt die eigentliche Messung
+      schlicht: der mittlere Abstand zwischen den Buchstaben eines Wortes, in
+      Bildpunkten. Wo die Grenze zwischen „normal“ und „gesperrt“ verl&auml;uft,
+      ist keine Definition, sondern eine an einer Referenz gewonnene Zahl. An
+      45 bereits gepr&uuml;ften Seiten &mdash; 10.933 W&ouml;rter, davon 490
+      gesperrt &mdash; lag der mittlere Buchstabenabstand gesperrter
+      W&ouml;rter im Median bei 7,0 Bildpunkten, normaler W&ouml;rter bei 3,0;
+      das untere Zehntel der gesperrten W&ouml;rter ma&szlig; noch 6,0, das
+      obere Hundertstel der normalen W&ouml;rter schon 5,0. Zwischen diesen
+      Werten liegt die gew&auml;hlte Schwelle von 5,5 Bildpunkten: Sie erfasst
+      93&nbsp;% aller gesperrten W&ouml;rter, bei 63 Fehlalarmen auf 10.443
+      normale W&ouml;rter &mdash; 0,6&nbsp;%, ungef&auml;hr einer je Seite.
+      Eine niedrigere Schwelle f&auml;nde mehr gesperrte W&ouml;rter, aber
+      auch mehr Fehlalarme; eine h&ouml;here umgekehrt. 5,5 ist kein
+      besonderer Wert, sondern der Punkt, an dem diese beiden Kosten an
+      dieser Referenz gegeneinander abgewogen wurden.
     </p>
     <p>
-      Eine entsprechende Messung lief inzwischen auch f&uuml;r GW&nbsp;21
-      &mdash; nach demselben Verfahren, das jedes Wort gegen den Buchstabenabstand
-      seiner eigenen Druckzeile h&auml;lt und, wie oben beschrieben, rund drei
-      Viertel bis vier F&uuml;nftel der etwa 6950 Sperrsatz-Auszeichnungen des
-      Bandes erreicht. 59 Stellen fielen auf. Am vergr&ouml;&szlig;erten
-      Druckbild best&auml;tigten sich 2 als falsch gesetzt &mdash; „weg-“ auf
-      S.&nbsp;92, „intensivern“ auf S.&nbsp;224 &mdash; und wurden entfernt;
-      die &uuml;brigen 57 waren Fehlalarm. Auff&auml;llig ist, dass keiner der
-      beiden best&auml;tigten Fehler in einer Wortkette steht: der oben
-      beschriebene blinde Fleck bei Wortketten lieferte in dieser Runde also
-      nur Fehlalarme, keine &uuml;bersehenen echten Fehler. Das kann sich mit
-      der n&auml;chsten Pr&uuml;frunde &auml;ndern, ist aber bisher so.
+      Naheliegender w&auml;re ein <em>relatives</em> Ma&szlig; gewesen:
+      Abstand geteilt durch Buchstabenbreite, das Schriftgrad und
+      Aufl&ouml;sung herausrechnet. An derselben Referenz &uuml;berschneiden
+      sich darin die Verteilungen von normalen und gesperrten W&ouml;rtern
+      jedoch so stark, dass jede Schwelle mehr Fehlalarme als Treffer erzeugt
+      h&auml;tte. Der rohe Bildpunktabstand funktioniert nur, weil alle Seiten
+      der Vorlage in derselben Aufl&ouml;sung vorliegen &mdash; das
+      vermeintlich gr&ouml;bere Ma&szlig; tr&auml;gt hier weiter als das
+      vermeintlich elegantere.
     </p>
 
-    <h2>Die Regel dahinter</h2>
+    <h2>Wo die Rechnung bricht: Wortketten</h2>
     <p>
-      Diese Edition berichtet ihre Zahlen seither nach einem festen Muster:
-      keine Zahl ohne genanntes Verfahren; gerundete Sch&auml;tzwerte statt
-      Nachkommastellen; Obergrenzen als Obergrenzen, nicht als
-      Punktsch&auml;tzung; falsch
-      gesetzte und &uuml;bersehene Hervorhebungen getrennt gez&auml;hlt; und,
-      wo das Instrument reicht, ein Zensus statt einer Stichprobe &mdash;
-      Augenschein am Druckbild bleibt dabei immer die letzte, selbst
-      unvermessene Instanz. Die ausf&uuml;hrliche Herleitung, samt aller
-      Zwischenschritte und ihrer jeweiligen Schw&auml;chen, steht im
-      <a href="werkstatt-fehlerrate.html">Werkstattbericht „Wie genau ist
-      genau?“</a>.
+      Der oben beschriebene Bruch der Grundannahme l&auml;sst sich inzwischen
+      beziffern. Eine Nachpr&uuml;fung an ganz GW&nbsp;21 hat jedes gesperrte
+      Wort danach unterschieden, ob es allein steht oder Teil einer Kette aus
+      zwei oder mehr unmittelbar aufeinanderfolgenden gesperrten W&ouml;rtern
+      derselben Zeile ist, und f&uuml;r beide Gruppen gepr&uuml;ft, wie oft die
+      Messung trotz gesetztem Stern unter die 5,5-Bildpunkte-Schwelle
+      f&auml;llt. Einzeln stehende gesperrte W&ouml;rter: 102 von 3.473,
+      2,9&nbsp;%. Kettenw&ouml;rter: 249 von 3.439, 7,2&nbsp;% &mdash;
+      zweieinhalbmal so viele.
     </p>
     <p>
-      Das Ziel bleibt dabei, die Fehlerquote mit jeder weiteren Pr&uuml;frunde
-      &mdash; wie den Messungen, die die 92 bzw. 2 F&auml;lle in
-      GW&nbsp;12 und GW&nbsp;21 fanden &mdash; ann&auml;hernd gegen
-      99,99&nbsp;% zu senken. Bei so seltenen
-      Fehlerklassen l&auml;sst sich das im strengen Sinn aber nie
-      endg&uuml;ltig beweisen, nur zunehmend enger eingrenzen.
+      Der Mechanismus best&auml;tigt die Vermutung. Innerhalb einer Kette
+      konkurrieren mehrere breite w&ouml;rtereigene L&uuml;cken mit der
+      echten, aber vergleichsweise schmaleren Wortgrenze zwischen ihnen um die
+      vordersten Pl&auml;tze der Sortierung; w&auml;hlt das Verfahren dabei
+      eine Binnenl&uuml;cke statt der Wortgrenze, fehlt ausgerechnet die
+      gr&ouml;&szlig;te L&uuml;cke im Median des betroffenen Wortes &mdash; und
+      der gemessene Abstand f&auml;llt zu niedrig aus, unabh&auml;ngig davon,
+      wie breit das Wort im Druck tats&auml;chlich gesperrt ist. Am
+      st&auml;rksten trifft es kurze W&ouml;rter &mdash; „vom“, „an“, „und“,
+      „ihr“ &mdash;: Mit nur drei oder vier Buchstaben liefert ein Wort
+      ohnehin kaum L&uuml;cken, aus denen sich ein Median bilden l&auml;sst;
+      verliert es davon eine einzige an eine falsch gew&auml;hlte Wortgrenze,
+      schl&auml;gt das st&auml;rker durch als bei einem langen Wort mit einem
+      Dutzend Buchstabenabst&auml;nden zum Ausgleich. Die Schwachstelle des
+      Verfahrens liegt damit ausgerechnet dort, wo auch seine statistische
+      Grundlage am d&uuml;nnsten ist.
     </p>
 
-    <h2>Kleinere Bedienungskorrekturen</h2>
+    <h2>Was die Mathematik nicht ersetzt</h2>
     <p>
-      Nebenbei: der Suchbutton auf der Recherche-Seite sitzt auf dem Handy
-      jetzt als kompakter Pfeil-Knopf im Suchfeld selbst statt in einer
-      eigenen Zeile darunter, die Filterknöpfe dort sind kompakter, und im
-      Reader hängt das Zahnrad-Symbol auf dem Handy zuverlässig am rechten
-      Rand, mit dem Feld zum Seitensprung mittig dazwischen.
+      Nichts davon macht die Messung wertlos &mdash; im Gegenteil: Ein Lauf
+      pr&uuml;ft eine Seite in Sekunden; am selben Vergleich br&auml;uchte ein
+      Mensch Minuten, multipliziert mit Tausenden Seiten. Aber es macht die
+      Messung zu dem, was sie ist: ein Vorfilter mit bekannter, jetzt
+      bezifferter Fehlerquote, kein Urteil. Entschieden wird jede gemeldete
+      Stelle am vergr&ouml;&szlig;erten Druckbild, von Augen, nicht von der
+      Schwelle. In GW&nbsp;12 lieferte die Vollmessung so 152 Kandidaten, von
+      denen sich 86 als tats&auml;chlich falsch gesetzt best&auml;tigten
+      (weitere 6 kamen aus einer &auml;lteren, kleineren Messung hinzu &mdash;
+      zusammen die 92, die die Startseite nennt). In GW&nbsp;21, bislang zu
+      rund drei Vierteln bis vier F&uuml;nfteln der etwa 6950
+      Sperrsatz-Auszeichnungen gepr&uuml;ft, waren es 59 Kandidaten und 2
+      best&auml;tigte Fehler. Keiner der beiden GW-21-F&auml;lle stand in
+      einer Wortkette &mdash; der hier beschriebene blinde Fleck lieferte in
+      dieser Runde nur Fehlalarme, keine &uuml;bersehenen echten Fehler. Ob
+      das so bleibt, wei&szlig; erst die n&auml;chste Pr&uuml;frunde; eine
+      Fassung des Verfahrens, die Wortketten eigens behandelt, ist der
+      naheliegende n&auml;chste Schritt.
+    </p>
+    <p>
+      Was diese Zahlen bedeuten &mdash; und was nicht, insbesondere zur
+      Frage, wie sicher „92“ und „2“ eigentlich sind &mdash; steht
+      ausf&uuml;hrlich im Werkstattbericht
+      <a href="werkstatt-fehlerrate.html">„Wie genau ist genau?“</a>.
     </p>
 
     <p class="post-note">
-      <em>Am Textbestand ändert diese Version nichts; die Edition gibt
-      weiterhin ausschließlich Hegels gemeinfreien Text wieder.</em>
+      <em>Am Textbestand &auml;ndert diese Version selbst nichts; die Edition
+      gibt weiterhin ausschlie&szlig;lich Hegels gemeinfreien Text wieder.</em>
     </p>
 
     <p class="post-ai-note">Hinweis: Dieser Beitrag wurde mithilfe eines KI-Sprachmodells (Claude) erstellt und redigiert.</p>
