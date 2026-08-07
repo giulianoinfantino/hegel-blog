@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>v0.38 &mdash; Editionsrichtlinien statt Blogpost: wie diese Edition ihre Methode dokumentiert</title>
+  <meta name="description" content="v0.38: Eine eigene, dauerhaft gepflegte Editionsrichtlinien-Seite ersetzt zwei Werkstatt-Blogposts als Quelle für Verfahren, gemessene Genauigkeit und bekannte Grenzen — plus ein Fund zum Unterschied zwischen GW 12 und GW 21 in der Erfassung, und mehrere kleinere Korrekturen.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preload" href="../assets/fonts/SourceSerif4-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/SourceSerif4-400i-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/fonts.css">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BlogPosting","headline":"v0.38 — Editionsrichtlinien statt Blogpost: wie diese Edition ihre Methode dokumentiert","datePublished":"2026-08-07","inLanguage":"de","url":"https://hegel-blog.vercel.app/posts/v0-38.html","description":"Eine eigene, dauerhaft gepflegte Editionsrichtlinien-Seite ersetzt zwei Werkstatt-Blogposts, plus ein Fund zum Unterschied zwischen GW 12 und GW 21 in der Erfassung.","isPartOf":{"@type":"Blog","name":"Digitale Hegel-Edition — Blog","url":"https://hegel-blog.vercel.app/"}}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://www.hegeledition.com" class="site-title">
+    <span class="site-title-eyebrow">Digitale Edition</span>
+    <span class="site-title-main">Hegel &middot; Werke</span>
+  </a>
+  <nav class="sitenav">
+    <ul>
+      <li><a href="https://www.hegeledition.com">Edition</a></li>
+      <li><a href="../index.html" class="current">Blog</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" title="Darstellung wechseln">&#9682;</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="blog-main">
+  <div class="post-header">
+    <h1>Editionsrichtlinien statt Blogpost: wie diese Edition ihre Methode dokumentiert</h1>
+    <div class="post-meta">7. August 2026 &middot; v0.38 &middot; Werkstatt &amp; Struktur</div>
+  </div>
+
+  <div class="post-body">
+
+    <p>
+      Bislang stand die Methode dieser Edition dort, wo sie gerade entstanden
+      war: verstreut in Werkstattberichten, die mit jeder neuen Version weiter
+      nach unten in die Liste rutschten. Wer wissen wollte, wie transkribiert
+      und geprüft wird, musste zwei Blogposts querlesen und hoffen, dass sie
+      noch aktuell sind. Das hat diese Version geändert:
+      <a href="https://www.hegeledition.com/editionsrichtlinien.html">Editionsrichtlinien</a>
+      ist jetzt eine eigene, feste Seite der Edition selbst — Quelle,
+      Erfassungsverfahren, Prüfmethoden, gemessene Genauigkeit und ihre
+      bekannten Grenzen an einem Ort, der mit jeder weiteren Prüfrunde
+      aktualisiert wird, statt als Momentaufnahme in einem Post einzufrieren.
+    </p>
+
+    <h2>Zwei Posts, ein Ziel</h2>
+    <p>
+      Die Werkstattberichte „Wie genau ist genau?“ und „Sehen ist kein
+      Messen“ sind in den Editionsrichtlinien aufgegangen. Beide Adressen
+      funktionieren weiterhin — sie verweisen jetzt direkt dorthin, damit
+      kein bestehender Link oder Bookmark ins Leere läuft.
+    </p>
+
+    <h2>Ein Fund beim Zusammenführen</h2>
+    <p>
+      Zusammenzuführen zwang dazu, GW&nbsp;12 und GW&nbsp;21 nebeneinander
+      zu beschreiben — und zeigte einen Unterschied, der vorher nirgends
+      benannt war. Der Kandidaten-Algorithmus für die Sperrsatz-Vollmessung
+      war für beide Bände identisch; der Unterschied liegt im Arbeitsablauf.
+      Bei GW&nbsp;21 war die geometrische Messung von Anfang an
+      verbindlicher Teil der Erfassung selbst — jede Seite wurde beim
+      Schreiben sofort gegengemessen. Bei GW&nbsp;12 kam sie erst
+      nachträglich als eigener Prüflauf über den bereits fertigen Bestand
+      hinzu. Das ist vermutlich ein Grund, warum die Fehlerquote bei
+      GW&nbsp;21 (etwa 0,03&nbsp;%) so viel niedriger liegt als bei
+      GW&nbsp;12 (etwa 1&nbsp;%) — Fehler, die sofort auffallen, werden
+      seltener erst hinterher gefunden.
+    </p>
+
+    <h2>Kleinere Korrekturen</h2>
+    <p>
+      Die Startseite nennt bei den beiden Bänden jetzt dieselbe Darstellung
+      (Prozentsatz plus Fallzahl); der Absatz zur geplanten Vereinsgründung
+      ist raus, weil er nicht mehr den aktuellen Überlegungen entspricht.
+      Die Randziffer im Lesetext hat jetzt <code>aria-hidden</code>, damit
+      Screenreader sie nicht mitten im Satz vorlesen. Die Startseite verweist
+      Hegel jetzt über GND- und Wikidata-Kennung als strukturierte Daten,
+      nicht mehr nur als Name. Ein Zitieranzeige-Fehler ist behoben, bei dem
+      Seitenzahlen verschwanden, sobald ihre Ziffern zufällig schon im
+      Bandnamen vorkamen (GW&nbsp;12, Seite 12 zeigte nur „GW&nbsp;12“). Die
+      Werkübersicht auf der Startseite nannte GW&nbsp;11 gar nicht und
+      GW&nbsp;10 fälschlich als bereits gemeinfrei — beides korrigiert, dazu
+      GW&nbsp;3 und GW&nbsp;16 ergänzt. Der „Entdecken“-Pfeil auf der
+      Startseite sprang bisher stur eine Bildschirmhöhe nach unten statt zur
+      tatsächlichen Position der Statistikleiste; springt jetzt zielgenau.
+    </p>
+
+    <p class="post-note">
+      <em>Am Textbestand ändert diese Version nichts; die Edition gibt
+      weiterhin ausschließlich Hegels gemeinfreien Text wieder.</em>
+    </p>
+
+    <p class="post-ai-note">Hinweis: Dieser Beitrag wurde mithilfe eines KI-Sprachmodells (Claude) erstellt und redigiert.</p>
+
+    <hr>
+
+    <a href="../index.html" class="back-link">&larr; Alle Eintr&auml;ge</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div>Digitale Hegel-Edition &middot; Blog</div>
+  <nav>
+    <a href="https://www.hegeledition.com">Zur Edition</a>
+    <a href="https://www.hegeledition.com/feedback.html">Feedback</a>
+    <a href="https://www.hegeledition.com/datenschutz.html">Datenschutz</a>
+    <a href="https://www.hegeledition.com/impressum.html">Impressum</a>
+  </nav>
+</footer>
+
+<script>
+function toggleTheme() {
+  var t = document.documentElement.dataset.theme === 'light' ? '' : 'light';
+  document.documentElement.dataset.theme = t;
+  localStorage.setItem('hegel-theme', t);
+}
+</script>
+<script src="../assets/cookie-notice.js" defer></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+<script src="../assets/themefarbe.js" defer></script>
+</body>
+</html>
