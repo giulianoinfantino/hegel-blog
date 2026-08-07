@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>v0.36 &mdash; Veröffentlichungsroadmap vollständig, Recherche-Seite feinjustiert</title>
+  <meta name="description" content="v0.36: Die Veröffentlichungsroadmap auf der Startseite zeigt jetzt alle noch gesperrten GW-Teilbände einzeln, ein Layout-Fehler auf der Recherche-Seite (Ergebnisse unter der angehefteten Suchleiste) ist behoben, Trefferzahl und Syntax-Hilfe stehen jetzt in der Filterzeile.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preload" href="../assets/fonts/SourceSerif4-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/SourceSerif4-400i-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/fonts.css">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BlogPosting","headline":"v0.36 — Veröffentlichungsroadmap vollständig, Recherche-Seite feinjustiert","datePublished":"2026-08-07","inLanguage":"de","url":"https://hegel-blog.vercel.app/posts/v0-36.html","description":"Die Veröffentlichungsroadmap auf der Startseite zeigt jetzt alle noch gesperrten GW-Teilbände einzeln, ein Layout-Fehler auf der Recherche-Seite ist behoben.","isPartOf":{"@type":"Blog","name":"Digitale Hegel-Edition — Blog","url":"https://hegel-blog.vercel.app/"}}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://digitalehegeledition.vercel.app" class="site-title">
+    <span class="site-title-eyebrow">Digitale Edition</span>
+    <span class="site-title-main">Hegel &middot; Werke</span>
+  </a>
+  <nav class="sitenav">
+    <ul>
+      <li><a href="https://digitalehegeledition.vercel.app">Edition</a></li>
+      <li><a href="../index.html" class="current">Blog</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" title="Darstellung wechseln">&#9682;</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="blog-main">
+  <div class="post-header">
+    <h1>Veröffentlichungsroadmap vollständig, Recherche-Seite feinjustiert</h1>
+    <div class="post-meta">7. August 2026 &middot; v0.36 &middot; Startseite &amp; Recherche</div>
+  </div>
+
+  <div class="post-body">
+
+    <p>
+      Ein kurzer Nachzügler zur vorigen Version: die neue Roadmap auf der
+      Startseite ist jetzt vollständig, und ein Layout-Fehler, den die
+      angeheftete Suchleiste auf der Recherche-Seite mitgebracht hatte,
+      ist behoben.
+    </p>
+
+    <h2>Veröffentlichungsroadmap: alle Bände einzeln</h2>
+    <p>
+      Die neue Sektion „Wann folgen die übrigen Bände?” auf der Startseite
+      zeigt jetzt jeden noch gesperrten GW-Teilband einzeln mit dem Jahr,
+      ab dem er frei wird &mdash; 30 Einträge, von den Nürnberger
+      Gymnasialkursen (ab 2031) bis zu den letzten Vorlesungsnachschriften
+      (ab 2045). Die Bandnummern folgen jetzt außerdem der auf der
+      Startseite üblichen Schreibweise mit Punkt (<code>GW 24.1</code>
+      statt <code>GW 24,1</code>).
+    </p>
+
+    <h2>Recherche-Seite: Ergebnisse nicht mehr unter der Suchleiste</h2>
+    <p>
+      Seit die Suchleiste beim Scrollen angeheftet bleibt, lag die erste
+      Ergebniskarte nach einer Suche teils sichtbar unter ihr. Ursache war
+      eine Eigenheit von <code>position: sticky</code>: ein solches Element
+      reserviert im Textfluss nur seine ursprüngliche, nicht die durch den
+      Versatz zur Kopfzeile sichtbar verschobene Position &mdash;
+      nachfolgende Inhalte rückten dadurch zu weit nach oben. Behoben.
+    </p>
+    <p>
+      Außerdem stehen Trefferzahl und der Link zur Syntax-Hilfe jetzt in
+      derselben Zeile wie die Filter (Werk, Abschnitt, Sortierung), rechts
+      ausgerichtet, statt eine eigene Zeile darunter zu beanspruchen &mdash;
+      die angeheftete Kopfzeile bleibt dadurch spürbar kompakter.
+    </p>
+
+    <p class="post-note">
+      <em>Am Textbestand ändert diese Version nichts; die Edition gibt
+      weiterhin ausschließlich Hegels gemeinfreien Text wieder.</em>
+    </p>
+
+    <p class="post-ai-note">Hinweis: Dieser Beitrag wurde mithilfe eines KI-Sprachmodells (Claude) erstellt und redigiert.</p>
+
+    <hr>
+
+    <a href="../index.html" class="back-link">&larr; Alle Eintr&auml;ge</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div>Digitale Hegel-Edition &middot; Blog</div>
+  <nav>
+    <a href="https://digitalehegeledition.vercel.app">Zur Edition</a>
+    <a href="https://digitalehegeledition.vercel.app/feedback.html">Feedback</a>
+    <a href="https://digitalehegeledition.vercel.app/datenschutz.html">Datenschutz</a>
+    <a href="https://digitalehegeledition.vercel.app/impressum.html">Impressum</a>
+  </nav>
+</footer>
+
+<script>
+function toggleTheme() {
+  var t = document.documentElement.dataset.theme === 'light' ? '' : 'light';
+  document.documentElement.dataset.theme = t;
+  localStorage.setItem('hegel-theme', t);
+}
+</script>
+<script src="../assets/cookie-notice.js" defer></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+<script src="../assets/themefarbe.js" defer></script>
+</body>
+</html>
