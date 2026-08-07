@@ -5,6 +5,13 @@
 <description>Entwicklungsblog der Digitalen Hegel-Edition — Versionen, Werkstattberichte, Projektfortschritt.</description>
 <language>de</language>
 <item>
+<title>Recherche-Seite auf dem Handy kompakter, letzter Feinschliff</title>
+<link>https://hegel-blog.vercel.app/posts/v0-37.html</link>
+<guid isPermaLink="true">https://hegel-blog.vercel.app/posts/v0-37.html</guid>
+<pubDate>Fri, 07 Aug 2026 22:00:00 +0000</pubDate>
+<description>Der Suchbutton auf der Recherche-Seite sitzt auf dem Handy jetzt im Suchfeld selbst, die Filterknöpfe sind kompakter, Zahnrad und Seitensprung im Reader sind sauber ausgerichtet, dazu ein Genauigkeitshinweis zu Hervorhebungen auf der Startseite.</description>
+</item>
+<item>
 <title>Veröffentlichungsroadmap vollständig, Recherche-Seite feinjustiert</title>
 <link>https://hegel-blog.vercel.app/posts/v0-36.html</link>
 <guid isPermaLink="true">https://hegel-blog.vercel.app/posts/v0-36.html</guid>

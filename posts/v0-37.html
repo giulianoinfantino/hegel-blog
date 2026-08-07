@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>v0.37 &mdash; Recherche-Seite auf dem Handy kompakter, letzter Feinschliff</title>
+  <meta name="description" content="v0.37: Der Suchbutton auf der Recherche-Seite sitzt auf dem Handy jetzt im Suchfeld selbst statt in einer eigenen Zeile, die Filterknöpfe sind kompakter, Zahnrad und Seitensprung im Reader sind sauber ausgerichtet, dazu ein Genauigkeitshinweis zu Hervorhebungen auf der Startseite.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preload" href="../assets/fonts/SourceSerif4-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/SourceSerif4-400i-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/fonts.css">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BlogPosting","headline":"v0.37 — Recherche-Seite auf dem Handy kompakter, letzter Feinschliff","datePublished":"2026-08-07","inLanguage":"de","url":"https://hegel-blog.vercel.app/posts/v0-37.html","description":"Der Suchbutton auf der Recherche-Seite sitzt auf dem Handy jetzt im Suchfeld selbst, die Filterknöpfe sind kompakter, dazu ein Genauigkeitshinweis zu Hervorhebungen auf der Startseite.","isPartOf":{"@type":"Blog","name":"Digitale Hegel-Edition — Blog","url":"https://hegel-blog.vercel.app/"}}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://digitalehegeledition.vercel.app" class="site-title">
+    <span class="site-title-eyebrow">Digitale Edition</span>
+    <span class="site-title-main">Hegel &middot; Werke</span>
+  </a>
+  <nav class="sitenav">
+    <ul>
+      <li><a href="https://digitalehegeledition.vercel.app">Edition</a></li>
+      <li><a href="../index.html" class="current">Blog</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" title="Darstellung wechseln">&#9682;</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="blog-main">
+  <div class="post-header">
+    <h1>Recherche-Seite auf dem Handy kompakter, letzter Feinschliff</h1>
+    <div class="post-meta">7. August 2026 &middot; v0.37 &middot; Feinschliff</div>
+  </div>
+
+  <div class="post-body">
+
+    <p>
+      Ein kurzer Durchgang mit kleineren, aber spürbaren Korrekturen an
+      Reader und Recherche-Seite, dazu ein Genauigkeitshinweis auf der
+      Startseite.
+    </p>
+
+    <h2>Recherche-Seite auf dem Handy: weniger Platzverbrauch</h2>
+    <p>
+      Der „Suchen”-Knopf stand auf dem Handy als eigene, volle Zeile unter
+      dem Suchfeld. Er sitzt jetzt als kompakter Pfeil-Knopf rechts im
+      Suchfeld selbst und spart dadurch eine ganze Zeile Höhe &mdash; der
+      Text „Suchen” bleibt für Screenreader erhalten, sichtbar ist nur das
+      Pfeilsymbol. Die Filterknöpfe (Werk, Abschnitt, Sortierung) hatten
+      auf dem Handy bislang gar keine eigene Verkleinerung, weil die dafür
+      vorgesehene Regel ein inzwischen unsichtbar gemachtes natives Element
+      traf statt der tatsächlich sichtbaren Knöpfe; sie sind jetzt kompakter
+      und passen zu dritt in eine Zeile statt vorher zwei.
+    </p>
+
+    <h2>Reader: Zahnrad und Seitensprung sauber ausgerichtet</h2>
+    <p>
+      In der einzeiligen mobilen Werkzeugleiste hängt das Zahnrad-Symbol
+      jetzt zuverlässig am rechten Rand, das Feld zum Springen auf eine
+      GW-Seite sitzt mit gleich großen Abständen dazwischen zentriert
+      &mdash; dieselbe Technik wie bei der zentrierten mobilen
+      Hauptnavigation.
+    </p>
+
+    <h2>Genauigkeitshinweis zu Hervorhebungen</h2>
+    <p>
+      Die Startseite beschreibt den Erfassungsprozess (OCR, anschließend
+      KI-gestützt verfeinert und geprüft). Ergänzt ist jetzt ein expliziter
+      Hinweis, dass bei Kursiv- und Sperrsatz-Hervorhebungen trotz Prüfung
+      keine vollständige Fehlerfreiheit zugesichert wird &mdash; vereinzelte,
+      kleinere Abweichungen von der Vorlage lassen sich bei diesem
+      Verfahren nicht vollständig ausschließen.
+    </p>
+
+    <p class="post-note">
+      <em>Am Textbestand ändert diese Version nichts; die Edition gibt
+      weiterhin ausschließlich Hegels gemeinfreien Text wieder.</em>
+    </p>
+
+    <p class="post-ai-note">Hinweis: Dieser Beitrag wurde mithilfe eines KI-Sprachmodells (Claude) erstellt und redigiert.</p>
+
+    <hr>
+
+    <a href="../index.html" class="back-link">&larr; Alle Eintr&auml;ge</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div>Digitale Hegel-Edition &middot; Blog</div>
+  <nav>
+    <a href="https://digitalehegeledition.vercel.app">Zur Edition</a>
+    <a href="https://digitalehegeledition.vercel.app/feedback.html">Feedback</a>
+    <a href="https://digitalehegeledition.vercel.app/datenschutz.html">Datenschutz</a>
+    <a href="https://digitalehegeledition.vercel.app/impressum.html">Impressum</a>
+  </nav>
+</footer>
+
+<script>
+function toggleTheme() {
+  var t = document.documentElement.dataset.theme === 'light' ? '' : 'light';
+  document.documentElement.dataset.theme = t;
+  localStorage.setItem('hegel-theme', t);
+}
+</script>
+<script src="../assets/cookie-notice.js" defer></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+<script src="../assets/themefarbe.js" defer></script>
+</body>
+</html>
