@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>v0.35 &mdash; Suche findet, was sie markieren soll; Recherche-Seite aufgeräumt</title>
+  <meta name="description" content="v0.35: Suchtreffer über Zeilenumbrüche hinweg werden jetzt markiert, Klammern und Fußnoten-Marker in der Schnellsuche korrigiert, die Recherche-Seite ist jetzt teilbar per Link und hat eine angeheftete Suchleiste, dazu eine neue Veröffentlichungsroadmap auf der Startseite.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preload" href="../assets/fonts/SourceSerif4-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/SourceSerif4-400i-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/fonts.css">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BlogPosting","headline":"v0.35 — Suche findet, was sie markieren soll; Recherche-Seite aufgeräumt","datePublished":"2026-08-07","inLanguage":"de","url":"https://hegel-blog.vercel.app/posts/v0-35.html","description":"Suchtreffer über Zeilenumbrüche hinweg werden jetzt markiert, Klammern und Fußnoten-Marker in der Schnellsuche korrigiert, die Recherche-Seite ist jetzt teilbar per Link und hat eine angeheftete Suchleiste.","isPartOf":{"@type":"Blog","name":"Digitale Hegel-Edition — Blog","url":"https://hegel-blog.vercel.app/"}}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://digitalehegeledition.vercel.app" class="site-title">
+    <span class="site-title-eyebrow">Digitale Edition</span>
+    <span class="site-title-main">Hegel &middot; Werke</span>
+  </a>
+  <nav class="sitenav">
+    <ul>
+      <li><a href="https://digitalehegeledition.vercel.app">Edition</a></li>
+      <li><a href="../index.html" class="current">Blog</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" title="Darstellung wechseln">&#9682;</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="blog-main">
+  <div class="post-header">
+    <h1>Suche findet, was sie markieren soll; Recherche-Seite aufgeräumt</h1>
+    <div class="post-meta">7. August 2026 &middot; v0.35 &middot; Suche &amp; Recherche</div>
+  </div>
+
+  <div class="post-body">
+
+    <p>
+      Die dritte Runde des Tages, ganz der Suche gewidmet: mehrere Fälle, in
+      denen die Suche einen Treffer zwar fand, ihn aber nicht mehr sichtbar
+      machen konnte, dazu ein Nachziehen der Schnellsuche im Reader auf den
+      vollen Funktionsumfang der Recherche-Seite &mdash; und die
+      Recherche-Seite selbst mit teilbaren Links, angehefteter Suchleiste
+      und etwas weniger Bedienoberfläche.
+    </p>
+
+    <h2>Treffer, die sich nicht markieren ließen</h2>
+    <p>
+      Trennt die Vorlage ein Wort am Zeilenende (mit oder ohne Bindestrich,
+      etwa „gewöhn-” / „lich”), steht es im Druckbild in zwei getrennten
+      Zeilen-Elementen. Die Suche selbst fand solche Seiten zuverlässig,
+      weil der durchsuchbare Fließtext Zeilenumbrüche längst zusammenfügt
+      &mdash; aber beim Hervorheben des Treffers auf der Seite scheiterte
+      sie, weil dort jede Zeile für sich durchsucht wird und keine von
+      beiden das ganze Wort enthält. Für Nutzer sah das aus, als „findet
+      die Suche es zwar, kann es aber nicht markieren”. Eine neue Prüfung
+      erkennt genau diesen Fall und markiert beide Zeilenhälften einzeln,
+      auch wenn eine davon in einer eigenen Hervorhebung steckt.
+    </p>
+    <p>
+      Zwei weitere, verwandte Fälle: Sperrsatz/Kursiv-Sternchen
+      (<code>*Wort*</code>) standen bislang wörtlich im durchsuchbaren
+      Text &mdash; eine Phrasensuche, die eine Hervorhebungsgrenze
+      überquerte (etwa „Grundlage gemacht” bei „Grundlage
+      <em>*gemacht*</em>”), fand deshalb nichts. Dasselbe galt für Hegels
+      eigene Fußnoten-Marker. Beide werden jetzt vor der Suche entfernt
+      &mdash; im vorgebauten Recherche-Index ebenso wie in der
+      Schnellsuche im Reader.
+    </p>
+    <p>
+      Und: endet ein markierter Treffer mitten im Wort (kein umgebendes
+      Leerzeichen), wirkte das Innenpolster der Markierung wie eine
+      sichtbare Lücke zum Rest des Worts. Das Polster ist entfernt, an
+      beiden Stellen, an denen Treffer markiert werden.
+    </p>
+
+    <h2>Schnellsuche im Reader zieht nach</h2>
+    <p>
+      Die Suchleiste über dem Text kannte bislang keine Klammern &mdash;
+      ein Ausdruck wie <code>(Kant AND Verstand) OR (Kant AND
+      Bestimmung)</code> fand nichts, weil die Klammern wörtlich Teil der
+      Suchbegriffe wurden. Sie verwendet jetzt denselben vollständigen,
+      klammerfähigen Parser wie die Recherche-Seite. <code>NAHE/n</code>
+      findet jetzt außerdem auch dort Treffer über eine Seitengrenze
+      hinweg, wenn ein Absatz von einer Seite auf die nächste läuft.
+      Ein neues „?”-Symbol neben dem Suchfeld öffnet bei aktiver Suche
+      eine kompakte Übersicht der Syntax (Klammern, NAHE/n, Phrasen,
+      Präfix*) &mdash; vorher stand diese Hilfe nur auf der
+      Recherche-Seite.
+    </p>
+
+    <h2>Kopieren über Zeilenumbrüche hinweg</h2>
+    <p>
+      Trennt die Vorlage ein Wort am Zeilen- oder Seitenende mit
+      Bindestrich, wurde der Bindestrich beim Kopieren bislang wörtlich
+      mitgenommen (<code>„Beson- deres”</code> statt
+      <code>„Besonderes”</code>). Er wird jetzt erkannt und entfernt, auch
+      dann, wenn beide Worthälften für sich hervorgehoben sind
+      (<code>„*Be-*” / „*stimmtheit*”</code> wird zu einem durchgehenden
+      <code>„*Bestimmtheit*”</code>) &mdash; und auch über eine
+      Seitengrenze hinweg.
+    </p>
+
+    <h2>Recherche-Seite: teilbar, angeheftet, aufgeräumt</h2>
+    <p>
+      Eine Suche lässt sich jetzt per Link teilen: Anfrage, Werkauswahl,
+      Abschnitt und Sortierung landen in der Adresszeile, ein Aufruf mit
+      <code>?q=…</code> lädt direkt mit ausgefüllten Ergebnissen. Die
+      Zurück-Taste wechselt zwischen bewusst abgeschickten Suchen (Enter
+      oder Klick auf „Suchen”), ohne bei jedem Tastendruck einen eigenen
+      Verlaufseintrag anzulegen &mdash; die Suche läuft nach wie vor erst
+      bei Enter oder Klick, nicht automatisch beim Tippen.
+    </p>
+    <p>
+      Suchfeld und Filter bleiben jetzt sichtbar angeheftet, sobald
+      Ergebnisse angezeigt werden, statt beim Scrollen durch viele Treffer
+      aus dem Blick zu geraten; der Titel „Volltext-Recherche” verschwindet
+      dafür, sobald Ergebnisse da sind, damit die angeheftete Kopfzeile
+      wenig Platz beansprucht. Der Texttyp-Filter („Haupttext” / „Alle
+      Einträge” / „Nur Überschriften” / „Nur Absätze”) ist ganz entfallen.
+      Ein „/”-Tastenkürzel springt von überall auf der Seite ins Suchfeld,
+      und „Keine Treffer” zeigt jetzt konkrete Hinweise (Rechtschreibung
+      wird nur historisch normalisiert, nicht bei Tippfehlern; Filter
+      zurücksetzen; Link zur Syntax-Hilfe) statt nur eines kargen Satzes.
+    </p>
+
+    <h2>Und sonst</h2>
+    <ul>
+      <li>Neue Sektion auf der Startseite: „Wann folgen die übrigen
+          Bände?” &mdash; zeigt, welche GW-Bände aktuell noch nicht
+          aufgenommen werden können, weil ihr Ersterscheinen noch keine
+          25 Jahre zurückliegt, mit dem Jahr, ab dem sie frei werden.</li>
+      <li>Die Klappmenüs im Reader (Zahnrad, Suchsyntax) hängten ihre linke
+          Kante an eine feste Breitenschätzung; bei längeren Zeilen konnte
+          das Panel über den rechten Bildschirmrand hinausragen. Sie hängen
+          jetzt an der rechten Kante ihres Auslöse-Knopfs und können nur
+          noch nach links wachsen.</li>
+      <li>Impressum steht jetzt als letzter Link ganz rechts in der
+          Fußzeile aller Seiten.</li>
+    </ul>
+
+    <p class="post-note">
+      <em>Am Textbestand ändert diese Version nichts; die Edition gibt
+      weiterhin ausschließlich Hegels gemeinfreien Text wieder.</em>
+    </p>
+
+    <p class="post-ai-note">Hinweis: Dieser Beitrag wurde mithilfe eines KI-Sprachmodells (Claude) erstellt und redigiert.</p>
+
+    <hr>
+
+    <a href="../index.html" class="back-link">&larr; Alle Eintr&auml;ge</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div>Digitale Hegel-Edition &middot; Blog</div>
+  <nav>
+    <a href="https://digitalehegeledition.vercel.app">Zur Edition</a>
+    <a href="https://digitalehegeledition.vercel.app/feedback.html">Feedback</a>
+    <a href="https://digitalehegeledition.vercel.app/datenschutz.html">Datenschutz</a>
+    <a href="https://digitalehegeledition.vercel.app/impressum.html">Impressum</a>
+  </nav>
+</footer>
+
+<script>
+function toggleTheme() {
+  var t = document.documentElement.dataset.theme === 'light' ? '' : 'light';
+  document.documentElement.dataset.theme = t;
+  localStorage.setItem('hegel-theme', t);
+}
+</script>
+<script src="../assets/cookie-notice.js" defer></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+<script src="../assets/themefarbe.js" defer></script>
+</body>
+</html>

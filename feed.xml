@@ -5,6 +5,13 @@
 <description>Entwicklungsblog der Digitalen Hegel-Edition — Versionen, Werkstattberichte, Projektfortschritt.</description>
 <language>de</language>
 <item>
+<title>Suche findet, was sie markieren soll; Recherche-Seite aufgeräumt</title>
+<link>https://hegel-blog.vercel.app/posts/v0-35.html</link>
+<guid isPermaLink="true">https://hegel-blog.vercel.app/posts/v0-35.html</guid>
+<pubDate>Fri, 07 Aug 2026 18:00:00 +0000</pubDate>
+<description>Suchtreffer über Zeilenumbrüche hinweg werden jetzt markiert, Klammern und Fußnoten-Marker in der Schnellsuche korrigiert, die Recherche-Seite ist jetzt teilbar per Link und hat eine angeheftete Suchleiste, dazu eine neue Veröffentlichungsroadmap auf der Startseite.</description>
+</item>
+<item>
 <title>Echter Blocksatz, aufgeräumte Werkzeugleiste, seitenübergreifende Suche</title>
 <link>https://hegel-blog.vercel.app/posts/v0-34.html</link>
 <guid isPermaLink="true">https://hegel-blog.vercel.app/posts/v0-34.html</guid>
