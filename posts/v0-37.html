@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>v0.37 &mdash; Recherche-Seite auf dem Handy kompakter, letzter Feinschliff</title>
-  <meta name="description" content="v0.37: Der Suchbutton auf der Recherche-Seite sitzt auf dem Handy jetzt im Suchfeld selbst statt in einer eigenen Zeile, die Filterknöpfe sind kompakter, Zahnrad und Seitensprung im Reader sind sauber ausgerichtet, dazu ein Genauigkeitshinweis zu Hervorhebungen auf der Startseite.">
+  <title>v0.37 &mdash; „≈ 1 %“ statt „99,99 % genau“: wie diese Edition Genauigkeit angibt</title>
+  <meta name="description" content="v0.37: Warum die Startseite jetzt eine konkrete, aber bewusst approximative Zahl zu Hervorhebungsfehlern nennt (≈1 % in GW 12), was das doppeltmaschinelle Verfahren dahinter leistet und wo seine Grenzen liegen — plus kleinere Bedienungskorrekturen an Reader und Recherche-Seite.">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="preload" href="../assets/fonts/SourceSerif4-400-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/SourceSerif4-400i-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/style.css">
   <script>document.documentElement.dataset.theme=localStorage.getItem('hegel-theme')||''</script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"BlogPosting","headline":"v0.37 — Recherche-Seite auf dem Handy kompakter, letzter Feinschliff","datePublished":"2026-08-07","inLanguage":"de","url":"https://hegel-blog.vercel.app/posts/v0-37.html","description":"Der Suchbutton auf der Recherche-Seite sitzt auf dem Handy jetzt im Suchfeld selbst, die Filterknöpfe sind kompakter, dazu ein Genauigkeitshinweis zu Hervorhebungen auf der Startseite.","isPartOf":{"@type":"Blog","name":"Digitale Hegel-Edition — Blog","url":"https://hegel-blog.vercel.app/"}}
+  {"@context":"https://schema.org","@type":"BlogPosting","headline":"v0.37 — „≈ 1 %“ statt „99,99 % genau“: wie diese Edition Genauigkeit angibt","datePublished":"2026-08-07","inLanguage":"de","url":"https://hegel-blog.vercel.app/posts/v0-37.html","description":"Warum die Startseite eine bewusst approximative Zahl zu Hervorhebungsfehlern nennt, was das doppeltmaschinelle Verfahren leistet und wo seine Grenzen liegen.","isPartOf":{"@type":"Blog","name":"Digitale Hegel-Edition — Blog","url":"https://hegel-blog.vercel.app/"}}
   </script>
 </head>
 <body>
@@ -33,48 +33,99 @@
 
 <main class="blog-main">
   <div class="post-header">
-    <h1>Recherche-Seite auf dem Handy kompakter, letzter Feinschliff</h1>
-    <div class="post-meta">7. August 2026 &middot; v0.37 &middot; Feinschliff</div>
+    <h1>„≈ 1 %“ statt „99,99 % genau“: wie diese Edition Genauigkeit angibt</h1>
+    <div class="post-meta">7. August 2026 &middot; v0.37 &middot; Werkstatt &amp; Feinschliff</div>
   </div>
 
   <div class="post-body">
 
     <p>
-      Ein kurzer Durchgang mit kleineren, aber spürbaren Korrekturen an
-      Reader und Recherche-Seite, dazu ein Genauigkeitshinweis auf der
-      Startseite.
+      Die Startseite beschreibt seit dieser Version nicht mehr nur, <em>dass</em>
+      der Text gepr&uuml;ft wird, sondern nennt eine konkrete Zahl: Eine
+      Nachmessung an rund 8250 Hervorhebungen in GW&nbsp;12 ergab etwa 1&nbsp;%
+      f&auml;lschlich gesetzte Auszeichnungen (92 F&auml;lle), die entfernt
+      wurden. Diese Zahl ist bewusst ungenau formuliert &mdash; und das hat
+      einen Grund, der es wert ist, ausgef&uuml;hrt zu werden.
     </p>
 
-    <h2>Recherche-Seite auf dem Handy: weniger Platzverbrauch</h2>
+    <h2>Warum nicht „99,99&nbsp;% genau“?</h2>
     <p>
-      Der „Suchen”-Knopf stand auf dem Handy als eigene, volle Zeile unter
-      dem Suchfeld. Er sitzt jetzt als kompakter Pfeil-Knopf rechts im
-      Suchfeld selbst und spart dadurch eine ganze Zeile Höhe &mdash; der
-      Text „Suchen” bleibt für Screenreader erhalten, sichtbar ist nur das
-      Pfeilsymbol. Die Filterknöpfe (Werk, Abschnitt, Sortierung) hatten
-      auf dem Handy bislang gar keine eigene Verkleinerung, weil die dafür
-      vorgesehene Regel ein inzwischen unsichtbar gemachtes natives Element
-      traf statt der tatsächlich sichtbaren Knöpfe; sie sind jetzt kompakter
-      und passen zu dritt in eine Zeile statt vorher zwei.
+      Weil eine Nachkommastelle Sicherheit behauptet, die eine Stichprobe
+      nicht liefert. Wird an <em>n</em> gepr&uuml;ften F&auml;llen kein
+      einziger Fehler gefunden, folgt daraus <em>nicht</em> „0&nbsp;%
+      Fehlerrate“, sondern nur: die wahre Rate liegt mit 95&nbsp;% Vertrauen
+      vermutlich unter 3/<em>n</em> (Dreierregel). Ein makelloses Ergebnis in
+      einer kleinen Stichprobe &mdash; etwa „100&nbsp;% richtig gesetzt“ in
+      einer fr&uuml;heren Pr&uuml;fung von GW&nbsp;21 &mdash; bedeutet also nur:
+      die Fehlerrate liegt vermutlich unter einem knappen Prozent, nicht bei
+      exakt null. „100&nbsp;%“ und „mindestens etwa 99&nbsp;%“ sind zwei sehr
+      verschiedene S&auml;tze; die Stichprobe deckt nur den zweiten.
     </p>
 
-    <h2>Reader: Zahnrad und Seitensprung sauber ausgerichtet</h2>
+    <h2>Das doppeltmaschinelle Verfahren</h2>
     <p>
-      In der einzeiligen mobilen Werkzeugleiste hängt das Zahnrad-Symbol
-      jetzt zuverlässig am rechten Rand, das Feld zum Springen auf eine
-      GW-Seite sitzt mit gleich großen Abständen dazwischen zentriert
-      &mdash; dieselbe Technik wie bei der zentrierten mobilen
-      Hauptnavigation.
+      Um Fehlerraten &uuml;berhaupt sch&auml;tzen zu k&ouml;nnen, ohne jede
+      Seite von Hand nachzuziehen, arbeitet die Werkstatt mit einer
+      unabh&auml;ngigen Zweiterfassung: Dieselben Druckseiten werden ein
+      zweites Mal, getrennt vom ersten Durchgang, maschinell gelesen.
+      Weichen beide Lesungen an einer Stelle voneinander ab, ist das ein
+      Kandidat f&uuml;r einen Fehler &mdash; entschieden wird am Ende aber
+      immer am vergr&ouml;&szlig;erten Druckbild, nicht durch Mehrheitsbeschluss
+      der beiden Maschinenlesungen. F&uuml;r Sperrsatz kommt eine zweite,
+      geometrische Pr&uuml;fung hinzu: ein Skript vermisst den
+      Buchstabenabstand jedes Wortes im Seitenbild und meldet, wo die
+      Transkription davon abweicht. Auch dieses Werkzeug hat dokumentierte
+      blinde Flecken &mdash; Wörter unter vier Buchstaben sind geometrisch
+      nicht sicher messbar, anh&auml;ngende Satzzeichen verf&auml;lschen das
+      Ma&szlig;, Abk&uuml;rzungen wie „d.&nbsp;h.“ registrieren f&auml;lschlich
+      als gesperrt &mdash; und dient darum als Vorfilter, nicht als letzte
+      Instanz.
     </p>
 
-    <h2>Genauigkeitshinweis zu Hervorhebungen</h2>
+    <h2>Was das konkret ergeben hat</h2>
     <p>
-      Die Startseite beschreibt den Erfassungsprozess (OCR, anschließend
-      KI-gestützt verfeinert und geprüft). Ergänzt ist jetzt ein expliziter
-      Hinweis, dass bei Kursiv- und Sperrsatz-Hervorhebungen trotz Prüfung
-      keine vollständige Fehlerfreiheit zugesichert wird &mdash; vereinzelte,
-      kleinere Abweichungen von der Vorlage lassen sich bei diesem
-      Verfahren nicht vollständig ausschließen.
+      F&uuml;r GW&nbsp;12 wurde nach Abschluss der Erfassung an 498
+      Auszeichnungen stichprobenartig nachgemessen: 10 f&auml;lschlich
+      gesetzten Hervorhebungen stand genau eine &uuml;bersehene
+      gegen&uuml;ber &mdash; ein Verh&auml;ltnis von zehn zu eins. Eine falsche
+      Hervorhebung behauptet eine Betonung, die Hegel nicht gesetzt hat;
+      eine &uuml;bersehene schweigt nur &mdash; f&uuml;r eine Edition wiegen
+      beide Fehlerarten unterschiedlich schwer. Aus diesem Ungleichgewicht
+      folgt die inzwischen geltende Arbeitsregel: im Zweifel keine
+      Auszeichnung. Weil die Stichprobe eine erh&ouml;hte Fehlerdichte
+      nahelegte, wurde daraufhin der <em>ganze</em> Band gepr&uuml;ft, nicht
+      nur eine weitere Stichprobe: alle rund 8250 gesetzten Hervorhebungen
+      gegen den gemessenen Buchstabenabstand ihrer eigenen Druckzeile. 92
+      davon behaupteten eine Sperrung, die im Druckbild nicht steht; sie
+      wurden entfernt. Das ist die Zahl, die jetzt auf der Startseite steht
+      &mdash; ein Zensus, kein Hochrechnungswert, aber begrenzt auf das, was
+      das Messwerkzeug &uuml;berhaupt sehen kann. Seine blinden Flecken, die
+      kurzen W&ouml;rter, sind ausgerechnet die Region, in der die meisten
+      Fehler wohnen; wie viel besser der Band seit dem Zensus wirklich ist,
+      ist darum nicht gemessen.
+    </p>
+
+    <h2>Die Regel dahinter</h2>
+    <p>
+      Diese Edition berichtet ihre Zahlen seither nach einem festen Muster:
+      keine Zahl ohne genanntes Verfahren; Intervalle statt Nachkommastellen;
+      Obergrenzen als Obergrenzen, nicht als Punktsch&auml;tzung; falsch
+      gesetzte und &uuml;bersehene Hervorhebungen getrennt gez&auml;hlt; und,
+      wo das Instrument reicht, ein Zensus statt einer Stichprobe &mdash;
+      Augenschein am Druckbild bleibt dabei immer die letzte, selbst
+      unvermessene Instanz. Die ausf&uuml;hrliche Herleitung, samt aller
+      Zwischenschritte und ihrer jeweiligen Schw&auml;chen, steht im
+      <a href="werkstatt-fehlerrate.html">Werkstattbericht „Wie genau ist
+      genau?“</a>.
+    </p>
+
+    <h2>Kleinere Bedienungskorrekturen</h2>
+    <p>
+      Nebenbei: der Suchbutton auf der Recherche-Seite sitzt auf dem Handy
+      jetzt als kompakter Pfeil-Knopf im Suchfeld selbst statt in einer
+      eigenen Zeile darunter, die Filterknöpfe dort sind kompakter, und im
+      Reader hängt das Zahnrad-Symbol auf dem Handy zuverlässig am rechten
+      Rand, mit dem Feld zum Seitensprung mittig dazwischen.
     </p>
 
     <p class="post-note">
